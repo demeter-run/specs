@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package demeter.ops.v1alpha;
+
+import "google/protobuf/any.proto";
+
+message ResourceMetadata {
+  string name = 1;
+}
+
+message CreateResourceRequest {
+  ResourceMetadata metadata = 1;
+  google.protobuf.Any spec = 2;
+}
+
+message CreateResourceResponse {
+  google.protobuf.Any status = 1;
+}
+
+message ListResourcesRequest {}
+
+message ListResourcesResponse {}
+
+message ReadResourceRequest {
+  ResourceMetadata metadata = 1;
+}
+
+message ReadResourceResponse {
+  ResourceMetadata metadata = 1;
+  google.protobuf.Any spec = 2;
+  google.protobuf.Any status = 3;
+}
+
+message PatchResourceRequest {
+  ResourceMetadata metadata = 1;
+  google.protobuf.Any spec = 2;
+}
+
+message PatchResourceResponse {
+  google.protobuf.Any status = 1;
+}
+
+message DeleteResourceRequest {
+  ResourceMetadata metadata = 1;
+}
+
+message DeleteResourceResponse {
+  google.protobuf.Any status = 1;
+}
+
+service OpsService {
+  rpc CreateResource(CreateResourceRequest) returns (CreateResourceResponse);
+  rpc ListResources(ListResourcesRequest) returns (ListResourcesResponse);
+  rpc ReadResource(ReadResourceRequest) returns (ReadResourceResponse);
+  rpc PatchResource(PatchResourceRequest) returns (PatchResourceResponse);
+  rpc DeleteResource(DeleteResourceRequest) returns (DeleteResourceResponse);
+}
