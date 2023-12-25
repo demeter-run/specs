@@ -53,7 +53,8 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| status | [google.protobuf.Any](#google-protobuf-Any) |  |  |
+| event_receipt | [bytes](#bytes) |  |  |
+| resource_uuid | [bytes](#bytes) |  |  |
 
 
 
@@ -181,6 +182,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+| namespace | [string](#string) |  |  |
 | name | [string](#string) |  |  |
 
 

@@ -115,12 +115,18 @@ impl serde::Serialize for CreateResourceResponse {
     {
         use serde::ser::SerializeStruct;
         let mut len = 0;
-        if self.status.is_some() {
+        if !self.event_receipt.is_empty() {
+            len += 1;
+        }
+        if !self.resource_uuid.is_empty() {
             len += 1;
         }
         let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.CreateResourceResponse", len)?;
-        if let Some(v) = self.status.as_ref() {
-            struct_ser.serialize_field("status", v)?;
+        if !self.event_receipt.is_empty() {
+            struct_ser.serialize_field("eventReceipt", pbjson::private::base64::encode(&self.event_receipt).as_str())?;
+        }
+        if !self.resource_uuid.is_empty() {
+            struct_ser.serialize_field("resourceUuid", pbjson::private::base64::encode(&self.resource_uuid).as_str())?;
         }
         struct_ser.end()
     }
@@ -132,12 +138,16 @@ impl<'de> serde::Deserialize<'de> for CreateResourceResponse {
         D: serde::Deserializer<'de>,
     {
         const FIELDS: &[&str] = &[
-            "status",
+            "event_receipt",
+            "eventReceipt",
+            "resource_uuid",
+            "resourceUuid",
         ];
 
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
-            Status,
+            EventReceipt,
+            ResourceUuid,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
             fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
@@ -159,7 +169,8 @@ impl<'de> serde::Deserialize<'de> for CreateResourceResponse {
                         E: serde::de::Error,
                     {
                         match value {
-                            "status" => Ok(GeneratedField::Status),
+                            "eventReceipt" | "event_receipt" => Ok(GeneratedField::EventReceipt),
+                            "resourceUuid" | "resource_uuid" => Ok(GeneratedField::ResourceUuid),
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
                         }
                     }
@@ -179,19 +190,31 @@ impl<'de> serde::Deserialize<'de> for CreateResourceResponse {
                 where
                     V: serde::de::MapAccess<'de>,
             {
-                let mut status__ = None;
+                let mut event_receipt__ = None;
+                let mut resource_uuid__ = None;
                 while let Some(k) = map.next_key()? {
                     match k {
-                        GeneratedField::Status => {
-                            if status__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("status"));
+                        GeneratedField::EventReceipt => {
+                            if event_receipt__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("eventReceipt"));
                             }
-                            status__ = map.next_value()?;
+                            event_receipt__ = 
+                                Some(map.next_value::<::pbjson::private::BytesDeserialize<_>>()?.0)
+                            ;
+                        }
+                        GeneratedField::ResourceUuid => {
+                            if resource_uuid__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("resourceUuid"));
+                            }
+                            resource_uuid__ = 
+                                Some(map.next_value::<::pbjson::private::BytesDeserialize<_>>()?.0)
+                            ;
                         }
                     }
                 }
                 Ok(CreateResourceResponse {
-                    status: status__,
+                    event_receipt: event_receipt__.unwrap_or_default(),
+                    resource_uuid: resource_uuid__.unwrap_or_default(),
                 })
             }
         }
@@ -945,10 +968,16 @@ impl serde::Serialize for ResourceMetadata {
     {
         use serde::ser::SerializeStruct;
         let mut len = 0;
+        if !self.namespace.is_empty() {
+            len += 1;
+        }
         if !self.name.is_empty() {
             len += 1;
         }
         let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.ResourceMetadata", len)?;
+        if !self.namespace.is_empty() {
+            struct_ser.serialize_field("namespace", &self.namespace)?;
+        }
         if !self.name.is_empty() {
             struct_ser.serialize_field("name", &self.name)?;
         }
@@ -962,11 +991,13 @@ impl<'de> serde::Deserialize<'de> for ResourceMetadata {
         D: serde::Deserializer<'de>,
     {
         const FIELDS: &[&str] = &[
+            "namespace",
             "name",
         ];
 
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
+            Namespace,
             Name,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
@@ -989,6 +1020,7 @@ impl<'de> serde::Deserialize<'de> for ResourceMetadata {
                         E: serde::de::Error,
                     {
                         match value {
+                            "namespace" => Ok(GeneratedField::Namespace),
                             "name" => Ok(GeneratedField::Name),
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
                         }
@@ -1009,9 +1041,16 @@ impl<'de> serde::Deserialize<'de> for ResourceMetadata {
                 where
                     V: serde::de::MapAccess<'de>,
             {
+                let mut namespace__ = None;
                 let mut name__ = None;
                 while let Some(k) = map.next_key()? {
                     match k {
+                        GeneratedField::Namespace => {
+                            if namespace__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("namespace"));
+                            }
+                            namespace__ = Some(map.next_value()?);
+                        }
                         GeneratedField::Name => {
                             if name__.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
@@ -1021,6 +1060,7 @@ impl<'de> serde::Deserialize<'de> for ResourceMetadata {
                     }
                 }
                 Ok(ResourceMetadata {
+                    namespace: namespace__.unwrap_or_default(),
                     name: name__.unwrap_or_default(),
                 })
             }
