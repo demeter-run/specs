@@ -5,7 +5,8 @@ package demeter.ops.v1alpha;
 import "google/protobuf/any.proto";
 
 message ResourceMetadata {
-  string name = 1;
+  string namespace = 1;
+  string name = 2;
 }
 
 message CreateResourceRequest {
@@ -14,7 +15,8 @@ message CreateResourceRequest {
 }
 
 message CreateResourceResponse {
-  google.protobuf.Any status = 1;
+  bytes event_receipt = 1;
+  bytes resource_uuid = 2;
 }
 
 message ListResourcesRequest {}
