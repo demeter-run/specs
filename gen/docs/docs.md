@@ -14,6 +14,7 @@
     - [PatchResourceResponse](#demeter-ops-v1alpha-PatchResourceResponse)
     - [ReadResourceRequest](#demeter-ops-v1alpha-ReadResourceRequest)
     - [ReadResourceResponse](#demeter-ops-v1alpha-ReadResourceResponse)
+    - [Resource](#demeter-ops-v1alpha-Resource)
     - [ResourceMetadata](#demeter-ops-v1alpha-ResourceMetadata)
   
     - [OpsService](#demeter-ops-v1alpha-OpsService)
@@ -97,6 +98,11 @@
 
 
 
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| namespace | [string](#string) |  |  |
+
+
 
 
 
@@ -105,6 +111,11 @@
 
 ### ListResourcesResponse
 
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| items | [Resource](#demeter-ops-v1alpha-Resource) | repeated |  |
 
 
 
@@ -160,6 +171,23 @@
 <a name="demeter-ops-v1alpha-ReadResourceResponse"></a>
 
 ### ReadResourceResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| metadata | [ResourceMetadata](#demeter-ops-v1alpha-ResourceMetadata) |  |  |
+| spec | [google.protobuf.Any](#google-protobuf-Any) |  |  |
+| status | [google.protobuf.Any](#google-protobuf-Any) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-Resource"></a>
+
+### Resource
 
 
 

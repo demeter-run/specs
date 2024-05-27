@@ -410,8 +410,14 @@ impl serde::Serialize for ListResourcesRequest {
         S: serde::Serializer,
     {
         use serde::ser::SerializeStruct;
-        let len = 0;
-        let struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.ListResourcesRequest", len)?;
+        let mut len = 0;
+        if !self.namespace.is_empty() {
+            len += 1;
+        }
+        let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.ListResourcesRequest", len)?;
+        if !self.namespace.is_empty() {
+            struct_ser.serialize_field("namespace", &self.namespace)?;
+        }
         struct_ser.end()
     }
 }
@@ -422,10 +428,12 @@ impl<'de> serde::Deserialize<'de> for ListResourcesRequest {
         D: serde::Deserializer<'de>,
     {
         const FIELDS: &[&str] = &[
+            "namespace",
         ];
 
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
+            Namespace,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
             fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
@@ -446,7 +454,10 @@ impl<'de> serde::Deserialize<'de> for ListResourcesRequest {
                     where
                         E: serde::de::Error,
                     {
-                            Err(serde::de::Error::unknown_field(value, FIELDS))
+                        match value {
+                            "namespace" => Ok(GeneratedField::Namespace),
+                            _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
+                        }
                     }
                 }
                 deserializer.deserialize_identifier(GeneratedVisitor)
@@ -464,10 +475,19 @@ impl<'de> serde::Deserialize<'de> for ListResourcesRequest {
                 where
                     V: serde::de::MapAccess<'de>,
             {
-                while map.next_key::<GeneratedField>()?.is_some() {
-                    let _ = map.next_value::<serde::de::IgnoredAny>()?;
+                let mut namespace__ = None;
+                while let Some(k) = map.next_key()? {
+                    match k {
+                        GeneratedField::Namespace => {
+                            if namespace__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("namespace"));
+                            }
+                            namespace__ = Some(map.next_value()?);
+                        }
+                    }
                 }
                 Ok(ListResourcesRequest {
+                    namespace: namespace__.unwrap_or_default(),
                 })
             }
         }
@@ -481,8 +501,14 @@ impl serde::Serialize for ListResourcesResponse {
         S: serde::Serializer,
     {
         use serde::ser::SerializeStruct;
-        let len = 0;
-        let struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.ListResourcesResponse", len)?;
+        let mut len = 0;
+        if !self.items.is_empty() {
+            len += 1;
+        }
+        let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.ListResourcesResponse", len)?;
+        if !self.items.is_empty() {
+            struct_ser.serialize_field("items", &self.items)?;
+        }
         struct_ser.end()
     }
 }
@@ -493,10 +519,12 @@ impl<'de> serde::Deserialize<'de> for ListResourcesResponse {
         D: serde::Deserializer<'de>,
     {
         const FIELDS: &[&str] = &[
+            "items",
         ];
 
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
+            Items,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
             fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
@@ -517,7 +545,10 @@ impl<'de> serde::Deserialize<'de> for ListResourcesResponse {
                     where
                         E: serde::de::Error,
                     {
-                            Err(serde::de::Error::unknown_field(value, FIELDS))
+                        match value {
+                            "items" => Ok(GeneratedField::Items),
+                            _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
+                        }
                     }
                 }
                 deserializer.deserialize_identifier(GeneratedVisitor)
@@ -535,10 +566,19 @@ impl<'de> serde::Deserialize<'de> for ListResourcesResponse {
                 where
                     V: serde::de::MapAccess<'de>,
             {
-                while map.next_key::<GeneratedField>()?.is_some() {
-                    let _ = map.next_value::<serde::de::IgnoredAny>()?;
+                let mut items__ = None;
+                while let Some(k) = map.next_key()? {
+                    match k {
+                        GeneratedField::Items => {
+                            if items__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("items"));
+                            }
+                            items__ = Some(map.next_value()?);
+                        }
+                    }
                 }
                 Ok(ListResourcesResponse {
+                    items: items__.unwrap_or_default(),
                 })
             }
         }
@@ -958,6 +998,131 @@ impl<'de> serde::Deserialize<'de> for ReadResourceResponse {
             }
         }
         deserializer.deserialize_struct("demeter.ops.v1alpha.ReadResourceResponse", FIELDS, GeneratedVisitor)
+    }
+}
+impl serde::Serialize for Resource {
+    #[allow(deprecated)]
+    fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        use serde::ser::SerializeStruct;
+        let mut len = 0;
+        if self.metadata.is_some() {
+            len += 1;
+        }
+        if self.spec.is_some() {
+            len += 1;
+        }
+        if self.status.is_some() {
+            len += 1;
+        }
+        let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.Resource", len)?;
+        if let Some(v) = self.metadata.as_ref() {
+            struct_ser.serialize_field("metadata", v)?;
+        }
+        if let Some(v) = self.spec.as_ref() {
+            struct_ser.serialize_field("spec", v)?;
+        }
+        if let Some(v) = self.status.as_ref() {
+            struct_ser.serialize_field("status", v)?;
+        }
+        struct_ser.end()
+    }
+}
+impl<'de> serde::Deserialize<'de> for Resource {
+    #[allow(deprecated)]
+    fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        const FIELDS: &[&str] = &[
+            "metadata",
+            "spec",
+            "status",
+        ];
+
+        #[allow(clippy::enum_variant_names)]
+        enum GeneratedField {
+            Metadata,
+            Spec,
+            Status,
+        }
+        impl<'de> serde::Deserialize<'de> for GeneratedField {
+            fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
+            where
+                D: serde::Deserializer<'de>,
+            {
+                struct GeneratedVisitor;
+
+                impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+                    type Value = GeneratedField;
+
+                    fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        write!(formatter, "expected one of: {:?}", &FIELDS)
+                    }
+
+                    #[allow(unused_variables)]
+                    fn visit_str<E>(self, value: &str) -> std::result::Result<GeneratedField, E>
+                    where
+                        E: serde::de::Error,
+                    {
+                        match value {
+                            "metadata" => Ok(GeneratedField::Metadata),
+                            "spec" => Ok(GeneratedField::Spec),
+                            "status" => Ok(GeneratedField::Status),
+                            _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
+                        }
+                    }
+                }
+                deserializer.deserialize_identifier(GeneratedVisitor)
+            }
+        }
+        struct GeneratedVisitor;
+        impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+            type Value = Resource;
+
+            fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                formatter.write_str("struct demeter.ops.v1alpha.Resource")
+            }
+
+            fn visit_map<V>(self, mut map: V) -> std::result::Result<Resource, V::Error>
+                where
+                    V: serde::de::MapAccess<'de>,
+            {
+                let mut metadata__ = None;
+                let mut spec__ = None;
+                let mut status__ = None;
+                while let Some(k) = map.next_key()? {
+                    match k {
+                        GeneratedField::Metadata => {
+                            if metadata__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("metadata"));
+                            }
+                            metadata__ = map.next_value()?;
+                        }
+                        GeneratedField::Spec => {
+                            if spec__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("spec"));
+                            }
+                            spec__ = map.next_value()?;
+                        }
+                        GeneratedField::Status => {
+                            if status__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("status"));
+                            }
+                            status__ = map.next_value()?;
+                        }
+                    }
+                }
+                Ok(Resource {
+                    metadata: metadata__,
+                    spec: spec__,
+                    status: status__,
+                })
+            }
+        }
+        deserializer.deserialize_struct("demeter.ops.v1alpha.Resource", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ResourceMetadata {
