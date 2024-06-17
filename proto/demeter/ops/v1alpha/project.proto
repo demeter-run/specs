@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package demeter.ops.v1alpha;
+
+import "google/protobuf/any.proto";
+
+message CreateProjectRequest {
+  string name = 1; 
+}
+
+message CreateProjectResponse {
+  string name = 1; 
+  string namespace = 2; 
+}
+
+service ProjectService {
+  rpc CreateProject(CreateProjectRequest) returns (CreateProjectResponse);
+}
+
