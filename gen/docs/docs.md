@@ -3,239 +3,68 @@
 
 ## Table of Contents
 
-- [demeter/ops/v1alpha/ops.proto](#demeter_ops_v1alpha_ops-proto)
-    - [CreateResourceRequest](#demeter-ops-v1alpha-CreateResourceRequest)
-    - [CreateResourceResponse](#demeter-ops-v1alpha-CreateResourceResponse)
-    - [DeleteResourceRequest](#demeter-ops-v1alpha-DeleteResourceRequest)
-    - [DeleteResourceResponse](#demeter-ops-v1alpha-DeleteResourceResponse)
-    - [ListResourcesRequest](#demeter-ops-v1alpha-ListResourcesRequest)
-    - [ListResourcesResponse](#demeter-ops-v1alpha-ListResourcesResponse)
-    - [PatchResourceRequest](#demeter-ops-v1alpha-PatchResourceRequest)
-    - [PatchResourceResponse](#demeter-ops-v1alpha-PatchResourceResponse)
-    - [ReadResourceRequest](#demeter-ops-v1alpha-ReadResourceRequest)
-    - [ReadResourceResponse](#demeter-ops-v1alpha-ReadResourceResponse)
-    - [Resource](#demeter-ops-v1alpha-Resource)
-    - [ResourceMetadata](#demeter-ops-v1alpha-ResourceMetadata)
+- [proto/demeter/ops/v1alpha/project.proto](#proto_demeter_ops_v1alpha_project-proto)
+    - [CreateProjectRequest](#demeter-ops-v1alpha-CreateProjectRequest)
+    - [CreateProjectResponse](#demeter-ops-v1alpha-CreateProjectResponse)
   
-    - [OpsService](#demeter-ops-v1alpha-OpsService)
+    - [ProjectService](#demeter-ops-v1alpha-ProjectService)
   
 - [Scalar Value Types](#scalar-value-types)
 
 
 
-<a name="demeter_ops_v1alpha_ops-proto"></a>
+<a name="proto_demeter_ops_v1alpha_project-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## demeter/ops/v1alpha/ops.proto
+## proto/demeter/ops/v1alpha/project.proto
 
 
 
-<a name="demeter-ops-v1alpha-CreateResourceRequest"></a>
+<a name="demeter-ops-v1alpha-CreateProjectRequest"></a>
 
-### CreateResourceRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| metadata | [ResourceMetadata](#demeter-ops-v1alpha-ResourceMetadata) |  |  |
-| spec | [google.protobuf.Any](#google-protobuf-Any) |  |  |
-
-
-
-
-
-
-<a name="demeter-ops-v1alpha-CreateResourceResponse"></a>
-
-### CreateResourceResponse
+### CreateProjectRequest
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| event_receipt | [bytes](#bytes) |  |  |
-| resource_uuid | [bytes](#bytes) |  |  |
-
-
-
-
-
-
-<a name="demeter-ops-v1alpha-DeleteResourceRequest"></a>
-
-### DeleteResourceRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| metadata | [ResourceMetadata](#demeter-ops-v1alpha-ResourceMetadata) |  |  |
-
-
-
-
-
-
-<a name="demeter-ops-v1alpha-DeleteResourceResponse"></a>
-
-### DeleteResourceResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| status | [google.protobuf.Any](#google-protobuf-Any) |  |  |
-
-
-
-
-
-
-<a name="demeter-ops-v1alpha-ListResourcesRequest"></a>
-
-### ListResourcesRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| namespace | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="demeter-ops-v1alpha-ListResourcesResponse"></a>
-
-### ListResourcesResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| items | [Resource](#demeter-ops-v1alpha-Resource) | repeated |  |
-
-
-
-
-
-
-<a name="demeter-ops-v1alpha-PatchResourceRequest"></a>
-
-### PatchResourceRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| metadata | [ResourceMetadata](#demeter-ops-v1alpha-ResourceMetadata) |  |  |
-| spec | [google.protobuf.Any](#google-protobuf-Any) |  |  |
-
-
-
-
-
-
-<a name="demeter-ops-v1alpha-PatchResourceResponse"></a>
-
-### PatchResourceResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| status | [google.protobuf.Any](#google-protobuf-Any) |  |  |
-
-
-
-
-
-
-<a name="demeter-ops-v1alpha-ReadResourceRequest"></a>
-
-### ReadResourceRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| metadata | [ResourceMetadata](#demeter-ops-v1alpha-ResourceMetadata) |  |  |
-
-
-
-
-
-
-<a name="demeter-ops-v1alpha-ReadResourceResponse"></a>
-
-### ReadResourceResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| metadata | [ResourceMetadata](#demeter-ops-v1alpha-ResourceMetadata) |  |  |
-| spec | [google.protobuf.Any](#google-protobuf-Any) |  |  |
-| status | [google.protobuf.Any](#google-protobuf-Any) |  |  |
-
-
-
-
-
-
-<a name="demeter-ops-v1alpha-Resource"></a>
-
-### Resource
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| metadata | [ResourceMetadata](#demeter-ops-v1alpha-ResourceMetadata) |  |  |
-| spec | [google.protobuf.Any](#google-protobuf-Any) |  |  |
-| status | [google.protobuf.Any](#google-protobuf-Any) |  |  |
-
-
-
-
-
-
-<a name="demeter-ops-v1alpha-ResourceMetadata"></a>
-
-### ResourceMetadata
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| namespace | [string](#string) |  |  |
 | name | [string](#string) |  |  |
 
 
 
 
 
- 
+
+<a name="demeter-ops-v1alpha-CreateProjectResponse"></a>
+
+### CreateProjectResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  |  |
+| namespace | [string](#string) |  |  |
+
+
+
+
 
  
 
  
 
+ 
 
-<a name="demeter-ops-v1alpha-OpsService"></a>
 
-### OpsService
+<a name="demeter-ops-v1alpha-ProjectService"></a>
+
+### ProjectService
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| CreateResource | [CreateResourceRequest](#demeter-ops-v1alpha-CreateResourceRequest) | [CreateResourceResponse](#demeter-ops-v1alpha-CreateResourceResponse) |  |
-| ListResources | [ListResourcesRequest](#demeter-ops-v1alpha-ListResourcesRequest) | [ListResourcesResponse](#demeter-ops-v1alpha-ListResourcesResponse) |  |
-| ReadResource | [ReadResourceRequest](#demeter-ops-v1alpha-ReadResourceRequest) | [ReadResourceResponse](#demeter-ops-v1alpha-ReadResourceResponse) |  |
-| PatchResource | [PatchResourceRequest](#demeter-ops-v1alpha-PatchResourceRequest) | [PatchResourceResponse](#demeter-ops-v1alpha-PatchResourceResponse) |  |
-| DeleteResource | [DeleteResourceRequest](#demeter-ops-v1alpha-DeleteResourceRequest) | [DeleteResourceResponse](#demeter-ops-v1alpha-DeleteResourceResponse) |  |
+| CreateProject | [CreateProjectRequest](#demeter-ops-v1alpha-CreateProjectRequest) | [CreateProjectResponse](#demeter-ops-v1alpha-CreateProjectResponse) |  |
 
  
 
