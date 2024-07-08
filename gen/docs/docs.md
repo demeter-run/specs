@@ -3,11 +3,19 @@
 
 ## Table of Contents
 
+<<<<<<< HEAD
 - [proto/demeter/ops/v1alpha/port.proto](#proto_demeter_ops_v1alpha_port-proto)
     - [CreatePortRequest](#demeter-ops-v1alpha-CreatePortRequest)
     - [CreatePortResponse](#demeter-ops-v1alpha-CreatePortResponse)
   
     - [PortService](#demeter-ops-v1alpha-PortService)
+=======
+- [proto/demeter/ops/v1alpha/account.proto](#proto_demeter_ops_v1alpha_account-proto)
+    - [CreateAccountRequest](#demeter-ops-v1alpha-CreateAccountRequest)
+    - [CreateAccountResponse](#demeter-ops-v1alpha-CreateAccountResponse)
+  
+    - [AccountService](#demeter-ops-v1alpha-AccountService)
+>>>>>>> cb08039162dc697886c1c8d7972ff9d1e52363ab
   
 - [proto/demeter/ops/v1alpha/project.proto](#proto_demeter_ops_v1alpha_project-proto)
     - [CreateProjectRequest](#demeter-ops-v1alpha-CreateProjectRequest)
@@ -19,6 +27,7 @@
 
 
 
+<<<<<<< HEAD
 <a name="proto_demeter_ops_v1alpha_port-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
@@ -29,29 +38,55 @@
 <a name="demeter-ops-v1alpha-CreatePortRequest"></a>
 
 ### CreatePortRequest
+=======
+<a name="proto_demeter_ops_v1alpha_account-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## proto/demeter/ops/v1alpha/account.proto
+
+
+
+<a name="demeter-ops-v1alpha-CreateAccountRequest"></a>
+
+### CreateAccountRequest
+>>>>>>> cb08039162dc697886c1c8d7972ff9d1e52363ab
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+<<<<<<< HEAD
 | project | [string](#string) |  |  |
 | kind | [string](#string) |  |  |
 | resource | [google.protobuf.Any](#google-protobuf-Any) |  |  |
+=======
+| name | [string](#string) |  |  |
+>>>>>>> cb08039162dc697886c1c8d7972ff9d1e52363ab
 
 
 
 
 
 
+<<<<<<< HEAD
 <a name="demeter-ops-v1alpha-CreatePortResponse"></a>
 
 ### CreatePortResponse
+=======
+<a name="demeter-ops-v1alpha-CreateAccountResponse"></a>
+
+### CreateAccountResponse
+>>>>>>> cb08039162dc697886c1c8d7972ff9d1e52363ab
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+<<<<<<< HEAD
 | kind | [string](#string) |  |  |
+=======
+| name | [string](#string) |  |  |
+>>>>>>> cb08039162dc697886c1c8d7972ff9d1e52363ab
 
 
 
@@ -64,14 +99,24 @@
  
 
 
+<<<<<<< HEAD
 <a name="demeter-ops-v1alpha-PortService"></a>
 
 ### PortService
+=======
+<a name="demeter-ops-v1alpha-AccountService"></a>
+
+### AccountService
+>>>>>>> cb08039162dc697886c1c8d7972ff9d1e52363ab
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
+<<<<<<< HEAD
 | CreatePort | [CreatePortRequest](#demeter-ops-v1alpha-CreatePortRequest) | [CreatePortResponse](#demeter-ops-v1alpha-CreatePortResponse) |  |
+=======
+| CreateAccount | [CreateAccountRequest](#demeter-ops-v1alpha-CreateAccountRequest) | [CreateAccountResponse](#demeter-ops-v1alpha-CreateAccountResponse) |  |
+>>>>>>> cb08039162dc697886c1c8d7972ff9d1e52363ab
 
  
 

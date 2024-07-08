@@ -1,15 +1,26 @@
 // @generated
 /// Generated client implementations.
+<<<<<<< HEAD
 pub mod port_service_client {
+=======
+pub mod account_service_client {
+>>>>>>> cb08039162dc697886c1c8d7972ff9d1e52363ab
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
     use tonic::codegen::*;
     use tonic::codegen::http::Uri;
     ///
     #[derive(Debug, Clone)]
+<<<<<<< HEAD
     pub struct PortServiceClient<T> {
         inner: tonic::client::Grpc<T>,
     }
     impl PortServiceClient<tonic::transport::Channel> {
+=======
+    pub struct AccountServiceClient<T> {
+        inner: tonic::client::Grpc<T>,
+    }
+    impl AccountServiceClient<tonic::transport::Channel> {
+>>>>>>> cb08039162dc697886c1c8d7972ff9d1e52363ab
         /// Attempt to create a new client by connecting to a given endpoint.
         pub async fn connect<D>(dst: D) -> Result<Self, tonic::transport::Error>
         where
@@ -20,7 +31,11 @@ pub mod port_service_client {
             Ok(Self::new(conn))
         }
     }
+<<<<<<< HEAD
     impl<T> PortServiceClient<T>
+=======
+    impl<T> AccountServiceClient<T>
+>>>>>>> cb08039162dc697886c1c8d7972ff9d1e52363ab
     where
         T: tonic::client::GrpcService<tonic::body::BoxBody>,
         T::Error: Into<StdError>,
@@ -38,7 +53,11 @@ pub mod port_service_client {
         pub fn with_interceptor<F>(
             inner: T,
             interceptor: F,
+<<<<<<< HEAD
         ) -> PortServiceClient<InterceptedService<T, F>>
+=======
+        ) -> AccountServiceClient<InterceptedService<T, F>>
+>>>>>>> cb08039162dc697886c1c8d7972ff9d1e52363ab
         where
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
@@ -52,7 +71,11 @@ pub mod port_service_client {
                 http::Request<tonic::body::BoxBody>,
             >>::Error: Into<StdError> + Send + Sync,
         {
+<<<<<<< HEAD
             PortServiceClient::new(InterceptedService::new(inner, interceptor))
+=======
+            AccountServiceClient::new(InterceptedService::new(inner, interceptor))
+>>>>>>> cb08039162dc697886c1c8d7972ff9d1e52363ab
         }
         /// Compress requests with the given encoding.
         ///
@@ -86,11 +109,19 @@ pub mod port_service_client {
             self
         }
         ///
+<<<<<<< HEAD
         pub async fn create_port(
             &mut self,
             request: impl tonic::IntoRequest<super::CreatePortRequest>,
         ) -> std::result::Result<
             tonic::Response<super::CreatePortResponse>,
+=======
+        pub async fn create_account(
+            &mut self,
+            request: impl tonic::IntoRequest<super::CreateAccountRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::CreateAccountResponse>,
+>>>>>>> cb08039162dc697886c1c8d7972ff9d1e52363ab
             tonic::Status,
         > {
             self.inner
@@ -104,18 +135,30 @@ pub mod port_service_client {
                 })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
+<<<<<<< HEAD
                 "/demeter.ops.v1alpha.PortService/CreatePort",
+=======
+                "/demeter.ops.v1alpha.AccountService/CreateAccount",
+>>>>>>> cb08039162dc697886c1c8d7972ff9d1e52363ab
             );
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(
+<<<<<<< HEAD
                     GrpcMethod::new("demeter.ops.v1alpha.PortService", "CreatePort"),
+=======
+                    GrpcMethod::new(
+                        "demeter.ops.v1alpha.AccountService",
+                        "CreateAccount",
+                    ),
+>>>>>>> cb08039162dc697886c1c8d7972ff9d1e52363ab
                 );
             self.inner.unary(req, path, codec).await
         }
     }
 }
 /// Generated server implementations.
+<<<<<<< HEAD
 pub mod port_service_server {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
     use tonic::codegen::*;
@@ -128,12 +171,30 @@ pub mod port_service_server {
             request: tonic::Request<super::CreatePortRequest>,
         ) -> std::result::Result<
             tonic::Response<super::CreatePortResponse>,
+=======
+pub mod account_service_server {
+    #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
+    use tonic::codegen::*;
+    /// Generated trait containing gRPC methods that should be implemented for use with AccountServiceServer.
+    #[async_trait]
+    pub trait AccountService: Send + Sync + 'static {
+        ///
+        async fn create_account(
+            &self,
+            request: tonic::Request<super::CreateAccountRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::CreateAccountResponse>,
+>>>>>>> cb08039162dc697886c1c8d7972ff9d1e52363ab
             tonic::Status,
         >;
     }
     ///
     #[derive(Debug)]
+<<<<<<< HEAD
     pub struct PortServiceServer<T: PortService> {
+=======
+    pub struct AccountServiceServer<T: AccountService> {
+>>>>>>> cb08039162dc697886c1c8d7972ff9d1e52363ab
         inner: _Inner<T>,
         accept_compression_encodings: EnabledCompressionEncodings,
         send_compression_encodings: EnabledCompressionEncodings,
@@ -141,7 +202,11 @@ pub mod port_service_server {
         max_encoding_message_size: Option<usize>,
     }
     struct _Inner<T>(Arc<T>);
+<<<<<<< HEAD
     impl<T: PortService> PortServiceServer<T> {
+=======
+    impl<T: AccountService> AccountServiceServer<T> {
+>>>>>>> cb08039162dc697886c1c8d7972ff9d1e52363ab
         pub fn new(inner: T) -> Self {
             Self::from_arc(Arc::new(inner))
         }
@@ -193,9 +258,15 @@ pub mod port_service_server {
             self
         }
     }
+<<<<<<< HEAD
     impl<T, B> tonic::codegen::Service<http::Request<B>> for PortServiceServer<T>
     where
         T: PortService,
+=======
+    impl<T, B> tonic::codegen::Service<http::Request<B>> for AccountServiceServer<T>
+    where
+        T: AccountService,
+>>>>>>> cb08039162dc697886c1c8d7972ff9d1e52363ab
         B: Body + Send + 'static,
         B::Error: Into<StdError> + Send + 'static,
     {
@@ -211,6 +282,7 @@ pub mod port_service_server {
         fn call(&mut self, req: http::Request<B>) -> Self::Future {
             let inner = self.inner.clone();
             match req.uri().path() {
+<<<<<<< HEAD
                 "/demeter.ops.v1alpha.PortService/CreatePort" => {
                     #[allow(non_camel_case_types)]
                     struct CreatePortSvc<T: PortService>(pub Arc<T>);
@@ -219,17 +291,35 @@ pub mod port_service_server {
                     > tonic::server::UnaryService<super::CreatePortRequest>
                     for CreatePortSvc<T> {
                         type Response = super::CreatePortResponse;
+=======
+                "/demeter.ops.v1alpha.AccountService/CreateAccount" => {
+                    #[allow(non_camel_case_types)]
+                    struct CreateAccountSvc<T: AccountService>(pub Arc<T>);
+                    impl<
+                        T: AccountService,
+                    > tonic::server::UnaryService<super::CreateAccountRequest>
+                    for CreateAccountSvc<T> {
+                        type Response = super::CreateAccountResponse;
+>>>>>>> cb08039162dc697886c1c8d7972ff9d1e52363ab
                         type Future = BoxFuture<
                             tonic::Response<Self::Response>,
                             tonic::Status,
                         >;
                         fn call(
                             &mut self,
+<<<<<<< HEAD
                             request: tonic::Request<super::CreatePortRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
                                 <T as PortService>::create_port(&inner, request).await
+=======
+                            request: tonic::Request<super::CreateAccountRequest>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as AccountService>::create_account(&inner, request).await
+>>>>>>> cb08039162dc697886c1c8d7972ff9d1e52363ab
                             };
                             Box::pin(fut)
                         }
@@ -241,7 +331,11 @@ pub mod port_service_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let inner = inner.0;
+<<<<<<< HEAD
                         let method = CreatePortSvc(inner);
+=======
+                        let method = CreateAccountSvc(inner);
+>>>>>>> cb08039162dc697886c1c8d7972ff9d1e52363ab
                         let codec = tonic::codec::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
@@ -272,7 +366,11 @@ pub mod port_service_server {
             }
         }
     }
+<<<<<<< HEAD
     impl<T: PortService> Clone for PortServiceServer<T> {
+=======
+    impl<T: AccountService> Clone for AccountServiceServer<T> {
+>>>>>>> cb08039162dc697886c1c8d7972ff9d1e52363ab
         fn clone(&self) -> Self {
             let inner = self.inner.clone();
             Self {
@@ -284,7 +382,11 @@ pub mod port_service_server {
             }
         }
     }
+<<<<<<< HEAD
     impl<T: PortService> Clone for _Inner<T> {
+=======
+    impl<T: AccountService> Clone for _Inner<T> {
+>>>>>>> cb08039162dc697886c1c8d7972ff9d1e52363ab
         fn clone(&self) -> Self {
             Self(Arc::clone(&self.0))
         }
@@ -294,8 +396,13 @@ pub mod port_service_server {
             write!(f, "{:?}", self.0)
         }
     }
+<<<<<<< HEAD
     impl<T: PortService> tonic::server::NamedService for PortServiceServer<T> {
         const NAME: &'static str = "demeter.ops.v1alpha.PortService";
+=======
+    impl<T: AccountService> tonic::server::NamedService for AccountServiceServer<T> {
+        const NAME: &'static str = "demeter.ops.v1alpha.AccountService";
+>>>>>>> cb08039162dc697886c1c8d7972ff9d1e52363ab
     }
 }
 /// Generated client implementations.
