@@ -3,6 +3,12 @@
 
 ## Table of Contents
 
+- [proto/demeter/ops/v1alpha/port.proto](#proto_demeter_ops_v1alpha_port-proto)
+    - [CreatePortRequest](#demeter-ops-v1alpha-CreatePortRequest)
+    - [CreatePortResponse](#demeter-ops-v1alpha-CreatePortResponse)
+  
+    - [PortService](#demeter-ops-v1alpha-PortService)
+  
 - [proto/demeter/ops/v1alpha/project.proto](#proto_demeter_ops_v1alpha_project-proto)
     - [CreateProjectRequest](#demeter-ops-v1alpha-CreateProjectRequest)
     - [CreateProjectResponse](#demeter-ops-v1alpha-CreateProjectResponse)
@@ -10,6 +16,64 @@
     - [ProjectService](#demeter-ops-v1alpha-ProjectService)
   
 - [Scalar Value Types](#scalar-value-types)
+
+
+
+<a name="proto_demeter_ops_v1alpha_port-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## proto/demeter/ops/v1alpha/port.proto
+
+
+
+<a name="demeter-ops-v1alpha-CreatePortRequest"></a>
+
+### CreatePortRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| project | [string](#string) |  |  |
+| kind | [string](#string) |  |  |
+| resource | [google.protobuf.Any](#google-protobuf-Any) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-CreatePortResponse"></a>
+
+### CreatePortResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| kind | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="demeter-ops-v1alpha-PortService"></a>
+
+### PortService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| CreatePort | [CreatePortRequest](#demeter-ops-v1alpha-CreatePortRequest) | [CreatePortResponse](#demeter-ops-v1alpha-CreatePortResponse) |  |
+
+ 
 
 
 
