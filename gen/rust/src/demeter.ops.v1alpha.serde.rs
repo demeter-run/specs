@@ -195,7 +195,7 @@ impl serde::Serialize for CreatePortRequest {
         if !self.kind.is_empty() {
             len += 1;
         }
-        if self.resource.is_some() {
+        if !self.resource.is_empty() {
             len += 1;
         }
         let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.CreatePortRequest", len)?;
@@ -205,8 +205,8 @@ impl serde::Serialize for CreatePortRequest {
         if !self.kind.is_empty() {
             struct_ser.serialize_field("kind", &self.kind)?;
         }
-        if let Some(v) = self.resource.as_ref() {
-            struct_ser.serialize_field("resource", v)?;
+        if !self.resource.is_empty() {
+            struct_ser.serialize_field("resource", &self.resource)?;
         }
         struct_ser.end()
     }
@@ -292,14 +292,14 @@ impl<'de> serde::Deserialize<'de> for CreatePortRequest {
                             if resource__.is_some() {
                                 return Err(serde::de::Error::duplicate_field("resource"));
                             }
-                            resource__ = map_.next_value()?;
+                            resource__ = Some(map_.next_value()?);
                         }
                     }
                 }
                 Ok(CreatePortRequest {
                     project: project__.unwrap_or_default(),
                     kind: kind__.unwrap_or_default(),
-                    resource: resource__,
+                    resource: resource__.unwrap_or_default(),
                 })
             }
         }

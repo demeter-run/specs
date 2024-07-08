@@ -98,7 +98,7 @@
 | ----- | ---- | ----- | ----------- |
 | project | [string](#string) |  |  |
 | kind | [string](#string) |  |  |
-| resource | [google.protobuf.Any](#google-protobuf-Any) |  |  |
+| resource | [string](#string) |  |  |
 
 
 

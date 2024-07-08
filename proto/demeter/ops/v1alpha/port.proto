@@ -7,7 +7,7 @@ import "google/protobuf/any.proto";
 message CreatePortRequest {
   string project = 1; 
   string kind = 2; 
-  google.protobuf.Any resource = 3; 
+  string resource = 3; 
 }
 
 message CreatePortResponse {
