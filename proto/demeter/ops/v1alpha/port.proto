@@ -7,11 +7,12 @@ import "google/protobuf/any.proto";
 message CreatePortRequest {
   string project = 1; 
   string kind = 2; 
-  string resource = 3; 
+  string data = 3; 
 }
 
 message CreatePortResponse {
-  string kind = 1; 
+  string id = 1;
+  string kind = 2; 
 }
 
 service PortService {

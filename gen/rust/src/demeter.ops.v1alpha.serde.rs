@@ -195,7 +195,7 @@ impl serde::Serialize for CreatePortRequest {
         if !self.kind.is_empty() {
             len += 1;
         }
-        if !self.resource.is_empty() {
+        if !self.data.is_empty() {
             len += 1;
         }
         let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.CreatePortRequest", len)?;
@@ -205,8 +205,8 @@ impl serde::Serialize for CreatePortRequest {
         if !self.kind.is_empty() {
             struct_ser.serialize_field("kind", &self.kind)?;
         }
-        if !self.resource.is_empty() {
-            struct_ser.serialize_field("resource", &self.resource)?;
+        if !self.data.is_empty() {
+            struct_ser.serialize_field("data", &self.data)?;
         }
         struct_ser.end()
     }
@@ -220,14 +220,14 @@ impl<'de> serde::Deserialize<'de> for CreatePortRequest {
         const FIELDS: &[&str] = &[
             "project",
             "kind",
-            "resource",
+            "data",
         ];
 
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
             Project,
             Kind,
-            Resource,
+            Data,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
             fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
@@ -251,7 +251,7 @@ impl<'de> serde::Deserialize<'de> for CreatePortRequest {
                         match value {
                             "project" => Ok(GeneratedField::Project),
                             "kind" => Ok(GeneratedField::Kind),
-                            "resource" => Ok(GeneratedField::Resource),
+                            "data" => Ok(GeneratedField::Data),
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
                         }
                     }
@@ -273,7 +273,7 @@ impl<'de> serde::Deserialize<'de> for CreatePortRequest {
             {
                 let mut project__ = None;
                 let mut kind__ = None;
-                let mut resource__ = None;
+                let mut data__ = None;
                 while let Some(k) = map_.next_key()? {
                     match k {
                         GeneratedField::Project => {
@@ -288,18 +288,18 @@ impl<'de> serde::Deserialize<'de> for CreatePortRequest {
                             }
                             kind__ = Some(map_.next_value()?);
                         }
-                        GeneratedField::Resource => {
-                            if resource__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("resource"));
+                        GeneratedField::Data => {
+                            if data__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("data"));
                             }
-                            resource__ = Some(map_.next_value()?);
+                            data__ = Some(map_.next_value()?);
                         }
                     }
                 }
                 Ok(CreatePortRequest {
                     project: project__.unwrap_or_default(),
                     kind: kind__.unwrap_or_default(),
-                    resource: resource__.unwrap_or_default(),
+                    data: data__.unwrap_or_default(),
                 })
             }
         }
@@ -314,10 +314,16 @@ impl serde::Serialize for CreatePortResponse {
     {
         use serde::ser::SerializeStruct;
         let mut len = 0;
+        if !self.id.is_empty() {
+            len += 1;
+        }
         if !self.kind.is_empty() {
             len += 1;
         }
         let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.CreatePortResponse", len)?;
+        if !self.id.is_empty() {
+            struct_ser.serialize_field("id", &self.id)?;
+        }
         if !self.kind.is_empty() {
             struct_ser.serialize_field("kind", &self.kind)?;
         }
@@ -331,11 +337,13 @@ impl<'de> serde::Deserialize<'de> for CreatePortResponse {
         D: serde::Deserializer<'de>,
     {
         const FIELDS: &[&str] = &[
+            "id",
             "kind",
         ];
 
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
+            Id,
             Kind,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
@@ -358,6 +366,7 @@ impl<'de> serde::Deserialize<'de> for CreatePortResponse {
                         E: serde::de::Error,
                     {
                         match value {
+                            "id" => Ok(GeneratedField::Id),
                             "kind" => Ok(GeneratedField::Kind),
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
                         }
@@ -378,9 +387,16 @@ impl<'de> serde::Deserialize<'de> for CreatePortResponse {
                 where
                     V: serde::de::MapAccess<'de>,
             {
+                let mut id__ = None;
                 let mut kind__ = None;
                 while let Some(k) = map_.next_key()? {
                     match k {
+                        GeneratedField::Id => {
+                            if id__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("id"));
+                            }
+                            id__ = Some(map_.next_value()?);
+                        }
                         GeneratedField::Kind => {
                             if kind__.is_some() {
                                 return Err(serde::de::Error::duplicate_field("kind"));
@@ -390,6 +406,7 @@ impl<'de> serde::Deserialize<'de> for CreatePortResponse {
                     }
                 }
                 Ok(CreatePortResponse {
+                    id: id__.unwrap_or_default(),
                     kind: kind__.unwrap_or_default(),
                 })
             }

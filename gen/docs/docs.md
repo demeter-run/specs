@@ -98,7 +98,7 @@
 | ----- | ---- | ----- | ----------- |
 | project | [string](#string) |  |  |
 | kind | [string](#string) |  |  |
-| resource | [string](#string) |  |  |
+| data | [string](#string) |  |  |
 
 
 
@@ -113,6 +113,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
 | kind | [string](#string) |  |  |
 
 
