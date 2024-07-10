@@ -3,12 +3,6 @@
 
 ## Table of Contents
 
-- [proto/demeter/ops/v1alpha/account.proto](#proto_demeter_ops_v1alpha_account-proto)
-    - [CreateAccountRequest](#demeter-ops-v1alpha-CreateAccountRequest)
-    - [CreateAccountResponse](#demeter-ops-v1alpha-CreateAccountResponse)
-  
-    - [AccountService](#demeter-ops-v1alpha-AccountService)
-  
 - [proto/demeter/ops/v1alpha/port.proto](#proto_demeter_ops_v1alpha_port-proto)
     - [CreatePortRequest](#demeter-ops-v1alpha-CreatePortRequest)
     - [CreatePortResponse](#demeter-ops-v1alpha-CreatePortResponse)
@@ -21,63 +15,13 @@
   
     - [ProjectService](#demeter-ops-v1alpha-ProjectService)
   
+- [proto/demeter/ops/v1alpha/user.proto](#proto_demeter_ops_v1alpha_user-proto)
+    - [CreateUserRequest](#demeter-ops-v1alpha-CreateUserRequest)
+    - [CreateUserResponse](#demeter-ops-v1alpha-CreateUserResponse)
+  
+    - [UserService](#demeter-ops-v1alpha-UserService)
+  
 - [Scalar Value Types](#scalar-value-types)
-
-
-
-<a name="proto_demeter_ops_v1alpha_account-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## proto/demeter/ops/v1alpha/account.proto
-
-
-
-<a name="demeter-ops-v1alpha-CreateAccountRequest"></a>
-
-### CreateAccountRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="demeter-ops-v1alpha-CreateAccountResponse"></a>
-
-### CreateAccountResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  |  |
-
-
-
-
-
- 
-
- 
-
- 
-
-
-<a name="demeter-ops-v1alpha-AccountService"></a>
-
-### AccountService
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| CreateAccount | [CreateAccountRequest](#demeter-ops-v1alpha-CreateAccountRequest) | [CreateAccountResponse](#demeter-ops-v1alpha-CreateAccountResponse) |  |
-
- 
 
 
 
@@ -192,6 +136,63 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | CreateProject | [CreateProjectRequest](#demeter-ops-v1alpha-CreateProjectRequest) | [CreateProjectResponse](#demeter-ops-v1alpha-CreateProjectResponse) |  |
+
+ 
+
+
+
+<a name="proto_demeter_ops_v1alpha_user-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## proto/demeter/ops/v1alpha/user.proto
+
+
+
+<a name="demeter-ops-v1alpha-CreateUserRequest"></a>
+
+### CreateUserRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| token | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-CreateUserResponse"></a>
+
+### CreateUserResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| email | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="demeter-ops-v1alpha-UserService"></a>
+
+### UserService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| CreateUser | [CreateUserRequest](#demeter-ops-v1alpha-CreateUserRequest) | [CreateUserResponse](#demeter-ops-v1alpha-CreateUserResponse) |  |
 
  
 
