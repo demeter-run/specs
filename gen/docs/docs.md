@@ -15,12 +15,6 @@
   
     - [ProjectService](#demeter-ops-v1alpha-ProjectService)
   
-- [proto/demeter/ops/v1alpha/user.proto](#proto_demeter_ops_v1alpha_user-proto)
-    - [CreateUserRequest](#demeter-ops-v1alpha-CreateUserRequest)
-    - [CreateUserResponse](#demeter-ops-v1alpha-CreateUserResponse)
-  
-    - [UserService](#demeter-ops-v1alpha-UserService)
-  
 - [Scalar Value Types](#scalar-value-types)
 
 
@@ -40,7 +34,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| project | [string](#string) |  |  |
+| project_id | [string](#string) |  |  |
 | kind | [string](#string) |  |  |
 | data | [string](#string) |  |  |
 
@@ -114,6 +108,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
 | name | [string](#string) |  |  |
 | namespace | [string](#string) |  |  |
 
@@ -136,63 +131,6 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | CreateProject | [CreateProjectRequest](#demeter-ops-v1alpha-CreateProjectRequest) | [CreateProjectResponse](#demeter-ops-v1alpha-CreateProjectResponse) |  |
-
- 
-
-
-
-<a name="proto_demeter_ops_v1alpha_user-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## proto/demeter/ops/v1alpha/user.proto
-
-
-
-<a name="demeter-ops-v1alpha-CreateUserRequest"></a>
-
-### CreateUserRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| token | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="demeter-ops-v1alpha-CreateUserResponse"></a>
-
-### CreateUserResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
-| email | [string](#string) |  |  |
-
-
-
-
-
- 
-
- 
-
- 
-
-
-<a name="demeter-ops-v1alpha-UserService"></a>
-
-### UserService
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| CreateUser | [CreateUserRequest](#demeter-ops-v1alpha-CreateUserRequest) | [CreateUserResponse](#demeter-ops-v1alpha-CreateUserResponse) |  |
 
  
 

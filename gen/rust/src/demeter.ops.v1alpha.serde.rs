@@ -7,7 +7,7 @@ impl serde::Serialize for CreatePortRequest {
     {
         use serde::ser::SerializeStruct;
         let mut len = 0;
-        if !self.project.is_empty() {
+        if !self.project_id.is_empty() {
             len += 1;
         }
         if !self.kind.is_empty() {
@@ -17,8 +17,8 @@ impl serde::Serialize for CreatePortRequest {
             len += 1;
         }
         let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.CreatePortRequest", len)?;
-        if !self.project.is_empty() {
-            struct_ser.serialize_field("project", &self.project)?;
+        if !self.project_id.is_empty() {
+            struct_ser.serialize_field("projectId", &self.project_id)?;
         }
         if !self.kind.is_empty() {
             struct_ser.serialize_field("kind", &self.kind)?;
@@ -36,14 +36,15 @@ impl<'de> serde::Deserialize<'de> for CreatePortRequest {
         D: serde::Deserializer<'de>,
     {
         const FIELDS: &[&str] = &[
-            "project",
+            "project_id",
+            "projectId",
             "kind",
             "data",
         ];
 
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
-            Project,
+            ProjectId,
             Kind,
             Data,
         }
@@ -67,7 +68,7 @@ impl<'de> serde::Deserialize<'de> for CreatePortRequest {
                         E: serde::de::Error,
                     {
                         match value {
-                            "project" => Ok(GeneratedField::Project),
+                            "projectId" | "project_id" => Ok(GeneratedField::ProjectId),
                             "kind" => Ok(GeneratedField::Kind),
                             "data" => Ok(GeneratedField::Data),
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
@@ -89,16 +90,16 @@ impl<'de> serde::Deserialize<'de> for CreatePortRequest {
                 where
                     V: serde::de::MapAccess<'de>,
             {
-                let mut project__ = None;
+                let mut project_id__ = None;
                 let mut kind__ = None;
                 let mut data__ = None;
                 while let Some(k) = map_.next_key()? {
                     match k {
-                        GeneratedField::Project => {
-                            if project__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("project"));
+                        GeneratedField::ProjectId => {
+                            if project_id__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("projectId"));
                             }
-                            project__ = Some(map_.next_value()?);
+                            project_id__ = Some(map_.next_value()?);
                         }
                         GeneratedField::Kind => {
                             if kind__.is_some() {
@@ -115,7 +116,7 @@ impl<'de> serde::Deserialize<'de> for CreatePortRequest {
                     }
                 }
                 Ok(CreatePortRequest {
-                    project: project__.unwrap_or_default(),
+                    project_id: project_id__.unwrap_or_default(),
                     kind: kind__.unwrap_or_default(),
                     data: data__.unwrap_or_default(),
                 })
@@ -331,6 +332,9 @@ impl serde::Serialize for CreateProjectResponse {
     {
         use serde::ser::SerializeStruct;
         let mut len = 0;
+        if !self.id.is_empty() {
+            len += 1;
+        }
         if !self.name.is_empty() {
             len += 1;
         }
@@ -338,6 +342,9 @@ impl serde::Serialize for CreateProjectResponse {
             len += 1;
         }
         let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.CreateProjectResponse", len)?;
+        if !self.id.is_empty() {
+            struct_ser.serialize_field("id", &self.id)?;
+        }
         if !self.name.is_empty() {
             struct_ser.serialize_field("name", &self.name)?;
         }
@@ -354,12 +361,14 @@ impl<'de> serde::Deserialize<'de> for CreateProjectResponse {
         D: serde::Deserializer<'de>,
     {
         const FIELDS: &[&str] = &[
+            "id",
             "name",
             "namespace",
         ];
 
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
+            Id,
             Name,
             Namespace,
         }
@@ -383,6 +392,7 @@ impl<'de> serde::Deserialize<'de> for CreateProjectResponse {
                         E: serde::de::Error,
                     {
                         match value {
+                            "id" => Ok(GeneratedField::Id),
                             "name" => Ok(GeneratedField::Name),
                             "namespace" => Ok(GeneratedField::Namespace),
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
@@ -404,10 +414,17 @@ impl<'de> serde::Deserialize<'de> for CreateProjectResponse {
                 where
                     V: serde::de::MapAccess<'de>,
             {
+                let mut id__ = None;
                 let mut name__ = None;
                 let mut namespace__ = None;
                 while let Some(k) = map_.next_key()? {
                     match k {
+                        GeneratedField::Id => {
+                            if id__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("id"));
+                            }
+                            id__ = Some(map_.next_value()?);
+                        }
                         GeneratedField::Name => {
                             if name__.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
@@ -423,210 +440,12 @@ impl<'de> serde::Deserialize<'de> for CreateProjectResponse {
                     }
                 }
                 Ok(CreateProjectResponse {
+                    id: id__.unwrap_or_default(),
                     name: name__.unwrap_or_default(),
                     namespace: namespace__.unwrap_or_default(),
                 })
             }
         }
         deserializer.deserialize_struct("demeter.ops.v1alpha.CreateProjectResponse", FIELDS, GeneratedVisitor)
-    }
-}
-impl serde::Serialize for CreateUserRequest {
-    #[allow(deprecated)]
-    fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
-    where
-        S: serde::Serializer,
-    {
-        use serde::ser::SerializeStruct;
-        let mut len = 0;
-        if !self.token.is_empty() {
-            len += 1;
-        }
-        let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.CreateUserRequest", len)?;
-        if !self.token.is_empty() {
-            struct_ser.serialize_field("token", &self.token)?;
-        }
-        struct_ser.end()
-    }
-}
-impl<'de> serde::Deserialize<'de> for CreateUserRequest {
-    #[allow(deprecated)]
-    fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
-    where
-        D: serde::Deserializer<'de>,
-    {
-        const FIELDS: &[&str] = &[
-            "token",
-        ];
-
-        #[allow(clippy::enum_variant_names)]
-        enum GeneratedField {
-            Token,
-        }
-        impl<'de> serde::Deserialize<'de> for GeneratedField {
-            fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
-            where
-                D: serde::Deserializer<'de>,
-            {
-                struct GeneratedVisitor;
-
-                impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
-                    type Value = GeneratedField;
-
-                    fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", &FIELDS)
-                    }
-
-                    #[allow(unused_variables)]
-                    fn visit_str<E>(self, value: &str) -> std::result::Result<GeneratedField, E>
-                    where
-                        E: serde::de::Error,
-                    {
-                        match value {
-                            "token" => Ok(GeneratedField::Token),
-                            _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
-                        }
-                    }
-                }
-                deserializer.deserialize_identifier(GeneratedVisitor)
-            }
-        }
-        struct GeneratedVisitor;
-        impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
-            type Value = CreateUserRequest;
-
-            fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct demeter.ops.v1alpha.CreateUserRequest")
-            }
-
-            fn visit_map<V>(self, mut map_: V) -> std::result::Result<CreateUserRequest, V::Error>
-                where
-                    V: serde::de::MapAccess<'de>,
-            {
-                let mut token__ = None;
-                while let Some(k) = map_.next_key()? {
-                    match k {
-                        GeneratedField::Token => {
-                            if token__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("token"));
-                            }
-                            token__ = Some(map_.next_value()?);
-                        }
-                    }
-                }
-                Ok(CreateUserRequest {
-                    token: token__.unwrap_or_default(),
-                })
-            }
-        }
-        deserializer.deserialize_struct("demeter.ops.v1alpha.CreateUserRequest", FIELDS, GeneratedVisitor)
-    }
-}
-impl serde::Serialize for CreateUserResponse {
-    #[allow(deprecated)]
-    fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
-    where
-        S: serde::Serializer,
-    {
-        use serde::ser::SerializeStruct;
-        let mut len = 0;
-        if !self.id.is_empty() {
-            len += 1;
-        }
-        if !self.email.is_empty() {
-            len += 1;
-        }
-        let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.CreateUserResponse", len)?;
-        if !self.id.is_empty() {
-            struct_ser.serialize_field("id", &self.id)?;
-        }
-        if !self.email.is_empty() {
-            struct_ser.serialize_field("email", &self.email)?;
-        }
-        struct_ser.end()
-    }
-}
-impl<'de> serde::Deserialize<'de> for CreateUserResponse {
-    #[allow(deprecated)]
-    fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
-    where
-        D: serde::Deserializer<'de>,
-    {
-        const FIELDS: &[&str] = &[
-            "id",
-            "email",
-        ];
-
-        #[allow(clippy::enum_variant_names)]
-        enum GeneratedField {
-            Id,
-            Email,
-        }
-        impl<'de> serde::Deserialize<'de> for GeneratedField {
-            fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
-            where
-                D: serde::Deserializer<'de>,
-            {
-                struct GeneratedVisitor;
-
-                impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
-                    type Value = GeneratedField;
-
-                    fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", &FIELDS)
-                    }
-
-                    #[allow(unused_variables)]
-                    fn visit_str<E>(self, value: &str) -> std::result::Result<GeneratedField, E>
-                    where
-                        E: serde::de::Error,
-                    {
-                        match value {
-                            "id" => Ok(GeneratedField::Id),
-                            "email" => Ok(GeneratedField::Email),
-                            _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
-                        }
-                    }
-                }
-                deserializer.deserialize_identifier(GeneratedVisitor)
-            }
-        }
-        struct GeneratedVisitor;
-        impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
-            type Value = CreateUserResponse;
-
-            fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct demeter.ops.v1alpha.CreateUserResponse")
-            }
-
-            fn visit_map<V>(self, mut map_: V) -> std::result::Result<CreateUserResponse, V::Error>
-                where
-                    V: serde::de::MapAccess<'de>,
-            {
-                let mut id__ = None;
-                let mut email__ = None;
-                while let Some(k) = map_.next_key()? {
-                    match k {
-                        GeneratedField::Id => {
-                            if id__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("id"));
-                            }
-                            id__ = Some(map_.next_value()?);
-                        }
-                        GeneratedField::Email => {
-                            if email__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("email"));
-                            }
-                            email__ = Some(map_.next_value()?);
-                        }
-                    }
-                }
-                Ok(CreateUserResponse {
-                    id: id__.unwrap_or_default(),
-                    email: email__.unwrap_or_default(),
-                })
-            }
-        }
-        deserializer.deserialize_struct("demeter.ops.v1alpha.CreateUserResponse", FIELDS, GeneratedVisitor)
     }
 }

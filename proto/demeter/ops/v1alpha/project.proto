@@ -2,15 +2,14 @@ syntax = "proto3";
 
 package demeter.ops.v1alpha;
 
-import "google/protobuf/any.proto";
-
 message CreateProjectRequest {
   string name = 1; 
 }
 
 message CreateProjectResponse {
-  string name = 1; 
-  string namespace = 2; 
+  string id = 1;
+  string name = 2; 
+  string namespace = 3; 
 }
 
 service ProjectService {
