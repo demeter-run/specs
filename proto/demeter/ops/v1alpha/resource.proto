@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package demeter.ops.v1alpha;
+
+message CreateResourceRequest {
+  string project_id = 1; 
+  string kind = 2; 
+  string data = 3; 
+}
+
+message CreateResourceResponse {
+  string id = 1;
+  string kind = 2; 
+}
+
+service ResourceService {
+  rpc CreateResource(CreateResourceRequest) returns (CreateResourceResponse);
+}
+

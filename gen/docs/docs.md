@@ -3,78 +3,19 @@
 
 ## Table of Contents
 
-- [proto/demeter/ops/v1alpha/port.proto](#proto_demeter_ops_v1alpha_port-proto)
-    - [CreatePortRequest](#demeter-ops-v1alpha-CreatePortRequest)
-    - [CreatePortResponse](#demeter-ops-v1alpha-CreatePortResponse)
-  
-    - [PortService](#demeter-ops-v1alpha-PortService)
-  
 - [proto/demeter/ops/v1alpha/project.proto](#proto_demeter_ops_v1alpha_project-proto)
     - [CreateProjectRequest](#demeter-ops-v1alpha-CreateProjectRequest)
     - [CreateProjectResponse](#demeter-ops-v1alpha-CreateProjectResponse)
   
     - [ProjectService](#demeter-ops-v1alpha-ProjectService)
   
+- [proto/demeter/ops/v1alpha/resource.proto](#proto_demeter_ops_v1alpha_resource-proto)
+    - [CreateResourceRequest](#demeter-ops-v1alpha-CreateResourceRequest)
+    - [CreateResourceResponse](#demeter-ops-v1alpha-CreateResourceResponse)
+  
+    - [ResourceService](#demeter-ops-v1alpha-ResourceService)
+  
 - [Scalar Value Types](#scalar-value-types)
-
-
-
-<a name="proto_demeter_ops_v1alpha_port-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## proto/demeter/ops/v1alpha/port.proto
-
-
-
-<a name="demeter-ops-v1alpha-CreatePortRequest"></a>
-
-### CreatePortRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| project_id | [string](#string) |  |  |
-| kind | [string](#string) |  |  |
-| data | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="demeter-ops-v1alpha-CreatePortResponse"></a>
-
-### CreatePortResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
-| kind | [string](#string) |  |  |
-
-
-
-
-
- 
-
- 
-
- 
-
-
-<a name="demeter-ops-v1alpha-PortService"></a>
-
-### PortService
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| CreatePort | [CreatePortRequest](#demeter-ops-v1alpha-CreatePortRequest) | [CreatePortResponse](#demeter-ops-v1alpha-CreatePortResponse) |  |
-
- 
 
 
 
@@ -131,6 +72,65 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | CreateProject | [CreateProjectRequest](#demeter-ops-v1alpha-CreateProjectRequest) | [CreateProjectResponse](#demeter-ops-v1alpha-CreateProjectResponse) |  |
+
+ 
+
+
+
+<a name="proto_demeter_ops_v1alpha_resource-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## proto/demeter/ops/v1alpha/resource.proto
+
+
+
+<a name="demeter-ops-v1alpha-CreateResourceRequest"></a>
+
+### CreateResourceRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| project_id | [string](#string) |  |  |
+| kind | [string](#string) |  |  |
+| data | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-CreateResourceResponse"></a>
+
+### CreateResourceResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| kind | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="demeter-ops-v1alpha-ResourceService"></a>
+
+### ResourceService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| CreateResource | [CreateResourceRequest](#demeter-ops-v1alpha-CreateResourceRequest) | [CreateResourceResponse](#demeter-ops-v1alpha-CreateResourceResponse) |  |
 
  
 
