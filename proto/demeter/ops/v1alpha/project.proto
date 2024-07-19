@@ -12,7 +12,19 @@ message CreateProjectResponse {
   string namespace = 3; 
 }
 
+message CreateProjectSecretRequest {
+  string name = 1; 
+  string project_id = 2;
+}
+
+message CreateProjectSecretResponse {
+  string id = 1;
+  string name = 2; 
+  string key = 3;
+}
+
 service ProjectService {
   rpc CreateProject(CreateProjectRequest) returns (CreateProjectResponse);
+  rpc CreateProjectSecret(CreateProjectSecretRequest) returns (CreateProjectSecretResponse);
 }
 

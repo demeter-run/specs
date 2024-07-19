@@ -6,6 +6,8 @@
 - [proto/demeter/ops/v1alpha/project.proto](#proto_demeter_ops_v1alpha_project-proto)
     - [CreateProjectRequest](#demeter-ops-v1alpha-CreateProjectRequest)
     - [CreateProjectResponse](#demeter-ops-v1alpha-CreateProjectResponse)
+    - [CreateProjectSecretRequest](#demeter-ops-v1alpha-CreateProjectSecretRequest)
+    - [CreateProjectSecretResponse](#demeter-ops-v1alpha-CreateProjectSecretResponse)
   
     - [ProjectService](#demeter-ops-v1alpha-ProjectService)
   
@@ -57,6 +59,39 @@
 
 
 
+
+<a name="demeter-ops-v1alpha-CreateProjectSecretRequest"></a>
+
+### CreateProjectSecretRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  |  |
+| project_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-CreateProjectSecretResponse"></a>
+
+### CreateProjectSecretResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| name | [string](#string) |  |  |
+| key | [string](#string) |  |  |
+
+
+
+
+
  
 
  
@@ -72,6 +107,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | CreateProject | [CreateProjectRequest](#demeter-ops-v1alpha-CreateProjectRequest) | [CreateProjectResponse](#demeter-ops-v1alpha-CreateProjectResponse) |  |
+| CreateProjectSecret | [CreateProjectSecretRequest](#demeter-ops-v1alpha-CreateProjectSecretRequest) | [CreateProjectSecretResponse](#demeter-ops-v1alpha-CreateProjectSecretResponse) |  |
 
  
 
