@@ -5,7 +5,6 @@ package demeter.ops.v1alpha;
 message CreateProjectRequest {
   string name = 1; 
 }
-
 message CreateProjectResponse {
   string id = 1;
   string name = 2; 
@@ -16,15 +15,28 @@ message CreateProjectSecretRequest {
   string name = 1; 
   string project_id = 2;
 }
-
 message CreateProjectSecretResponse {
   string id = 1;
   string name = 2; 
   string key = 3;
 }
 
+message FindProjectsRequest {
+  optional int32 page = 1;
+  optional int32 page_size = 2;
+}
+message FindProjectsResponse {
+  string id = 1;
+  string name = 2; 
+  string namespace = 3; 
+  string status = 4; 
+  string created_at = 5; 
+  string updated_at = 6; 
+}
+
 service ProjectService {
   rpc CreateProject(CreateProjectRequest) returns (CreateProjectResponse);
   rpc CreateProjectSecret(CreateProjectSecretRequest) returns (CreateProjectSecretResponse);
+  rpc FindProjects(FindProjectsRequest) returns (FindProjectsResponse);
 }
 

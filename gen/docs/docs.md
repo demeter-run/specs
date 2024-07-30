@@ -8,6 +8,8 @@
     - [CreateProjectResponse](#demeter-ops-v1alpha-CreateProjectResponse)
     - [CreateProjectSecretRequest](#demeter-ops-v1alpha-CreateProjectSecretRequest)
     - [CreateProjectSecretResponse](#demeter-ops-v1alpha-CreateProjectSecretResponse)
+    - [FindProjectsRequest](#demeter-ops-v1alpha-FindProjectsRequest)
+    - [FindProjectsResponse](#demeter-ops-v1alpha-FindProjectsResponse)
   
     - [ProjectService](#demeter-ops-v1alpha-ProjectService)
   
@@ -92,6 +94,42 @@
 
 
 
+
+<a name="demeter-ops-v1alpha-FindProjectsRequest"></a>
+
+### FindProjectsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| page | [int32](#int32) | optional |  |
+| page_size | [int32](#int32) | optional |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-FindProjectsResponse"></a>
+
+### FindProjectsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| name | [string](#string) |  |  |
+| namespace | [string](#string) |  |  |
+| status | [string](#string) |  |  |
+| created_at | [string](#string) |  |  |
+| updated_at | [string](#string) |  |  |
+
+
+
+
+
  
 
  
@@ -108,6 +146,7 @@
 | ----------- | ------------ | ------------- | ------------|
 | CreateProject | [CreateProjectRequest](#demeter-ops-v1alpha-CreateProjectRequest) | [CreateProjectResponse](#demeter-ops-v1alpha-CreateProjectResponse) |  |
 | CreateProjectSecret | [CreateProjectSecretRequest](#demeter-ops-v1alpha-CreateProjectSecretRequest) | [CreateProjectSecretResponse](#demeter-ops-v1alpha-CreateProjectSecretResponse) |  |
+| FindProjects | [FindProjectsRequest](#demeter-ops-v1alpha-FindProjectsRequest) | [FindProjectsResponse](#demeter-ops-v1alpha-FindProjectsResponse) |  |
 
  
 
