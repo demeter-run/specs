@@ -21,17 +21,27 @@ message CreateProjectSecretResponse {
   string key = 3;
 }
 
-message FindProjectsRequest {
-  optional int32 page = 1;
-  optional int32 page_size = 2;
-}
-message FindProjectsResponse {
+message Project {
   string id = 1;
   string name = 2; 
   string namespace = 3; 
   string status = 4; 
   string created_at = 5; 
   string updated_at = 6; 
+}
+message Meta  {
+  uint32 page = 1;
+  uint32 page_size = 2;
+  uint32 count = 3;
+}
+
+message FindProjectsRequest {
+  optional uint32 page = 1;
+  optional uint32 page_size = 2;
+}
+message FindProjectsResponse {
+  Meta meta = 1;
+  repeated Project records = 2;
 }
 
 service ProjectService {

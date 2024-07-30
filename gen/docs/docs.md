@@ -10,6 +10,8 @@
     - [CreateProjectSecretResponse](#demeter-ops-v1alpha-CreateProjectSecretResponse)
     - [FindProjectsRequest](#demeter-ops-v1alpha-FindProjectsRequest)
     - [FindProjectsResponse](#demeter-ops-v1alpha-FindProjectsResponse)
+    - [Meta](#demeter-ops-v1alpha-Meta)
+    - [Project](#demeter-ops-v1alpha-Project)
   
     - [ProjectService](#demeter-ops-v1alpha-ProjectService)
   
@@ -103,8 +105,8 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| page | [int32](#int32) | optional |  |
-| page_size | [int32](#int32) | optional |  |
+| page | [uint32](#uint32) | optional |  |
+| page_size | [uint32](#uint32) | optional |  |
 
 
 
@@ -114,6 +116,39 @@
 <a name="demeter-ops-v1alpha-FindProjectsResponse"></a>
 
 ### FindProjectsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| meta | [Meta](#demeter-ops-v1alpha-Meta) |  |  |
+| records | [Project](#demeter-ops-v1alpha-Project) | repeated |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-Meta"></a>
+
+### Meta
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| page | [uint32](#uint32) |  |  |
+| page_size | [uint32](#uint32) |  |  |
+| count | [uint32](#uint32) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-Project"></a>
+
+### Project
 
 
 
