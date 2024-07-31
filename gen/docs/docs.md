@@ -10,7 +10,6 @@
     - [CreateProjectSecretResponse](#demeter-ops-v1alpha-CreateProjectSecretResponse)
     - [FindProjectsRequest](#demeter-ops-v1alpha-FindProjectsRequest)
     - [FindProjectsResponse](#demeter-ops-v1alpha-FindProjectsResponse)
-    - [Meta](#demeter-ops-v1alpha-Meta)
     - [Project](#demeter-ops-v1alpha-Project)
   
     - [ProjectService](#demeter-ops-v1alpha-ProjectService)
@@ -18,6 +17,9 @@
 - [proto/demeter/ops/v1alpha/resource.proto](#proto_demeter_ops_v1alpha_resource-proto)
     - [CreateResourceRequest](#demeter-ops-v1alpha-CreateResourceRequest)
     - [CreateResourceResponse](#demeter-ops-v1alpha-CreateResourceResponse)
+    - [FindResourcesRequest](#demeter-ops-v1alpha-FindResourcesRequest)
+    - [FindResourcesResponse](#demeter-ops-v1alpha-FindResourcesResponse)
+    - [Resource](#demeter-ops-v1alpha-Resource)
   
     - [ResourceService](#demeter-ops-v1alpha-ResourceService)
   
@@ -121,25 +123,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| meta | [Meta](#demeter-ops-v1alpha-Meta) |  |  |
 | records | [Project](#demeter-ops-v1alpha-Project) | repeated |  |
-
-
-
-
-
-
-<a name="demeter-ops-v1alpha-Meta"></a>
-
-### Meta
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| page | [uint32](#uint32) |  |  |
-| page_size | [uint32](#uint32) |  |  |
-| count | [uint32](#uint32) |  |  |
 
 
 
@@ -226,6 +210,57 @@
 
 
 
+
+<a name="demeter-ops-v1alpha-FindResourcesRequest"></a>
+
+### FindResourcesRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| project_id | [string](#string) |  |  |
+| page | [uint32](#uint32) | optional |  |
+| page_size | [uint32](#uint32) | optional |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-FindResourcesResponse"></a>
+
+### FindResourcesResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| records | [Resource](#demeter-ops-v1alpha-Resource) | repeated |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-Resource"></a>
+
+### Resource
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| kind | [string](#string) |  |  |
+| data | [string](#string) |  |  |
+| created_at | [string](#string) |  |  |
+| updated_at | [string](#string) |  |  |
+
+
+
+
+
  
 
  
@@ -241,6 +276,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | CreateResource | [CreateResourceRequest](#demeter-ops-v1alpha-CreateResourceRequest) | [CreateResourceResponse](#demeter-ops-v1alpha-CreateResourceResponse) |  |
+| FindResources | [FindResourcesRequest](#demeter-ops-v1alpha-FindResourcesRequest) | [FindResourcesResponse](#demeter-ops-v1alpha-FindResourcesResponse) |  |
 
  
 
