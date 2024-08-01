@@ -16,6 +16,7 @@ message Resource {
   string id = 1;
   string kind = 2; 
   string data = 3; 
+  string status = 4; 
   string created_at = 5; 
   string updated_at = 6; 
 }
@@ -28,8 +29,15 @@ message FetchResourcesResponse {
   repeated Resource records = 2;
 }
 
+message DeleteResourceRequest {
+  string project_id = 1; 
+  string resource_id = 2; 
+}
+message DeleteResourceResponse {}
+
 service ResourceService {
   rpc FetchResources(FetchResourcesRequest) returns (FetchResourcesResponse);
   rpc CreateResource(CreateResourceRequest) returns (CreateResourceResponse);
+  rpc DeleteResource(DeleteResourceRequest) returns (DeleteResourceResponse);
 }
 

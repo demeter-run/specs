@@ -17,6 +17,8 @@
 - [proto/demeter/ops/v1alpha/resource.proto](#proto_demeter_ops_v1alpha_resource-proto)
     - [CreateResourceRequest](#demeter-ops-v1alpha-CreateResourceRequest)
     - [CreateResourceResponse](#demeter-ops-v1alpha-CreateResourceResponse)
+    - [DeleteResourceRequest](#demeter-ops-v1alpha-DeleteResourceRequest)
+    - [DeleteResourceResponse](#demeter-ops-v1alpha-DeleteResourceResponse)
     - [FetchResourcesRequest](#demeter-ops-v1alpha-FetchResourcesRequest)
     - [FetchResourcesResponse](#demeter-ops-v1alpha-FetchResourcesResponse)
     - [Resource](#demeter-ops-v1alpha-Resource)
@@ -211,6 +213,32 @@
 
 
 
+<a name="demeter-ops-v1alpha-DeleteResourceRequest"></a>
+
+### DeleteResourceRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| project_id | [string](#string) |  |  |
+| resource_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-DeleteResourceResponse"></a>
+
+### DeleteResourceResponse
+
+
+
+
+
+
+
 <a name="demeter-ops-v1alpha-FetchResourcesRequest"></a>
 
 ### FetchResourcesRequest
@@ -254,6 +282,7 @@
 | id | [string](#string) |  |  |
 | kind | [string](#string) |  |  |
 | data | [string](#string) |  |  |
+| status | [string](#string) |  |  |
 | created_at | [string](#string) |  |  |
 | updated_at | [string](#string) |  |  |
 
@@ -277,6 +306,7 @@
 | ----------- | ------------ | ------------- | ------------|
 | FetchResources | [FetchResourcesRequest](#demeter-ops-v1alpha-FetchResourcesRequest) | [FetchResourcesResponse](#demeter-ops-v1alpha-FetchResourcesResponse) |  |
 | CreateResource | [CreateResourceRequest](#demeter-ops-v1alpha-CreateResourceRequest) | [CreateResourceResponse](#demeter-ops-v1alpha-CreateResourceResponse) |  |
+| DeleteResource | [DeleteResourceRequest](#demeter-ops-v1alpha-DeleteResourceRequest) | [DeleteResourceResponse](#demeter-ops-v1alpha-DeleteResourceResponse) |  |
 
  
 
