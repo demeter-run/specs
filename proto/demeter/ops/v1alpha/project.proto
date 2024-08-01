@@ -29,17 +29,17 @@ message Project {
   string created_at = 5; 
   string updated_at = 6; 
 }
-message FindProjectsRequest {
+message FetchProjectsRequest {
   optional uint32 page = 1;
   optional uint32 page_size = 2;
 }
-message FindProjectsResponse {
+message FetchProjectsResponse {
   repeated Project records = 2;
 }
 
 service ProjectService {
+  rpc FetchProjects(FetchProjectsRequest) returns (FetchProjectsResponse);
   rpc CreateProject(CreateProjectRequest) returns (CreateProjectResponse);
   rpc CreateProjectSecret(CreateProjectSecretRequest) returns (CreateProjectSecretResponse);
-  rpc FindProjects(FindProjectsRequest) returns (FindProjectsResponse);
 }
 

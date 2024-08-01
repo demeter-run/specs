@@ -19,17 +19,17 @@ message Resource {
   string created_at = 5; 
   string updated_at = 6; 
 }
-message FindResourcesRequest {
+message FetchResourcesRequest {
   string project_id = 1;
   optional uint32 page = 2;
   optional uint32 page_size = 3;
 }
-message FindResourcesResponse {
+message FetchResourcesResponse {
   repeated Resource records = 2;
 }
 
 service ResourceService {
+  rpc FetchResources(FetchResourcesRequest) returns (FetchResourcesResponse);
   rpc CreateResource(CreateResourceRequest) returns (CreateResourceResponse);
-  rpc FindResources(FindResourcesRequest) returns (FindResourcesResponse);
 }
 

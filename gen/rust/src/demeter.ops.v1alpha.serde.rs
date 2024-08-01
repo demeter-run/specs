@@ -683,7 +683,7 @@ impl<'de> serde::Deserialize<'de> for CreateResourceResponse {
         deserializer.deserialize_struct("demeter.ops.v1alpha.CreateResourceResponse", FIELDS, GeneratedVisitor)
     }
 }
-impl serde::Serialize for FindProjectsRequest {
+impl serde::Serialize for FetchProjectsRequest {
     #[allow(deprecated)]
     fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
     where
@@ -697,7 +697,7 @@ impl serde::Serialize for FindProjectsRequest {
         if self.page_size.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.FindProjectsRequest", len)?;
+        let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.FetchProjectsRequest", len)?;
         if let Some(v) = self.page.as_ref() {
             struct_ser.serialize_field("page", v)?;
         }
@@ -707,7 +707,7 @@ impl serde::Serialize for FindProjectsRequest {
         struct_ser.end()
     }
 }
-impl<'de> serde::Deserialize<'de> for FindProjectsRequest {
+impl<'de> serde::Deserialize<'de> for FetchProjectsRequest {
     #[allow(deprecated)]
     fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
     where
@@ -755,13 +755,13 @@ impl<'de> serde::Deserialize<'de> for FindProjectsRequest {
         }
         struct GeneratedVisitor;
         impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
-            type Value = FindProjectsRequest;
+            type Value = FetchProjectsRequest;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct demeter.ops.v1alpha.FindProjectsRequest")
+                formatter.write_str("struct demeter.ops.v1alpha.FetchProjectsRequest")
             }
 
-            fn visit_map<V>(self, mut map_: V) -> std::result::Result<FindProjectsRequest, V::Error>
+            fn visit_map<V>(self, mut map_: V) -> std::result::Result<FetchProjectsRequest, V::Error>
                 where
                     V: serde::de::MapAccess<'de>,
             {
@@ -787,16 +787,16 @@ impl<'de> serde::Deserialize<'de> for FindProjectsRequest {
                         }
                     }
                 }
-                Ok(FindProjectsRequest {
+                Ok(FetchProjectsRequest {
                     page: page__,
                     page_size: page_size__,
                 })
             }
         }
-        deserializer.deserialize_struct("demeter.ops.v1alpha.FindProjectsRequest", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("demeter.ops.v1alpha.FetchProjectsRequest", FIELDS, GeneratedVisitor)
     }
 }
-impl serde::Serialize for FindProjectsResponse {
+impl serde::Serialize for FetchProjectsResponse {
     #[allow(deprecated)]
     fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
     where
@@ -807,14 +807,14 @@ impl serde::Serialize for FindProjectsResponse {
         if !self.records.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.FindProjectsResponse", len)?;
+        let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.FetchProjectsResponse", len)?;
         if !self.records.is_empty() {
             struct_ser.serialize_field("records", &self.records)?;
         }
         struct_ser.end()
     }
 }
-impl<'de> serde::Deserialize<'de> for FindProjectsResponse {
+impl<'de> serde::Deserialize<'de> for FetchProjectsResponse {
     #[allow(deprecated)]
     fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
     where
@@ -858,13 +858,13 @@ impl<'de> serde::Deserialize<'de> for FindProjectsResponse {
         }
         struct GeneratedVisitor;
         impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
-            type Value = FindProjectsResponse;
+            type Value = FetchProjectsResponse;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct demeter.ops.v1alpha.FindProjectsResponse")
+                formatter.write_str("struct demeter.ops.v1alpha.FetchProjectsResponse")
             }
 
-            fn visit_map<V>(self, mut map_: V) -> std::result::Result<FindProjectsResponse, V::Error>
+            fn visit_map<V>(self, mut map_: V) -> std::result::Result<FetchProjectsResponse, V::Error>
                 where
                     V: serde::de::MapAccess<'de>,
             {
@@ -879,15 +879,15 @@ impl<'de> serde::Deserialize<'de> for FindProjectsResponse {
                         }
                     }
                 }
-                Ok(FindProjectsResponse {
+                Ok(FetchProjectsResponse {
                     records: records__.unwrap_or_default(),
                 })
             }
         }
-        deserializer.deserialize_struct("demeter.ops.v1alpha.FindProjectsResponse", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("demeter.ops.v1alpha.FetchProjectsResponse", FIELDS, GeneratedVisitor)
     }
 }
-impl serde::Serialize for FindResourcesRequest {
+impl serde::Serialize for FetchResourcesRequest {
     #[allow(deprecated)]
     fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
     where
@@ -904,7 +904,7 @@ impl serde::Serialize for FindResourcesRequest {
         if self.page_size.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.FindResourcesRequest", len)?;
+        let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.FetchResourcesRequest", len)?;
         if !self.project_id.is_empty() {
             struct_ser.serialize_field("projectId", &self.project_id)?;
         }
@@ -917,7 +917,7 @@ impl serde::Serialize for FindResourcesRequest {
         struct_ser.end()
     }
 }
-impl<'de> serde::Deserialize<'de> for FindResourcesRequest {
+impl<'de> serde::Deserialize<'de> for FetchResourcesRequest {
     #[allow(deprecated)]
     fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
     where
@@ -969,13 +969,13 @@ impl<'de> serde::Deserialize<'de> for FindResourcesRequest {
         }
         struct GeneratedVisitor;
         impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
-            type Value = FindResourcesRequest;
+            type Value = FetchResourcesRequest;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct demeter.ops.v1alpha.FindResourcesRequest")
+                formatter.write_str("struct demeter.ops.v1alpha.FetchResourcesRequest")
             }
 
-            fn visit_map<V>(self, mut map_: V) -> std::result::Result<FindResourcesRequest, V::Error>
+            fn visit_map<V>(self, mut map_: V) -> std::result::Result<FetchResourcesRequest, V::Error>
                 where
                     V: serde::de::MapAccess<'de>,
             {
@@ -1008,17 +1008,17 @@ impl<'de> serde::Deserialize<'de> for FindResourcesRequest {
                         }
                     }
                 }
-                Ok(FindResourcesRequest {
+                Ok(FetchResourcesRequest {
                     project_id: project_id__.unwrap_or_default(),
                     page: page__,
                     page_size: page_size__,
                 })
             }
         }
-        deserializer.deserialize_struct("demeter.ops.v1alpha.FindResourcesRequest", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("demeter.ops.v1alpha.FetchResourcesRequest", FIELDS, GeneratedVisitor)
     }
 }
-impl serde::Serialize for FindResourcesResponse {
+impl serde::Serialize for FetchResourcesResponse {
     #[allow(deprecated)]
     fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
     where
@@ -1029,14 +1029,14 @@ impl serde::Serialize for FindResourcesResponse {
         if !self.records.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.FindResourcesResponse", len)?;
+        let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.FetchResourcesResponse", len)?;
         if !self.records.is_empty() {
             struct_ser.serialize_field("records", &self.records)?;
         }
         struct_ser.end()
     }
 }
-impl<'de> serde::Deserialize<'de> for FindResourcesResponse {
+impl<'de> serde::Deserialize<'de> for FetchResourcesResponse {
     #[allow(deprecated)]
     fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
     where
@@ -1080,13 +1080,13 @@ impl<'de> serde::Deserialize<'de> for FindResourcesResponse {
         }
         struct GeneratedVisitor;
         impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
-            type Value = FindResourcesResponse;
+            type Value = FetchResourcesResponse;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct demeter.ops.v1alpha.FindResourcesResponse")
+                formatter.write_str("struct demeter.ops.v1alpha.FetchResourcesResponse")
             }
 
-            fn visit_map<V>(self, mut map_: V) -> std::result::Result<FindResourcesResponse, V::Error>
+            fn visit_map<V>(self, mut map_: V) -> std::result::Result<FetchResourcesResponse, V::Error>
                 where
                     V: serde::de::MapAccess<'de>,
             {
@@ -1101,12 +1101,12 @@ impl<'de> serde::Deserialize<'de> for FindResourcesResponse {
                         }
                     }
                 }
-                Ok(FindResourcesResponse {
+                Ok(FetchResourcesResponse {
                     records: records__.unwrap_or_default(),
                 })
             }
         }
-        deserializer.deserialize_struct("demeter.ops.v1alpha.FindResourcesResponse", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("demeter.ops.v1alpha.FetchResourcesResponse", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for Project {

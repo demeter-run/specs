@@ -8,8 +8,8 @@
     - [CreateProjectResponse](#demeter-ops-v1alpha-CreateProjectResponse)
     - [CreateProjectSecretRequest](#demeter-ops-v1alpha-CreateProjectSecretRequest)
     - [CreateProjectSecretResponse](#demeter-ops-v1alpha-CreateProjectSecretResponse)
-    - [FindProjectsRequest](#demeter-ops-v1alpha-FindProjectsRequest)
-    - [FindProjectsResponse](#demeter-ops-v1alpha-FindProjectsResponse)
+    - [FetchProjectsRequest](#demeter-ops-v1alpha-FetchProjectsRequest)
+    - [FetchProjectsResponse](#demeter-ops-v1alpha-FetchProjectsResponse)
     - [Project](#demeter-ops-v1alpha-Project)
   
     - [ProjectService](#demeter-ops-v1alpha-ProjectService)
@@ -17,8 +17,8 @@
 - [proto/demeter/ops/v1alpha/resource.proto](#proto_demeter_ops_v1alpha_resource-proto)
     - [CreateResourceRequest](#demeter-ops-v1alpha-CreateResourceRequest)
     - [CreateResourceResponse](#demeter-ops-v1alpha-CreateResourceResponse)
-    - [FindResourcesRequest](#demeter-ops-v1alpha-FindResourcesRequest)
-    - [FindResourcesResponse](#demeter-ops-v1alpha-FindResourcesResponse)
+    - [FetchResourcesRequest](#demeter-ops-v1alpha-FetchResourcesRequest)
+    - [FetchResourcesResponse](#demeter-ops-v1alpha-FetchResourcesResponse)
     - [Resource](#demeter-ops-v1alpha-Resource)
   
     - [ResourceService](#demeter-ops-v1alpha-ResourceService)
@@ -99,9 +99,9 @@
 
 
 
-<a name="demeter-ops-v1alpha-FindProjectsRequest"></a>
+<a name="demeter-ops-v1alpha-FetchProjectsRequest"></a>
 
-### FindProjectsRequest
+### FetchProjectsRequest
 
 
 
@@ -115,9 +115,9 @@
 
 
 
-<a name="demeter-ops-v1alpha-FindProjectsResponse"></a>
+<a name="demeter-ops-v1alpha-FetchProjectsResponse"></a>
 
-### FindProjectsResponse
+### FetchProjectsResponse
 
 
 
@@ -163,9 +163,9 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
+| FetchProjects | [FetchProjectsRequest](#demeter-ops-v1alpha-FetchProjectsRequest) | [FetchProjectsResponse](#demeter-ops-v1alpha-FetchProjectsResponse) |  |
 | CreateProject | [CreateProjectRequest](#demeter-ops-v1alpha-CreateProjectRequest) | [CreateProjectResponse](#demeter-ops-v1alpha-CreateProjectResponse) |  |
 | CreateProjectSecret | [CreateProjectSecretRequest](#demeter-ops-v1alpha-CreateProjectSecretRequest) | [CreateProjectSecretResponse](#demeter-ops-v1alpha-CreateProjectSecretResponse) |  |
-| FindProjects | [FindProjectsRequest](#demeter-ops-v1alpha-FindProjectsRequest) | [FindProjectsResponse](#demeter-ops-v1alpha-FindProjectsResponse) |  |
 
  
 
@@ -211,9 +211,9 @@
 
 
 
-<a name="demeter-ops-v1alpha-FindResourcesRequest"></a>
+<a name="demeter-ops-v1alpha-FetchResourcesRequest"></a>
 
-### FindResourcesRequest
+### FetchResourcesRequest
 
 
 
@@ -228,9 +228,9 @@
 
 
 
-<a name="demeter-ops-v1alpha-FindResourcesResponse"></a>
+<a name="demeter-ops-v1alpha-FetchResourcesResponse"></a>
 
-### FindResourcesResponse
+### FetchResourcesResponse
 
 
 
@@ -275,8 +275,8 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
+| FetchResources | [FetchResourcesRequest](#demeter-ops-v1alpha-FetchResourcesRequest) | [FetchResourcesResponse](#demeter-ops-v1alpha-FetchResourcesResponse) |  |
 | CreateResource | [CreateResourceRequest](#demeter-ops-v1alpha-CreateResourceRequest) | [CreateResourceResponse](#demeter-ops-v1alpha-CreateResourceResponse) |  |
-| FindResources | [FindResourcesRequest](#demeter-ops-v1alpha-FindResourcesRequest) | [FindResourcesResponse](#demeter-ops-v1alpha-FindResourcesResponse) |  |
 
  
 

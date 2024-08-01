@@ -86,6 +86,37 @@ pub mod project_service_client {
             self
         }
         ///
+        pub async fn fetch_projects(
+            &mut self,
+            request: impl tonic::IntoRequest<super::FetchProjectsRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::FetchProjectsResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/demeter.ops.v1alpha.ProjectService/FetchProjects",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new(
+                        "demeter.ops.v1alpha.ProjectService",
+                        "FetchProjects",
+                    ),
+                );
+            self.inner.unary(req, path, codec).await
+        }
+        ///
         pub async fn create_project(
             &mut self,
             request: impl tonic::IntoRequest<super::CreateProjectRequest>,
@@ -147,34 +178,6 @@ pub mod project_service_client {
                 );
             self.inner.unary(req, path, codec).await
         }
-        ///
-        pub async fn find_projects(
-            &mut self,
-            request: impl tonic::IntoRequest<super::FindProjectsRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::FindProjectsResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/demeter.ops.v1alpha.ProjectService/FindProjects",
-            );
-            let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("demeter.ops.v1alpha.ProjectService", "FindProjects"),
-                );
-            self.inner.unary(req, path, codec).await
-        }
     }
 }
 /// Generated server implementations.
@@ -184,6 +187,14 @@ pub mod project_service_server {
     /// Generated trait containing gRPC methods that should be implemented for use with ProjectServiceServer.
     #[async_trait]
     pub trait ProjectService: Send + Sync + 'static {
+        ///
+        async fn fetch_projects(
+            &self,
+            request: tonic::Request<super::FetchProjectsRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::FetchProjectsResponse>,
+            tonic::Status,
+        >;
         ///
         async fn create_project(
             &self,
@@ -198,14 +209,6 @@ pub mod project_service_server {
             request: tonic::Request<super::CreateProjectSecretRequest>,
         ) -> std::result::Result<
             tonic::Response<super::CreateProjectSecretResponse>,
-            tonic::Status,
-        >;
-        ///
-        async fn find_projects(
-            &self,
-            request: tonic::Request<super::FindProjectsRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::FindProjectsResponse>,
             tonic::Status,
         >;
     }
@@ -289,6 +292,52 @@ pub mod project_service_server {
         fn call(&mut self, req: http::Request<B>) -> Self::Future {
             let inner = self.inner.clone();
             match req.uri().path() {
+                "/demeter.ops.v1alpha.ProjectService/FetchProjects" => {
+                    #[allow(non_camel_case_types)]
+                    struct FetchProjectsSvc<T: ProjectService>(pub Arc<T>);
+                    impl<
+                        T: ProjectService,
+                    > tonic::server::UnaryService<super::FetchProjectsRequest>
+                    for FetchProjectsSvc<T> {
+                        type Response = super::FetchProjectsResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::FetchProjectsRequest>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as ProjectService>::fetch_projects(&inner, request).await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let inner = inner.0;
+                        let method = FetchProjectsSvc(inner);
+                        let codec = tonic::codec::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
                 "/demeter.ops.v1alpha.ProjectService/CreateProject" => {
                     #[allow(non_camel_case_types)]
                     struct CreateProjectSvc<T: ProjectService>(pub Arc<T>);
@@ -370,52 +419,6 @@ pub mod project_service_server {
                     let fut = async move {
                         let inner = inner.0;
                         let method = CreateProjectSecretSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
-                        let mut grpc = tonic::server::Grpc::new(codec)
-                            .apply_compression_config(
-                                accept_compression_encodings,
-                                send_compression_encodings,
-                            )
-                            .apply_max_message_size_config(
-                                max_decoding_message_size,
-                                max_encoding_message_size,
-                            );
-                        let res = grpc.unary(method, req).await;
-                        Ok(res)
-                    };
-                    Box::pin(fut)
-                }
-                "/demeter.ops.v1alpha.ProjectService/FindProjects" => {
-                    #[allow(non_camel_case_types)]
-                    struct FindProjectsSvc<T: ProjectService>(pub Arc<T>);
-                    impl<
-                        T: ProjectService,
-                    > tonic::server::UnaryService<super::FindProjectsRequest>
-                    for FindProjectsSvc<T> {
-                        type Response = super::FindProjectsResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
-                        fn call(
-                            &mut self,
-                            request: tonic::Request<super::FindProjectsRequest>,
-                        ) -> Self::Future {
-                            let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as ProjectService>::find_projects(&inner, request).await
-                            };
-                            Box::pin(fut)
-                        }
-                    }
-                    let accept_compression_encodings = self.accept_compression_encodings;
-                    let send_compression_encodings = self.send_compression_encodings;
-                    let max_decoding_message_size = self.max_decoding_message_size;
-                    let max_encoding_message_size = self.max_encoding_message_size;
-                    let inner = self.inner.clone();
-                    let fut = async move {
-                        let inner = inner.0;
-                        let method = FindProjectsSvc(inner);
                         let codec = tonic::codec::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
@@ -559,6 +562,37 @@ pub mod resource_service_client {
             self
         }
         ///
+        pub async fn fetch_resources(
+            &mut self,
+            request: impl tonic::IntoRequest<super::FetchResourcesRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::FetchResourcesResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/demeter.ops.v1alpha.ResourceService/FetchResources",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new(
+                        "demeter.ops.v1alpha.ResourceService",
+                        "FetchResources",
+                    ),
+                );
+            self.inner.unary(req, path, codec).await
+        }
+        ///
         pub async fn create_resource(
             &mut self,
             request: impl tonic::IntoRequest<super::CreateResourceRequest>,
@@ -589,37 +623,6 @@ pub mod resource_service_client {
                 );
             self.inner.unary(req, path, codec).await
         }
-        ///
-        pub async fn find_resources(
-            &mut self,
-            request: impl tonic::IntoRequest<super::FindResourcesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::FindResourcesResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/demeter.ops.v1alpha.ResourceService/FindResources",
-            );
-            let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "demeter.ops.v1alpha.ResourceService",
-                        "FindResources",
-                    ),
-                );
-            self.inner.unary(req, path, codec).await
-        }
     }
 }
 /// Generated server implementations.
@@ -630,19 +633,19 @@ pub mod resource_service_server {
     #[async_trait]
     pub trait ResourceService: Send + Sync + 'static {
         ///
+        async fn fetch_resources(
+            &self,
+            request: tonic::Request<super::FetchResourcesRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::FetchResourcesResponse>,
+            tonic::Status,
+        >;
+        ///
         async fn create_resource(
             &self,
             request: tonic::Request<super::CreateResourceRequest>,
         ) -> std::result::Result<
             tonic::Response<super::CreateResourceResponse>,
-            tonic::Status,
-        >;
-        ///
-        async fn find_resources(
-            &self,
-            request: tonic::Request<super::FindResourcesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::FindResourcesResponse>,
             tonic::Status,
         >;
     }
@@ -726,6 +729,53 @@ pub mod resource_service_server {
         fn call(&mut self, req: http::Request<B>) -> Self::Future {
             let inner = self.inner.clone();
             match req.uri().path() {
+                "/demeter.ops.v1alpha.ResourceService/FetchResources" => {
+                    #[allow(non_camel_case_types)]
+                    struct FetchResourcesSvc<T: ResourceService>(pub Arc<T>);
+                    impl<
+                        T: ResourceService,
+                    > tonic::server::UnaryService<super::FetchResourcesRequest>
+                    for FetchResourcesSvc<T> {
+                        type Response = super::FetchResourcesResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::FetchResourcesRequest>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as ResourceService>::fetch_resources(&inner, request)
+                                    .await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let inner = inner.0;
+                        let method = FetchResourcesSvc(inner);
+                        let codec = tonic::codec::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
                 "/demeter.ops.v1alpha.ResourceService/CreateResource" => {
                     #[allow(non_camel_case_types)]
                     struct CreateResourceSvc<T: ResourceService>(pub Arc<T>);
@@ -758,53 +808,6 @@ pub mod resource_service_server {
                     let fut = async move {
                         let inner = inner.0;
                         let method = CreateResourceSvc(inner);
-                        let codec = tonic::codec::ProstCodec::default();
-                        let mut grpc = tonic::server::Grpc::new(codec)
-                            .apply_compression_config(
-                                accept_compression_encodings,
-                                send_compression_encodings,
-                            )
-                            .apply_max_message_size_config(
-                                max_decoding_message_size,
-                                max_encoding_message_size,
-                            );
-                        let res = grpc.unary(method, req).await;
-                        Ok(res)
-                    };
-                    Box::pin(fut)
-                }
-                "/demeter.ops.v1alpha.ResourceService/FindResources" => {
-                    #[allow(non_camel_case_types)]
-                    struct FindResourcesSvc<T: ResourceService>(pub Arc<T>);
-                    impl<
-                        T: ResourceService,
-                    > tonic::server::UnaryService<super::FindResourcesRequest>
-                    for FindResourcesSvc<T> {
-                        type Response = super::FindResourcesResponse;
-                        type Future = BoxFuture<
-                            tonic::Response<Self::Response>,
-                            tonic::Status,
-                        >;
-                        fn call(
-                            &mut self,
-                            request: tonic::Request<super::FindResourcesRequest>,
-                        ) -> Self::Future {
-                            let inner = Arc::clone(&self.0);
-                            let fut = async move {
-                                <T as ResourceService>::find_resources(&inner, request)
-                                    .await
-                            };
-                            Box::pin(fut)
-                        }
-                    }
-                    let accept_compression_encodings = self.accept_compression_encodings;
-                    let send_compression_encodings = self.send_compression_encodings;
-                    let max_decoding_message_size = self.max_decoding_message_size;
-                    let max_encoding_message_size = self.max_encoding_message_size;
-                    let inner = self.inner.clone();
-                    let fut = async move {
-                        let inner = inner.0;
-                        let method = FindResourcesSvc(inner);
                         let codec = tonic::codec::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
