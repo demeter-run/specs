@@ -463,7 +463,7 @@ impl serde::Serialize for CreateResourceRequest {
         if !self.kind.is_empty() {
             len += 1;
         }
-        if !self.data.is_empty() {
+        if !self.spec.is_empty() {
             len += 1;
         }
         let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.CreateResourceRequest", len)?;
@@ -473,8 +473,8 @@ impl serde::Serialize for CreateResourceRequest {
         if !self.kind.is_empty() {
             struct_ser.serialize_field("kind", &self.kind)?;
         }
-        if !self.data.is_empty() {
-            struct_ser.serialize_field("data", &self.data)?;
+        if !self.spec.is_empty() {
+            struct_ser.serialize_field("spec", &self.spec)?;
         }
         struct_ser.end()
     }
@@ -489,14 +489,14 @@ impl<'de> serde::Deserialize<'de> for CreateResourceRequest {
             "project_id",
             "projectId",
             "kind",
-            "data",
+            "spec",
         ];
 
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
             ProjectId,
             Kind,
-            Data,
+            Spec,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
             fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
@@ -520,7 +520,7 @@ impl<'de> serde::Deserialize<'de> for CreateResourceRequest {
                         match value {
                             "projectId" | "project_id" => Ok(GeneratedField::ProjectId),
                             "kind" => Ok(GeneratedField::Kind),
-                            "data" => Ok(GeneratedField::Data),
+                            "spec" => Ok(GeneratedField::Spec),
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
                         }
                     }
@@ -542,7 +542,7 @@ impl<'de> serde::Deserialize<'de> for CreateResourceRequest {
             {
                 let mut project_id__ = None;
                 let mut kind__ = None;
-                let mut data__ = None;
+                let mut spec__ = None;
                 while let Some(k) = map_.next_key()? {
                     match k {
                         GeneratedField::ProjectId => {
@@ -557,18 +557,18 @@ impl<'de> serde::Deserialize<'de> for CreateResourceRequest {
                             }
                             kind__ = Some(map_.next_value()?);
                         }
-                        GeneratedField::Data => {
-                            if data__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("data"));
+                        GeneratedField::Spec => {
+                            if spec__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("spec"));
                             }
-                            data__ = Some(map_.next_value()?);
+                            spec__ = Some(map_.next_value()?);
                         }
                     }
                 }
                 Ok(CreateResourceRequest {
                     project_id: project_id__.unwrap_or_default(),
                     kind: kind__.unwrap_or_default(),
-                    data: data__.unwrap_or_default(),
+                    spec: spec__.unwrap_or_default(),
                 })
             }
         }
@@ -1482,7 +1482,7 @@ impl serde::Serialize for Resource {
         if !self.kind.is_empty() {
             len += 1;
         }
-        if !self.data.is_empty() {
+        if !self.spec.is_empty() {
             len += 1;
         }
         if !self.status.is_empty() {
@@ -1501,8 +1501,8 @@ impl serde::Serialize for Resource {
         if !self.kind.is_empty() {
             struct_ser.serialize_field("kind", &self.kind)?;
         }
-        if !self.data.is_empty() {
-            struct_ser.serialize_field("data", &self.data)?;
+        if !self.spec.is_empty() {
+            struct_ser.serialize_field("spec", &self.spec)?;
         }
         if !self.status.is_empty() {
             struct_ser.serialize_field("status", &self.status)?;
@@ -1525,7 +1525,7 @@ impl<'de> serde::Deserialize<'de> for Resource {
         const FIELDS: &[&str] = &[
             "id",
             "kind",
-            "data",
+            "spec",
             "status",
             "created_at",
             "createdAt",
@@ -1537,7 +1537,7 @@ impl<'de> serde::Deserialize<'de> for Resource {
         enum GeneratedField {
             Id,
             Kind,
-            Data,
+            Spec,
             Status,
             CreatedAt,
             UpdatedAt,
@@ -1564,7 +1564,7 @@ impl<'de> serde::Deserialize<'de> for Resource {
                         match value {
                             "id" => Ok(GeneratedField::Id),
                             "kind" => Ok(GeneratedField::Kind),
-                            "data" => Ok(GeneratedField::Data),
+                            "spec" => Ok(GeneratedField::Spec),
                             "status" => Ok(GeneratedField::Status),
                             "createdAt" | "created_at" => Ok(GeneratedField::CreatedAt),
                             "updatedAt" | "updated_at" => Ok(GeneratedField::UpdatedAt),
@@ -1589,7 +1589,7 @@ impl<'de> serde::Deserialize<'de> for Resource {
             {
                 let mut id__ = None;
                 let mut kind__ = None;
-                let mut data__ = None;
+                let mut spec__ = None;
                 let mut status__ = None;
                 let mut created_at__ = None;
                 let mut updated_at__ = None;
@@ -1607,11 +1607,11 @@ impl<'de> serde::Deserialize<'de> for Resource {
                             }
                             kind__ = Some(map_.next_value()?);
                         }
-                        GeneratedField::Data => {
-                            if data__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("data"));
+                        GeneratedField::Spec => {
+                            if spec__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("spec"));
                             }
-                            data__ = Some(map_.next_value()?);
+                            spec__ = Some(map_.next_value()?);
                         }
                         GeneratedField::Status => {
                             if status__.is_some() {
@@ -1636,7 +1636,7 @@ impl<'de> serde::Deserialize<'de> for Resource {
                 Ok(Resource {
                     id: id__.unwrap_or_default(),
                     kind: kind__.unwrap_or_default(),
-                    data: data__.unwrap_or_default(),
+                    spec: spec__.unwrap_or_default(),
                     status: status__.unwrap_or_default(),
                     created_at: created_at__.unwrap_or_default(),
                     updated_at: updated_at__.unwrap_or_default(),

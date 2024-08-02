@@ -190,7 +190,7 @@
 | ----- | ---- | ----- | ----------- |
 | project_id | [string](#string) |  |  |
 | kind | [string](#string) |  |  |
-| data | [string](#string) |  |  |
+| spec | [string](#string) |  |  |
 
 
 
@@ -281,7 +281,7 @@
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
 | kind | [string](#string) |  |  |
-| data | [string](#string) |  |  |
+| spec | [string](#string) |  |  |
 | status | [string](#string) |  |  |
 | created_at | [string](#string) |  |  |
 | updated_at | [string](#string) |  |  |
