@@ -2,8 +2,6 @@ syntax = "proto3";
 
 package demeter.ops.v1alpha;
 
-import "google/protobuf/any.proto";
-
 message CreateResourceRequest {
   string project_id = 1; 
   string kind = 2; 
@@ -22,13 +20,22 @@ message Resource {
   string created_at = 5; 
   string updated_at = 6; 
 }
+
 message FetchResourcesRequest {
   string project_id = 1;
   optional uint32 page = 2;
   optional uint32 page_size = 3;
 }
 message FetchResourcesResponse {
-  repeated Resource records = 2;
+  repeated Resource records = 1;
+}
+
+message FetchResourcesByIdRequest {
+  string project_id = 1;
+  string resource_id = 2;
+}
+message FetchResourcesByIdResponse {
+  repeated Resource records = 1;
 }
 
 message DeleteResourceRequest {
@@ -39,6 +46,7 @@ message DeleteResourceResponse {}
 
 service ResourceService {
   rpc FetchResources(FetchResourcesRequest) returns (FetchResourcesResponse);
+  rpc FetchResourcesById(FetchResourcesByIdRequest) returns (FetchResourcesByIdResponse);
   rpc CreateResource(CreateResourceRequest) returns (CreateResourceResponse);
   rpc DeleteResource(DeleteResourceRequest) returns (DeleteResourceResponse);
 }

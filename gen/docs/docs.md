@@ -19,6 +19,8 @@
     - [CreateResourceResponse](#demeter-ops-v1alpha-CreateResourceResponse)
     - [DeleteResourceRequest](#demeter-ops-v1alpha-DeleteResourceRequest)
     - [DeleteResourceResponse](#demeter-ops-v1alpha-DeleteResourceResponse)
+    - [FetchResourcesByIdRequest](#demeter-ops-v1alpha-FetchResourcesByIdRequest)
+    - [FetchResourcesByIdResponse](#demeter-ops-v1alpha-FetchResourcesByIdResponse)
     - [FetchResourcesRequest](#demeter-ops-v1alpha-FetchResourcesRequest)
     - [FetchResourcesResponse](#demeter-ops-v1alpha-FetchResourcesResponse)
     - [Resource](#demeter-ops-v1alpha-Resource)
@@ -239,6 +241,37 @@
 
 
 
+<a name="demeter-ops-v1alpha-FetchResourcesByIdRequest"></a>
+
+### FetchResourcesByIdRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| project_id | [string](#string) |  |  |
+| resource_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-FetchResourcesByIdResponse"></a>
+
+### FetchResourcesByIdResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| records | [Resource](#demeter-ops-v1alpha-Resource) | repeated |  |
+
+
+
+
+
+
 <a name="demeter-ops-v1alpha-FetchResourcesRequest"></a>
 
 ### FetchResourcesRequest
@@ -305,6 +338,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | FetchResources | [FetchResourcesRequest](#demeter-ops-v1alpha-FetchResourcesRequest) | [FetchResourcesResponse](#demeter-ops-v1alpha-FetchResourcesResponse) |  |
+| FetchResourcesById | [FetchResourcesByIdRequest](#demeter-ops-v1alpha-FetchResourcesByIdRequest) | [FetchResourcesByIdResponse](#demeter-ops-v1alpha-FetchResourcesByIdResponse) |  |
 | CreateResource | [CreateResourceRequest](#demeter-ops-v1alpha-CreateResourceRequest) | [CreateResourceResponse](#demeter-ops-v1alpha-CreateResourceResponse) |  |
 | DeleteResource | [DeleteResourceRequest](#demeter-ops-v1alpha-DeleteResourceRequest) | [DeleteResourceResponse](#demeter-ops-v1alpha-DeleteResourceResponse) |  |
 

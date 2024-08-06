@@ -593,6 +593,37 @@ pub mod resource_service_client {
             self.inner.unary(req, path, codec).await
         }
         ///
+        pub async fn fetch_resources_by_id(
+            &mut self,
+            request: impl tonic::IntoRequest<super::FetchResourcesByIdRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::FetchResourcesByIdResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/demeter.ops.v1alpha.ResourceService/FetchResourcesById",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new(
+                        "demeter.ops.v1alpha.ResourceService",
+                        "FetchResourcesById",
+                    ),
+                );
+            self.inner.unary(req, path, codec).await
+        }
+        ///
         pub async fn create_resource(
             &mut self,
             request: impl tonic::IntoRequest<super::CreateResourceRequest>,
@@ -669,6 +700,14 @@ pub mod resource_service_server {
             request: tonic::Request<super::FetchResourcesRequest>,
         ) -> std::result::Result<
             tonic::Response<super::FetchResourcesResponse>,
+            tonic::Status,
+        >;
+        ///
+        async fn fetch_resources_by_id(
+            &self,
+            request: tonic::Request<super::FetchResourcesByIdRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::FetchResourcesByIdResponse>,
             tonic::Status,
         >;
         ///
@@ -800,6 +839,56 @@ pub mod resource_service_server {
                     let fut = async move {
                         let inner = inner.0;
                         let method = FetchResourcesSvc(inner);
+                        let codec = tonic::codec::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/demeter.ops.v1alpha.ResourceService/FetchResourcesById" => {
+                    #[allow(non_camel_case_types)]
+                    struct FetchResourcesByIdSvc<T: ResourceService>(pub Arc<T>);
+                    impl<
+                        T: ResourceService,
+                    > tonic::server::UnaryService<super::FetchResourcesByIdRequest>
+                    for FetchResourcesByIdSvc<T> {
+                        type Response = super::FetchResourcesByIdResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::FetchResourcesByIdRequest>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as ResourceService>::fetch_resources_by_id(
+                                        &inner,
+                                        request,
+                                    )
+                                    .await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let inner = inner.0;
+                        let method = FetchResourcesByIdSvc(inner);
                         let codec = tonic::codec::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
