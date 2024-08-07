@@ -1683,7 +1683,7 @@ impl serde::Serialize for Resource {
         if !self.kind.is_empty() {
             len += 1;
         }
-        if !self.spec.is_empty() {
+        if !self.data.is_empty() {
             len += 1;
         }
         if !self.status.is_empty() {
@@ -1702,8 +1702,8 @@ impl serde::Serialize for Resource {
         if !self.kind.is_empty() {
             struct_ser.serialize_field("kind", &self.kind)?;
         }
-        if !self.spec.is_empty() {
-            struct_ser.serialize_field("spec", &self.spec)?;
+        if !self.data.is_empty() {
+            struct_ser.serialize_field("data", &self.data)?;
         }
         if !self.status.is_empty() {
             struct_ser.serialize_field("status", &self.status)?;
@@ -1726,7 +1726,7 @@ impl<'de> serde::Deserialize<'de> for Resource {
         const FIELDS: &[&str] = &[
             "id",
             "kind",
-            "spec",
+            "data",
             "status",
             "created_at",
             "createdAt",
@@ -1738,7 +1738,7 @@ impl<'de> serde::Deserialize<'de> for Resource {
         enum GeneratedField {
             Id,
             Kind,
-            Spec,
+            Data,
             Status,
             CreatedAt,
             UpdatedAt,
@@ -1765,7 +1765,7 @@ impl<'de> serde::Deserialize<'de> for Resource {
                         match value {
                             "id" => Ok(GeneratedField::Id),
                             "kind" => Ok(GeneratedField::Kind),
-                            "spec" => Ok(GeneratedField::Spec),
+                            "data" => Ok(GeneratedField::Data),
                             "status" => Ok(GeneratedField::Status),
                             "createdAt" | "created_at" => Ok(GeneratedField::CreatedAt),
                             "updatedAt" | "updated_at" => Ok(GeneratedField::UpdatedAt),
@@ -1790,7 +1790,7 @@ impl<'de> serde::Deserialize<'de> for Resource {
             {
                 let mut id__ = None;
                 let mut kind__ = None;
-                let mut spec__ = None;
+                let mut data__ = None;
                 let mut status__ = None;
                 let mut created_at__ = None;
                 let mut updated_at__ = None;
@@ -1808,11 +1808,11 @@ impl<'de> serde::Deserialize<'de> for Resource {
                             }
                             kind__ = Some(map_.next_value()?);
                         }
-                        GeneratedField::Spec => {
-                            if spec__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("spec"));
+                        GeneratedField::Data => {
+                            if data__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("data"));
                             }
-                            spec__ = Some(map_.next_value()?);
+                            data__ = Some(map_.next_value()?);
                         }
                         GeneratedField::Status => {
                             if status__.is_some() {
@@ -1837,7 +1837,7 @@ impl<'de> serde::Deserialize<'de> for Resource {
                 Ok(Resource {
                     id: id__.unwrap_or_default(),
                     kind: kind__.unwrap_or_default(),
-                    spec: spec__.unwrap_or_default(),
+                    data: data__.unwrap_or_default(),
                     status: status__.unwrap_or_default(),
                     created_at: created_at__.unwrap_or_default(),
                     updated_at: updated_at__.unwrap_or_default(),

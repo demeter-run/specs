@@ -314,7 +314,7 @@
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
 | kind | [string](#string) |  |  |
-| spec | [string](#string) |  |  |
+| data | [string](#string) |  |  |
 | status | [string](#string) |  |  |
 | created_at | [string](#string) |  |  |
 | updated_at | [string](#string) |  |  |
