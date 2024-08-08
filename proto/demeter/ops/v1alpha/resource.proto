@@ -15,7 +15,7 @@ message CreateResourceResponse {
 message Resource {
   string id = 1;
   string kind = 2; 
-  string data = 3; 
+  string spec = 3; 
   string status = 4; 
   string created_at = 5; 
   string updated_at = 6; 

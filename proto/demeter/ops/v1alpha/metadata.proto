@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package demeter.ops.v1alpha;
+
+message FetchMetadataRequest {}
+message FetchMetadataResponse {
+  repeated string records = 1;
+}
+
+service MetadataService {
+  rpc FetchMetadata(FetchMetadataRequest) returns (FetchMetadataResponse);
+}
+

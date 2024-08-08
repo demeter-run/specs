@@ -3,6 +3,12 @@
 
 ## Table of Contents
 
+- [proto/demeter/ops/v1alpha/metadata.proto](#proto_demeter_ops_v1alpha_metadata-proto)
+    - [FetchMetadataRequest](#demeter-ops-v1alpha-FetchMetadataRequest)
+    - [FetchMetadataResponse](#demeter-ops-v1alpha-FetchMetadataResponse)
+  
+    - [MetadataService](#demeter-ops-v1alpha-MetadataService)
+  
 - [proto/demeter/ops/v1alpha/project.proto](#proto_demeter_ops_v1alpha_project-proto)
     - [CreateProjectRequest](#demeter-ops-v1alpha-CreateProjectRequest)
     - [CreateProjectResponse](#demeter-ops-v1alpha-CreateProjectResponse)
@@ -28,6 +34,57 @@
     - [ResourceService](#demeter-ops-v1alpha-ResourceService)
   
 - [Scalar Value Types](#scalar-value-types)
+
+
+
+<a name="proto_demeter_ops_v1alpha_metadata-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## proto/demeter/ops/v1alpha/metadata.proto
+
+
+
+<a name="demeter-ops-v1alpha-FetchMetadataRequest"></a>
+
+### FetchMetadataRequest
+
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-FetchMetadataResponse"></a>
+
+### FetchMetadataResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| records | [string](#string) | repeated |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="demeter-ops-v1alpha-MetadataService"></a>
+
+### MetadataService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| FetchMetadata | [FetchMetadataRequest](#demeter-ops-v1alpha-FetchMetadataRequest) | [FetchMetadataResponse](#demeter-ops-v1alpha-FetchMetadataResponse) |  |
+
+ 
 
 
 
@@ -314,7 +371,7 @@
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
 | kind | [string](#string) |  |  |
-| data | [string](#string) |  |  |
+| spec | [string](#string) |  |  |
 | status | [string](#string) |  |  |
 | created_at | [string](#string) |  |  |
 | updated_at | [string](#string) |  |  |
