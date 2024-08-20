@@ -3,13 +3,13 @@
 
 ## Table of Contents
 
-- [proto/demeter/ops/v1alpha/metadata.proto](#proto_demeter_ops_v1alpha_metadata-proto)
+- [demeter/ops/v1alpha/metadata.proto](#demeter_ops_v1alpha_metadata-proto)
     - [FetchMetadataRequest](#demeter-ops-v1alpha-FetchMetadataRequest)
     - [FetchMetadataResponse](#demeter-ops-v1alpha-FetchMetadataResponse)
   
     - [MetadataService](#demeter-ops-v1alpha-MetadataService)
   
-- [proto/demeter/ops/v1alpha/project.proto](#proto_demeter_ops_v1alpha_project-proto)
+- [demeter/ops/v1alpha/project.proto](#demeter_ops_v1alpha_project-proto)
     - [CreateProjectRequest](#demeter-ops-v1alpha-CreateProjectRequest)
     - [CreateProjectResponse](#demeter-ops-v1alpha-CreateProjectResponse)
     - [CreateProjectSecretRequest](#demeter-ops-v1alpha-CreateProjectSecretRequest)
@@ -17,10 +17,12 @@
     - [FetchProjectsRequest](#demeter-ops-v1alpha-FetchProjectsRequest)
     - [FetchProjectsResponse](#demeter-ops-v1alpha-FetchProjectsResponse)
     - [Project](#demeter-ops-v1alpha-Project)
+    - [UpdateProjectRequest](#demeter-ops-v1alpha-UpdateProjectRequest)
+    - [UpdateProjectResponse](#demeter-ops-v1alpha-UpdateProjectResponse)
   
     - [ProjectService](#demeter-ops-v1alpha-ProjectService)
   
-- [proto/demeter/ops/v1alpha/resource.proto](#proto_demeter_ops_v1alpha_resource-proto)
+- [demeter/ops/v1alpha/resource.proto](#demeter_ops_v1alpha_resource-proto)
     - [CreateResourceRequest](#demeter-ops-v1alpha-CreateResourceRequest)
     - [CreateResourceResponse](#demeter-ops-v1alpha-CreateResourceResponse)
     - [DeleteResourceRequest](#demeter-ops-v1alpha-DeleteResourceRequest)
@@ -37,10 +39,10 @@
 
 
 
-<a name="proto_demeter_ops_v1alpha_metadata-proto"></a>
+<a name="demeter_ops_v1alpha_metadata-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## proto/demeter/ops/v1alpha/metadata.proto
+## demeter/ops/v1alpha/metadata.proto
 
 
 
@@ -88,10 +90,10 @@
 
 
 
-<a name="proto_demeter_ops_v1alpha_project-proto"></a>
+<a name="demeter_ops_v1alpha_project-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## proto/demeter/ops/v1alpha/project.proto
+## demeter/ops/v1alpha/project.proto
 
 
 
@@ -210,6 +212,38 @@
 
 
 
+
+<a name="demeter-ops-v1alpha-UpdateProjectRequest"></a>
+
+### UpdateProjectRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| name | [string](#string) | optional |  |
+| status | [string](#string) | optional |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-UpdateProjectResponse"></a>
+
+### UpdateProjectResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| updated | [Project](#demeter-ops-v1alpha-Project) |  |  |
+
+
+
+
+
  
 
  
@@ -226,16 +260,17 @@
 | ----------- | ------------ | ------------- | ------------|
 | FetchProjects | [FetchProjectsRequest](#demeter-ops-v1alpha-FetchProjectsRequest) | [FetchProjectsResponse](#demeter-ops-v1alpha-FetchProjectsResponse) |  |
 | CreateProject | [CreateProjectRequest](#demeter-ops-v1alpha-CreateProjectRequest) | [CreateProjectResponse](#demeter-ops-v1alpha-CreateProjectResponse) |  |
+| UpdateProject | [UpdateProjectRequest](#demeter-ops-v1alpha-UpdateProjectRequest) | [UpdateProjectResponse](#demeter-ops-v1alpha-UpdateProjectResponse) |  |
 | CreateProjectSecret | [CreateProjectSecretRequest](#demeter-ops-v1alpha-CreateProjectSecretRequest) | [CreateProjectSecretResponse](#demeter-ops-v1alpha-CreateProjectSecretResponse) |  |
 
  
 
 
 
-<a name="proto_demeter_ops_v1alpha_resource-proto"></a>
+<a name="demeter_ops_v1alpha_resource-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## proto/demeter/ops/v1alpha/resource.proto
+## demeter/ops/v1alpha/resource.proto
 
 
 
