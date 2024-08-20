@@ -3,13 +3,13 @@
 
 ## Table of Contents
 
-- [demeter/ops/v1alpha/metadata.proto](#demeter_ops_v1alpha_metadata-proto)
+- [proto/demeter/ops/v1alpha/metadata.proto](#proto_demeter_ops_v1alpha_metadata-proto)
     - [FetchMetadataRequest](#demeter-ops-v1alpha-FetchMetadataRequest)
     - [FetchMetadataResponse](#demeter-ops-v1alpha-FetchMetadataResponse)
   
     - [MetadataService](#demeter-ops-v1alpha-MetadataService)
   
-- [demeter/ops/v1alpha/project.proto](#demeter_ops_v1alpha_project-proto)
+- [proto/demeter/ops/v1alpha/project.proto](#proto_demeter_ops_v1alpha_project-proto)
     - [CreateProjectRequest](#demeter-ops-v1alpha-CreateProjectRequest)
     - [CreateProjectResponse](#demeter-ops-v1alpha-CreateProjectResponse)
     - [CreateProjectSecretRequest](#demeter-ops-v1alpha-CreateProjectSecretRequest)
@@ -22,7 +22,7 @@
   
     - [ProjectService](#demeter-ops-v1alpha-ProjectService)
   
-- [demeter/ops/v1alpha/resource.proto](#demeter_ops_v1alpha_resource-proto)
+- [proto/demeter/ops/v1alpha/resource.proto](#proto_demeter_ops_v1alpha_resource-proto)
     - [CreateResourceRequest](#demeter-ops-v1alpha-CreateResourceRequest)
     - [CreateResourceResponse](#demeter-ops-v1alpha-CreateResourceResponse)
     - [DeleteResourceRequest](#demeter-ops-v1alpha-DeleteResourceRequest)
@@ -39,10 +39,10 @@
 
 
 
-<a name="demeter_ops_v1alpha_metadata-proto"></a>
+<a name="proto_demeter_ops_v1alpha_metadata-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## demeter/ops/v1alpha/metadata.proto
+## proto/demeter/ops/v1alpha/metadata.proto
 
 
 
@@ -90,10 +90,10 @@
 
 
 
-<a name="demeter_ops_v1alpha_project-proto"></a>
+<a name="proto_demeter_ops_v1alpha_project-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## demeter/ops/v1alpha/project.proto
+## proto/demeter/ops/v1alpha/project.proto
 
 
 
@@ -267,10 +267,10 @@
 
 
 
-<a name="demeter_ops_v1alpha_resource-proto"></a>
+<a name="proto_demeter_ops_v1alpha_resource-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## demeter/ops/v1alpha/resource.proto
+## proto/demeter/ops/v1alpha/resource.proto
 
 
 
