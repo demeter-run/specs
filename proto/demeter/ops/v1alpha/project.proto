@@ -23,8 +23,7 @@ message CreateProjectSecretResponse {
 
 message UpdateProjectRequest {
   string id = 1;
-  optional string name = 2; 
-  optional string status = 3;
+  string name = 2; 
 }
 message UpdateProjectResponse {
   Project updated = 1;

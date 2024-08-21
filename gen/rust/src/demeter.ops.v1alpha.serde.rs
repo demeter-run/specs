@@ -2020,21 +2020,15 @@ impl serde::Serialize for UpdateProjectRequest {
         if !self.id.is_empty() {
             len += 1;
         }
-        if self.name.is_some() {
-            len += 1;
-        }
-        if self.status.is_some() {
+        if !self.name.is_empty() {
             len += 1;
         }
         let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.UpdateProjectRequest", len)?;
         if !self.id.is_empty() {
             struct_ser.serialize_field("id", &self.id)?;
         }
-        if let Some(v) = self.name.as_ref() {
-            struct_ser.serialize_field("name", v)?;
-        }
-        if let Some(v) = self.status.as_ref() {
-            struct_ser.serialize_field("status", v)?;
+        if !self.name.is_empty() {
+            struct_ser.serialize_field("name", &self.name)?;
         }
         struct_ser.end()
     }
@@ -2048,14 +2042,12 @@ impl<'de> serde::Deserialize<'de> for UpdateProjectRequest {
         const FIELDS: &[&str] = &[
             "id",
             "name",
-            "status",
         ];
 
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
             Id,
             Name,
-            Status,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
             fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
@@ -2079,7 +2071,6 @@ impl<'de> serde::Deserialize<'de> for UpdateProjectRequest {
                         match value {
                             "id" => Ok(GeneratedField::Id),
                             "name" => Ok(GeneratedField::Name),
-                            "status" => Ok(GeneratedField::Status),
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
                         }
                     }
@@ -2101,7 +2092,6 @@ impl<'de> serde::Deserialize<'de> for UpdateProjectRequest {
             {
                 let mut id__ = None;
                 let mut name__ = None;
-                let mut status__ = None;
                 while let Some(k) = map_.next_key()? {
                     match k {
                         GeneratedField::Id => {
@@ -2114,20 +2104,13 @@ impl<'de> serde::Deserialize<'de> for UpdateProjectRequest {
                             if name__.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
-                            name__ = map_.next_value()?;
-                        }
-                        GeneratedField::Status => {
-                            if status__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("status"));
-                            }
-                            status__ = map_.next_value()?;
+                            name__ = Some(map_.next_value()?);
                         }
                     }
                 }
                 Ok(UpdateProjectRequest {
                     id: id__.unwrap_or_default(),
-                    name: name__,
-                    status: status__,
+                    name: name__.unwrap_or_default(),
                 })
             }
         }

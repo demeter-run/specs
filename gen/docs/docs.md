@@ -222,8 +222,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
-| name | [string](#string) | optional |  |
-| status | [string](#string) | optional |  |
+| name | [string](#string) |  |  |
 
 
 
