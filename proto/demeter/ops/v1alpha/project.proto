@@ -21,6 +21,14 @@ message CreateProjectSecretResponse {
   string key = 3;
 }
 
+message UpdateProjectRequest {
+  string id = 1;
+  string name = 2; 
+}
+message UpdateProjectResponse {
+  Project updated = 1;
+}
+
 message Project {
   string id = 1;
   string name = 2; 
@@ -40,6 +48,7 @@ message FetchProjectsResponse {
 service ProjectService {
   rpc FetchProjects(FetchProjectsRequest) returns (FetchProjectsResponse);
   rpc CreateProject(CreateProjectRequest) returns (CreateProjectResponse);
+  rpc UpdateProject(UpdateProjectRequest) returns (UpdateProjectResponse);
   rpc CreateProjectSecret(CreateProjectSecretRequest) returns (CreateProjectSecretResponse);
 }
 

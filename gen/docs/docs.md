@@ -17,6 +17,8 @@
     - [FetchProjectsRequest](#demeter-ops-v1alpha-FetchProjectsRequest)
     - [FetchProjectsResponse](#demeter-ops-v1alpha-FetchProjectsResponse)
     - [Project](#demeter-ops-v1alpha-Project)
+    - [UpdateProjectRequest](#demeter-ops-v1alpha-UpdateProjectRequest)
+    - [UpdateProjectResponse](#demeter-ops-v1alpha-UpdateProjectResponse)
   
     - [ProjectService](#demeter-ops-v1alpha-ProjectService)
   
@@ -210,6 +212,37 @@
 
 
 
+
+<a name="demeter-ops-v1alpha-UpdateProjectRequest"></a>
+
+### UpdateProjectRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| name | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-UpdateProjectResponse"></a>
+
+### UpdateProjectResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| updated | [Project](#demeter-ops-v1alpha-Project) |  |  |
+
+
+
+
+
  
 
  
@@ -226,6 +259,7 @@
 | ----------- | ------------ | ------------- | ------------|
 | FetchProjects | [FetchProjectsRequest](#demeter-ops-v1alpha-FetchProjectsRequest) | [FetchProjectsResponse](#demeter-ops-v1alpha-FetchProjectsResponse) |  |
 | CreateProject | [CreateProjectRequest](#demeter-ops-v1alpha-CreateProjectRequest) | [CreateProjectResponse](#demeter-ops-v1alpha-CreateProjectResponse) |  |
+| UpdateProject | [UpdateProjectRequest](#demeter-ops-v1alpha-UpdateProjectRequest) | [UpdateProjectResponse](#demeter-ops-v1alpha-UpdateProjectResponse) |  |
 | CreateProjectSecret | [CreateProjectSecretRequest](#demeter-ops-v1alpha-CreateProjectSecretRequest) | [CreateProjectSecretResponse](#demeter-ops-v1alpha-CreateProjectSecretResponse) |  |
 
  
