@@ -35,6 +35,13 @@
   
     - [ResourceService](#demeter-ops-v1alpha-ResourceService)
   
+- [proto/demeter/ops/v1alpha/usage.proto](#proto_demeter_ops_v1alpha_usage-proto)
+    - [FetchUsageReportRequest](#demeter-ops-v1alpha-FetchUsageReportRequest)
+    - [FetchUsageReportResponse](#demeter-ops-v1alpha-FetchUsageReportResponse)
+    - [UsageReport](#demeter-ops-v1alpha-UsageReport)
+  
+    - [UsageService](#demeter-ops-v1alpha-UsageService)
+  
 - [Scalar Value Types](#scalar-value-types)
 
 
@@ -432,6 +439,84 @@
 | FetchResourcesById | [FetchResourcesByIdRequest](#demeter-ops-v1alpha-FetchResourcesByIdRequest) | [FetchResourcesByIdResponse](#demeter-ops-v1alpha-FetchResourcesByIdResponse) |  |
 | CreateResource | [CreateResourceRequest](#demeter-ops-v1alpha-CreateResourceRequest) | [CreateResourceResponse](#demeter-ops-v1alpha-CreateResourceResponse) |  |
 | DeleteResource | [DeleteResourceRequest](#demeter-ops-v1alpha-DeleteResourceRequest) | [DeleteResourceResponse](#demeter-ops-v1alpha-DeleteResourceResponse) |  |
+
+ 
+
+
+
+<a name="proto_demeter_ops_v1alpha_usage-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## proto/demeter/ops/v1alpha/usage.proto
+
+
+
+<a name="demeter-ops-v1alpha-FetchUsageReportRequest"></a>
+
+### FetchUsageReportRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| project_id | [string](#string) |  |  |
+| page | [uint32](#uint32) | optional |  |
+| page_size | [uint32](#uint32) | optional |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-FetchUsageReportResponse"></a>
+
+### FetchUsageReportResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| records | [UsageReport](#demeter-ops-v1alpha-UsageReport) | repeated |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-UsageReport"></a>
+
+### UsageReport
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| resource_id | [string](#string) |  |  |
+| resource_kind | [string](#string) |  |  |
+| resource_spec | [string](#string) |  |  |
+| units | [int64](#int64) |  |  |
+| tier | [string](#string) |  |  |
+| period | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="demeter-ops-v1alpha-UsageService"></a>
+
+### UsageService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| FetchUsageReport | [FetchUsageReportRequest](#demeter-ops-v1alpha-FetchUsageReportRequest) | [FetchUsageReportResponse](#demeter-ops-v1alpha-FetchUsageReportResponse) |  |
 
  
 
