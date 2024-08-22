@@ -2592,11 +2592,7 @@ impl<'de> serde::Deserialize<'de> for UpdateProjectResponse {
         deserializer.deserialize_struct("demeter.ops.v1alpha.UpdateProjectResponse", FIELDS, GeneratedVisitor)
     }
 }
-<<<<<<< HEAD
-impl serde::Serialize for UsageReport {
-=======
 impl serde::Serialize for UpdateResourceRequest {
->>>>>>> 9c20f3e4d1165388eadce082bf5dfd44105db0f1
     #[allow(deprecated)]
     fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
     where
@@ -2604,45 +2600,6 @@ impl serde::Serialize for UpdateResourceRequest {
     {
         use serde::ser::SerializeStruct;
         let mut len = 0;
-<<<<<<< HEAD
-        if !self.resource_id.is_empty() {
-            len += 1;
-        }
-        if !self.resource_kind.is_empty() {
-            len += 1;
-        }
-        if !self.resource_spec.is_empty() {
-            len += 1;
-        }
-        if self.units != 0 {
-            len += 1;
-        }
-        if !self.tier.is_empty() {
-            len += 1;
-        }
-        if !self.period.is_empty() {
-            len += 1;
-        }
-        let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.UsageReport", len)?;
-        if !self.resource_id.is_empty() {
-            struct_ser.serialize_field("resourceId", &self.resource_id)?;
-        }
-        if !self.resource_kind.is_empty() {
-            struct_ser.serialize_field("resourceKind", &self.resource_kind)?;
-        }
-        if !self.resource_spec.is_empty() {
-            struct_ser.serialize_field("resourceSpec", &self.resource_spec)?;
-        }
-        if self.units != 0 {
-            #[allow(clippy::needless_borrow)]
-            struct_ser.serialize_field("units", ToString::to_string(&self.units).as_str())?;
-        }
-        if !self.tier.is_empty() {
-            struct_ser.serialize_field("tier", &self.tier)?;
-        }
-        if !self.period.is_empty() {
-            struct_ser.serialize_field("period", &self.period)?;
-=======
         if !self.id.is_empty() {
             len += 1;
         }
@@ -2655,52 +2612,26 @@ impl serde::Serialize for UpdateResourceRequest {
         }
         if !self.spec_patch.is_empty() {
             struct_ser.serialize_field("specPatch", &self.spec_patch)?;
->>>>>>> 9c20f3e4d1165388eadce082bf5dfd44105db0f1
         }
         struct_ser.end()
     }
 }
-<<<<<<< HEAD
-impl<'de> serde::Deserialize<'de> for UsageReport {
-=======
 impl<'de> serde::Deserialize<'de> for UpdateResourceRequest {
->>>>>>> 9c20f3e4d1165388eadce082bf5dfd44105db0f1
     #[allow(deprecated)]
     fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
     where
         D: serde::Deserializer<'de>,
     {
         const FIELDS: &[&str] = &[
-<<<<<<< HEAD
-            "resource_id",
-            "resourceId",
-            "resource_kind",
-            "resourceKind",
-            "resource_spec",
-            "resourceSpec",
-            "units",
-            "tier",
-            "period",
-=======
             "id",
             "spec_patch",
             "specPatch",
->>>>>>> 9c20f3e4d1165388eadce082bf5dfd44105db0f1
         ];
 
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
-<<<<<<< HEAD
-            ResourceId,
-            ResourceKind,
-            ResourceSpec,
-            Units,
-            Tier,
-            Period,
-=======
             Id,
             SpecPatch,
->>>>>>> 9c20f3e4d1165388eadce082bf5dfd44105db0f1
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
             fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
@@ -2722,17 +2653,8 @@ impl<'de> serde::Deserialize<'de> for UpdateResourceRequest {
                         E: serde::de::Error,
                     {
                         match value {
-<<<<<<< HEAD
-                            "resourceId" | "resource_id" => Ok(GeneratedField::ResourceId),
-                            "resourceKind" | "resource_kind" => Ok(GeneratedField::ResourceKind),
-                            "resourceSpec" | "resource_spec" => Ok(GeneratedField::ResourceSpec),
-                            "units" => Ok(GeneratedField::Units),
-                            "tier" => Ok(GeneratedField::Tier),
-                            "period" => Ok(GeneratedField::Period),
-=======
                             "id" => Ok(GeneratedField::Id),
                             "specPatch" | "spec_patch" => Ok(GeneratedField::SpecPatch),
->>>>>>> 9c20f3e4d1165388eadce082bf5dfd44105db0f1
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
                         }
                     }
@@ -2742,77 +2664,6 @@ impl<'de> serde::Deserialize<'de> for UpdateResourceRequest {
         }
         struct GeneratedVisitor;
         impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
-<<<<<<< HEAD
-            type Value = UsageReport;
-
-            fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct demeter.ops.v1alpha.UsageReport")
-            }
-
-            fn visit_map<V>(self, mut map_: V) -> std::result::Result<UsageReport, V::Error>
-                where
-                    V: serde::de::MapAccess<'de>,
-            {
-                let mut resource_id__ = None;
-                let mut resource_kind__ = None;
-                let mut resource_spec__ = None;
-                let mut units__ = None;
-                let mut tier__ = None;
-                let mut period__ = None;
-                while let Some(k) = map_.next_key()? {
-                    match k {
-                        GeneratedField::ResourceId => {
-                            if resource_id__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("resourceId"));
-                            }
-                            resource_id__ = Some(map_.next_value()?);
-                        }
-                        GeneratedField::ResourceKind => {
-                            if resource_kind__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("resourceKind"));
-                            }
-                            resource_kind__ = Some(map_.next_value()?);
-                        }
-                        GeneratedField::ResourceSpec => {
-                            if resource_spec__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("resourceSpec"));
-                            }
-                            resource_spec__ = Some(map_.next_value()?);
-                        }
-                        GeneratedField::Units => {
-                            if units__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("units"));
-                            }
-                            units__ = 
-                                Some(map_.next_value::<::pbjson::private::NumberDeserialize<_>>()?.0)
-                            ;
-                        }
-                        GeneratedField::Tier => {
-                            if tier__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("tier"));
-                            }
-                            tier__ = Some(map_.next_value()?);
-                        }
-                        GeneratedField::Period => {
-                            if period__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("period"));
-                            }
-                            period__ = Some(map_.next_value()?);
-                        }
-                    }
-                }
-                Ok(UsageReport {
-                    resource_id: resource_id__.unwrap_or_default(),
-                    resource_kind: resource_kind__.unwrap_or_default(),
-                    resource_spec: resource_spec__.unwrap_or_default(),
-                    units: units__.unwrap_or_default(),
-                    tier: tier__.unwrap_or_default(),
-                    period: period__.unwrap_or_default(),
-                })
-            }
-        }
-        deserializer.deserialize_struct("demeter.ops.v1alpha.UsageReport", FIELDS, GeneratedVisitor)
-=======
             type Value = UpdateResourceRequest;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -2939,6 +2790,187 @@ impl<'de> serde::Deserialize<'de> for UpdateResourceResponse {
             }
         }
         deserializer.deserialize_struct("demeter.ops.v1alpha.UpdateResourceResponse", FIELDS, GeneratedVisitor)
->>>>>>> 9c20f3e4d1165388eadce082bf5dfd44105db0f1
+    }
+}
+impl serde::Serialize for UsageReport {
+    #[allow(deprecated)]
+    fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        use serde::ser::SerializeStruct;
+        let mut len = 0;
+        if !self.resource_id.is_empty() {
+            len += 1;
+        }
+        if !self.resource_kind.is_empty() {
+            len += 1;
+        }
+        if !self.resource_spec.is_empty() {
+            len += 1;
+        }
+        if self.units != 0 {
+            len += 1;
+        }
+        if !self.tier.is_empty() {
+            len += 1;
+        }
+        if !self.period.is_empty() {
+            len += 1;
+        }
+        let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.UsageReport", len)?;
+        if !self.resource_id.is_empty() {
+            struct_ser.serialize_field("resourceId", &self.resource_id)?;
+        }
+        if !self.resource_kind.is_empty() {
+            struct_ser.serialize_field("resourceKind", &self.resource_kind)?;
+        }
+        if !self.resource_spec.is_empty() {
+            struct_ser.serialize_field("resourceSpec", &self.resource_spec)?;
+        }
+        if self.units != 0 {
+            #[allow(clippy::needless_borrow)]
+            struct_ser.serialize_field("units", ToString::to_string(&self.units).as_str())?;
+        }
+        if !self.tier.is_empty() {
+            struct_ser.serialize_field("tier", &self.tier)?;
+        }
+        if !self.period.is_empty() {
+            struct_ser.serialize_field("period", &self.period)?;
+        }
+        struct_ser.end()
+    }
+}
+impl<'de> serde::Deserialize<'de> for UsageReport {
+    #[allow(deprecated)]
+    fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        const FIELDS: &[&str] = &[
+            "resource_id",
+            "resourceId",
+            "resource_kind",
+            "resourceKind",
+            "resource_spec",
+            "resourceSpec",
+            "units",
+            "tier",
+            "period",
+        ];
+
+        #[allow(clippy::enum_variant_names)]
+        enum GeneratedField {
+            ResourceId,
+            ResourceKind,
+            ResourceSpec,
+            Units,
+            Tier,
+            Period,
+        }
+        impl<'de> serde::Deserialize<'de> for GeneratedField {
+            fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
+            where
+                D: serde::Deserializer<'de>,
+            {
+                struct GeneratedVisitor;
+
+                impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+                    type Value = GeneratedField;
+
+                    fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        write!(formatter, "expected one of: {:?}", &FIELDS)
+                    }
+
+                    #[allow(unused_variables)]
+                    fn visit_str<E>(self, value: &str) -> std::result::Result<GeneratedField, E>
+                    where
+                        E: serde::de::Error,
+                    {
+                        match value {
+                            "resourceId" | "resource_id" => Ok(GeneratedField::ResourceId),
+                            "resourceKind" | "resource_kind" => Ok(GeneratedField::ResourceKind),
+                            "resourceSpec" | "resource_spec" => Ok(GeneratedField::ResourceSpec),
+                            "units" => Ok(GeneratedField::Units),
+                            "tier" => Ok(GeneratedField::Tier),
+                            "period" => Ok(GeneratedField::Period),
+                            _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
+                        }
+                    }
+                }
+                deserializer.deserialize_identifier(GeneratedVisitor)
+            }
+        }
+        struct GeneratedVisitor;
+        impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+            type Value = UsageReport;
+
+            fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                formatter.write_str("struct demeter.ops.v1alpha.UsageReport")
+            }
+
+            fn visit_map<V>(self, mut map_: V) -> std::result::Result<UsageReport, V::Error>
+                where
+                    V: serde::de::MapAccess<'de>,
+            {
+                let mut resource_id__ = None;
+                let mut resource_kind__ = None;
+                let mut resource_spec__ = None;
+                let mut units__ = None;
+                let mut tier__ = None;
+                let mut period__ = None;
+                while let Some(k) = map_.next_key()? {
+                    match k {
+                        GeneratedField::ResourceId => {
+                            if resource_id__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("resourceId"));
+                            }
+                            resource_id__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::ResourceKind => {
+                            if resource_kind__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("resourceKind"));
+                            }
+                            resource_kind__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::ResourceSpec => {
+                            if resource_spec__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("resourceSpec"));
+                            }
+                            resource_spec__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::Units => {
+                            if units__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("units"));
+                            }
+                            units__ = 
+                                Some(map_.next_value::<::pbjson::private::NumberDeserialize<_>>()?.0)
+                            ;
+                        }
+                        GeneratedField::Tier => {
+                            if tier__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("tier"));
+                            }
+                            tier__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::Period => {
+                            if period__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("period"));
+                            }
+                            period__ = Some(map_.next_value()?);
+                        }
+                    }
+                }
+                Ok(UsageReport {
+                    resource_id: resource_id__.unwrap_or_default(),
+                    resource_kind: resource_kind__.unwrap_or_default(),
+                    resource_spec: resource_spec__.unwrap_or_default(),
+                    units: units__.unwrap_or_default(),
+                    tier: tier__.unwrap_or_default(),
+                    period: period__.unwrap_or_default(),
+                })
+            }
+        }
+        deserializer.deserialize_struct("demeter.ops.v1alpha.UsageReport", FIELDS, GeneratedVisitor)
     }
 }
