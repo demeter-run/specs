@@ -45,10 +45,16 @@ message FetchProjectsResponse {
   repeated Project records = 2;
 }
 
+message DeleteProjectRequest {
+  string id = 1; 
+}
+message DeleteProjectResponse {}
+
 service ProjectService {
   rpc FetchProjects(FetchProjectsRequest) returns (FetchProjectsResponse);
   rpc CreateProject(CreateProjectRequest) returns (CreateProjectResponse);
   rpc UpdateProject(UpdateProjectRequest) returns (UpdateProjectResponse);
+  rpc DeleteProject(DeleteProjectRequest) returns (DeleteProjectResponse);
   rpc CreateProjectSecret(CreateProjectSecretRequest) returns (CreateProjectSecretResponse);
 }
 

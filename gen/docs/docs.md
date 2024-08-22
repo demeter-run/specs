@@ -14,6 +14,8 @@
     - [CreateProjectResponse](#demeter-ops-v1alpha-CreateProjectResponse)
     - [CreateProjectSecretRequest](#demeter-ops-v1alpha-CreateProjectSecretRequest)
     - [CreateProjectSecretResponse](#demeter-ops-v1alpha-CreateProjectSecretResponse)
+    - [DeleteProjectRequest](#demeter-ops-v1alpha-DeleteProjectRequest)
+    - [DeleteProjectResponse](#demeter-ops-v1alpha-DeleteProjectResponse)
     - [FetchProjectsRequest](#demeter-ops-v1alpha-FetchProjectsRequest)
     - [FetchProjectsResponse](#demeter-ops-v1alpha-FetchProjectsResponse)
     - [Project](#demeter-ops-v1alpha-Project)
@@ -32,6 +34,8 @@
     - [FetchResourcesRequest](#demeter-ops-v1alpha-FetchResourcesRequest)
     - [FetchResourcesResponse](#demeter-ops-v1alpha-FetchResourcesResponse)
     - [Resource](#demeter-ops-v1alpha-Resource)
+    - [UpdateResourceRequest](#demeter-ops-v1alpha-UpdateResourceRequest)
+    - [UpdateResourceResponse](#demeter-ops-v1alpha-UpdateResourceResponse)
   
     - [ResourceService](#demeter-ops-v1alpha-ResourceService)
   
@@ -169,6 +173,31 @@
 
 
 
+<a name="demeter-ops-v1alpha-DeleteProjectRequest"></a>
+
+### DeleteProjectRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-DeleteProjectResponse"></a>
+
+### DeleteProjectResponse
+
+
+
+
+
+
+
 <a name="demeter-ops-v1alpha-FetchProjectsRequest"></a>
 
 ### FetchProjectsRequest
@@ -267,6 +296,7 @@
 | FetchProjects | [FetchProjectsRequest](#demeter-ops-v1alpha-FetchProjectsRequest) | [FetchProjectsResponse](#demeter-ops-v1alpha-FetchProjectsResponse) |  |
 | CreateProject | [CreateProjectRequest](#demeter-ops-v1alpha-CreateProjectRequest) | [CreateProjectResponse](#demeter-ops-v1alpha-CreateProjectResponse) |  |
 | UpdateProject | [UpdateProjectRequest](#demeter-ops-v1alpha-UpdateProjectRequest) | [UpdateProjectResponse](#demeter-ops-v1alpha-UpdateProjectResponse) |  |
+| DeleteProject | [DeleteProjectRequest](#demeter-ops-v1alpha-DeleteProjectRequest) | [DeleteProjectResponse](#demeter-ops-v1alpha-DeleteProjectResponse) |  |
 | CreateProjectSecret | [CreateProjectSecretRequest](#demeter-ops-v1alpha-CreateProjectSecretRequest) | [CreateProjectSecretResponse](#demeter-ops-v1alpha-CreateProjectSecretResponse) |  |
 
  
@@ -421,6 +451,37 @@
 
 
 
+
+<a name="demeter-ops-v1alpha-UpdateResourceRequest"></a>
+
+### UpdateResourceRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| spec_patch | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-UpdateResourceResponse"></a>
+
+### UpdateResourceResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| updated | [Resource](#demeter-ops-v1alpha-Resource) |  |  |
+
+
+
+
+
  
 
  
@@ -438,6 +499,7 @@
 | FetchResources | [FetchResourcesRequest](#demeter-ops-v1alpha-FetchResourcesRequest) | [FetchResourcesResponse](#demeter-ops-v1alpha-FetchResourcesResponse) |  |
 | FetchResourcesById | [FetchResourcesByIdRequest](#demeter-ops-v1alpha-FetchResourcesByIdRequest) | [FetchResourcesByIdResponse](#demeter-ops-v1alpha-FetchResourcesByIdResponse) |  |
 | CreateResource | [CreateResourceRequest](#demeter-ops-v1alpha-CreateResourceRequest) | [CreateResourceResponse](#demeter-ops-v1alpha-CreateResourceResponse) |  |
+| UpdateResource | [UpdateResourceRequest](#demeter-ops-v1alpha-UpdateResourceRequest) | [UpdateResourceResponse](#demeter-ops-v1alpha-UpdateResourceResponse) |  |
 | DeleteResource | [DeleteResourceRequest](#demeter-ops-v1alpha-DeleteResourceRequest) | [DeleteResourceResponse](#demeter-ops-v1alpha-DeleteResourceResponse) |  |
 
  
