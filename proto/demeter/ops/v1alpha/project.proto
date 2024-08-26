@@ -50,11 +50,40 @@ message DeleteProjectRequest {
 }
 message DeleteProjectResponse {}
 
+message Payment {
+  string id = 1;
+  string project_id = 2;
+  string provider = 3;
+  string provider_id = 4;
+  optional string subscription_id = 5;
+}
+
+message CreatePaymentRequest {
+  string project_id = 1;
+  string provider = 2;
+  string provider_id = 3;
+  optional string subscription_id = 4;
+}
+message CreatePaymentResponse {
+  repeated Payment records = 1;
+}
+
+message FetchPaymentRequest {
+  string project_id = 1;
+}
+message FetchPaymentResponse {
+  repeated Payment records = 1;
+}
+
 service ProjectService {
   rpc FetchProjects(FetchProjectsRequest) returns (FetchProjectsResponse);
   rpc CreateProject(CreateProjectRequest) returns (CreateProjectResponse);
   rpc UpdateProject(UpdateProjectRequest) returns (UpdateProjectResponse);
   rpc DeleteProject(DeleteProjectRequest) returns (DeleteProjectResponse);
+
   rpc CreateProjectSecret(CreateProjectSecretRequest) returns (CreateProjectSecretResponse);
+
+  rpc CreatePayment(CreatePaymentRequest) returns (CreatePaymentResponse);
+  rpc FetchPayment(FetchPaymentRequest) returns (FetchPaymentResponse);
 }
 

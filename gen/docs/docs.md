@@ -10,14 +10,19 @@
     - [MetadataService](#demeter-ops-v1alpha-MetadataService)
   
 - [proto/demeter/ops/v1alpha/project.proto](#proto_demeter_ops_v1alpha_project-proto)
+    - [CreatePaymentRequest](#demeter-ops-v1alpha-CreatePaymentRequest)
+    - [CreatePaymentResponse](#demeter-ops-v1alpha-CreatePaymentResponse)
     - [CreateProjectRequest](#demeter-ops-v1alpha-CreateProjectRequest)
     - [CreateProjectResponse](#demeter-ops-v1alpha-CreateProjectResponse)
     - [CreateProjectSecretRequest](#demeter-ops-v1alpha-CreateProjectSecretRequest)
     - [CreateProjectSecretResponse](#demeter-ops-v1alpha-CreateProjectSecretResponse)
     - [DeleteProjectRequest](#demeter-ops-v1alpha-DeleteProjectRequest)
     - [DeleteProjectResponse](#demeter-ops-v1alpha-DeleteProjectResponse)
+    - [FetchPaymentRequest](#demeter-ops-v1alpha-FetchPaymentRequest)
+    - [FetchPaymentResponse](#demeter-ops-v1alpha-FetchPaymentResponse)
     - [FetchProjectsRequest](#demeter-ops-v1alpha-FetchProjectsRequest)
     - [FetchProjectsResponse](#demeter-ops-v1alpha-FetchProjectsResponse)
+    - [Payment](#demeter-ops-v1alpha-Payment)
     - [Project](#demeter-ops-v1alpha-Project)
     - [UpdateProjectRequest](#demeter-ops-v1alpha-UpdateProjectRequest)
     - [UpdateProjectResponse](#demeter-ops-v1alpha-UpdateProjectResponse)
@@ -105,6 +110,39 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## proto/demeter/ops/v1alpha/project.proto
+
+
+
+<a name="demeter-ops-v1alpha-CreatePaymentRequest"></a>
+
+### CreatePaymentRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| project_id | [string](#string) |  |  |
+| provider | [string](#string) |  |  |
+| provider_id | [string](#string) |  |  |
+| subscription_id | [string](#string) | optional |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-CreatePaymentResponse"></a>
+
+### CreatePaymentResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| records | [Payment](#demeter-ops-v1alpha-Payment) | repeated |  |
+
+
+
 
 
 
@@ -198,6 +236,36 @@
 
 
 
+<a name="demeter-ops-v1alpha-FetchPaymentRequest"></a>
+
+### FetchPaymentRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| project_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-FetchPaymentResponse"></a>
+
+### FetchPaymentResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| records | [Payment](#demeter-ops-v1alpha-Payment) | repeated |  |
+
+
+
+
+
+
 <a name="demeter-ops-v1alpha-FetchProjectsRequest"></a>
 
 ### FetchProjectsRequest
@@ -223,6 +291,25 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | records | [Project](#demeter-ops-v1alpha-Project) | repeated |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-Payment"></a>
+
+### Payment
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| project_id | [string](#string) |  |  |
+| provider | [string](#string) |  |  |
+| provider_id | [string](#string) |  |  |
+| subscription_id | [string](#string) | optional |  |
 
 
 
@@ -298,6 +385,8 @@
 | UpdateProject | [UpdateProjectRequest](#demeter-ops-v1alpha-UpdateProjectRequest) | [UpdateProjectResponse](#demeter-ops-v1alpha-UpdateProjectResponse) |  |
 | DeleteProject | [DeleteProjectRequest](#demeter-ops-v1alpha-DeleteProjectRequest) | [DeleteProjectResponse](#demeter-ops-v1alpha-DeleteProjectResponse) |  |
 | CreateProjectSecret | [CreateProjectSecretRequest](#demeter-ops-v1alpha-CreateProjectSecretRequest) | [CreateProjectSecretResponse](#demeter-ops-v1alpha-CreateProjectSecretResponse) |  |
+| CreatePayment | [CreatePaymentRequest](#demeter-ops-v1alpha-CreatePaymentRequest) | [CreatePaymentResponse](#demeter-ops-v1alpha-CreatePaymentResponse) |  |
+| FetchPayment | [FetchPaymentRequest](#demeter-ops-v1alpha-FetchPaymentRequest) | [FetchPaymentResponse](#demeter-ops-v1alpha-FetchPaymentResponse) |  |
 
  
 
