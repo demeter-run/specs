@@ -58,21 +58,45 @@ message Payment {
   optional string subscription_id = 5;
 }
 
-message CreatePaymentRequest {
+message CreateProjectPaymentRequest {
   string project_id = 1;
   string provider = 2;
   string provider_id = 3;
   optional string subscription_id = 4;
 }
-message CreatePaymentResponse {
+message CreateProjectPaymentResponse {
   repeated Payment records = 1;
 }
 
-message FetchPaymentRequest {
+message FetchProjectPaymentRequest {
   string project_id = 1;
 }
-message FetchPaymentResponse {
+message FetchProjectPaymentResponse {
   repeated Payment records = 1;
+}
+
+message User {
+  string id = 1;
+  string project_id = 2; 
+  string user_id = 3; 
+  string role = 4; 
+  string created_at = 5; 
+  string updated_at = 6; 
+}
+
+message CreateProjectInviteRequest {
+  string project_id = 1;
+  string email = 2;
+}
+message CreateProjectInviteResponse {}
+
+message FetchProjectUsersRequest {
+  string project_id = 1;
+  optional uint32 page = 2;
+  optional uint32 page_size = 3;
+}
+message FetchProjectUsersResponse {
+  repeated User records = 1;
 }
 
 service ProjectService {
@@ -83,7 +107,10 @@ service ProjectService {
 
   rpc CreateProjectSecret(CreateProjectSecretRequest) returns (CreateProjectSecretResponse);
 
-  rpc CreatePayment(CreatePaymentRequest) returns (CreatePaymentResponse);
-  rpc FetchPayment(FetchPaymentRequest) returns (FetchPaymentResponse);
+  rpc CreateProjectPayment(CreateProjectPaymentRequest) returns (CreateProjectPaymentResponse);
+  rpc FetchProjectPayment(FetchProjectPaymentRequest) returns (FetchProjectPaymentResponse);
+
+  rpc CreateProjectInvite(CreateProjectInviteRequest) returns (CreateProjectInviteResponse);
+  rpc FetchProjectUsers(FetchProjectUsersRequest) returns (FetchProjectUsersResponse);
 }
 

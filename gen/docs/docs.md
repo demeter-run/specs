@@ -10,22 +10,27 @@
     - [MetadataService](#demeter-ops-v1alpha-MetadataService)
   
 - [proto/demeter/ops/v1alpha/project.proto](#proto_demeter_ops_v1alpha_project-proto)
-    - [CreatePaymentRequest](#demeter-ops-v1alpha-CreatePaymentRequest)
-    - [CreatePaymentResponse](#demeter-ops-v1alpha-CreatePaymentResponse)
+    - [CreateProjectInviteRequest](#demeter-ops-v1alpha-CreateProjectInviteRequest)
+    - [CreateProjectInviteResponse](#demeter-ops-v1alpha-CreateProjectInviteResponse)
+    - [CreateProjectPaymentRequest](#demeter-ops-v1alpha-CreateProjectPaymentRequest)
+    - [CreateProjectPaymentResponse](#demeter-ops-v1alpha-CreateProjectPaymentResponse)
     - [CreateProjectRequest](#demeter-ops-v1alpha-CreateProjectRequest)
     - [CreateProjectResponse](#demeter-ops-v1alpha-CreateProjectResponse)
     - [CreateProjectSecretRequest](#demeter-ops-v1alpha-CreateProjectSecretRequest)
     - [CreateProjectSecretResponse](#demeter-ops-v1alpha-CreateProjectSecretResponse)
     - [DeleteProjectRequest](#demeter-ops-v1alpha-DeleteProjectRequest)
     - [DeleteProjectResponse](#demeter-ops-v1alpha-DeleteProjectResponse)
-    - [FetchPaymentRequest](#demeter-ops-v1alpha-FetchPaymentRequest)
-    - [FetchPaymentResponse](#demeter-ops-v1alpha-FetchPaymentResponse)
+    - [FetchProjectPaymentRequest](#demeter-ops-v1alpha-FetchProjectPaymentRequest)
+    - [FetchProjectPaymentResponse](#demeter-ops-v1alpha-FetchProjectPaymentResponse)
+    - [FetchProjectUsersRequest](#demeter-ops-v1alpha-FetchProjectUsersRequest)
+    - [FetchProjectUsersResponse](#demeter-ops-v1alpha-FetchProjectUsersResponse)
     - [FetchProjectsRequest](#demeter-ops-v1alpha-FetchProjectsRequest)
     - [FetchProjectsResponse](#demeter-ops-v1alpha-FetchProjectsResponse)
     - [Payment](#demeter-ops-v1alpha-Payment)
     - [Project](#demeter-ops-v1alpha-Project)
     - [UpdateProjectRequest](#demeter-ops-v1alpha-UpdateProjectRequest)
     - [UpdateProjectResponse](#demeter-ops-v1alpha-UpdateProjectResponse)
+    - [User](#demeter-ops-v1alpha-User)
   
     - [ProjectService](#demeter-ops-v1alpha-ProjectService)
   
@@ -113,9 +118,35 @@
 
 
 
-<a name="demeter-ops-v1alpha-CreatePaymentRequest"></a>
+<a name="demeter-ops-v1alpha-CreateProjectInviteRequest"></a>
 
-### CreatePaymentRequest
+### CreateProjectInviteRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| project_id | [string](#string) |  |  |
+| email | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-CreateProjectInviteResponse"></a>
+
+### CreateProjectInviteResponse
+
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-CreateProjectPaymentRequest"></a>
+
+### CreateProjectPaymentRequest
 
 
 
@@ -131,9 +162,9 @@
 
 
 
-<a name="demeter-ops-v1alpha-CreatePaymentResponse"></a>
+<a name="demeter-ops-v1alpha-CreateProjectPaymentResponse"></a>
 
-### CreatePaymentResponse
+### CreateProjectPaymentResponse
 
 
 
@@ -236,9 +267,9 @@
 
 
 
-<a name="demeter-ops-v1alpha-FetchPaymentRequest"></a>
+<a name="demeter-ops-v1alpha-FetchProjectPaymentRequest"></a>
 
-### FetchPaymentRequest
+### FetchProjectPaymentRequest
 
 
 
@@ -251,15 +282,47 @@
 
 
 
-<a name="demeter-ops-v1alpha-FetchPaymentResponse"></a>
+<a name="demeter-ops-v1alpha-FetchProjectPaymentResponse"></a>
 
-### FetchPaymentResponse
+### FetchProjectPaymentResponse
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | records | [Payment](#demeter-ops-v1alpha-Payment) | repeated |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-FetchProjectUsersRequest"></a>
+
+### FetchProjectUsersRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| project_id | [string](#string) |  |  |
+| page | [uint32](#uint32) | optional |  |
+| page_size | [uint32](#uint32) | optional |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-FetchProjectUsersResponse"></a>
+
+### FetchProjectUsersResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| records | [User](#demeter-ops-v1alpha-User) | repeated |  |
 
 
 
@@ -366,6 +429,26 @@
 
 
 
+
+<a name="demeter-ops-v1alpha-User"></a>
+
+### User
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| project_id | [string](#string) |  |  |
+| user_id | [string](#string) |  |  |
+| role | [string](#string) |  |  |
+| created_at | [string](#string) |  |  |
+| updated_at | [string](#string) |  |  |
+
+
+
+
+
  
 
  
@@ -385,8 +468,10 @@
 | UpdateProject | [UpdateProjectRequest](#demeter-ops-v1alpha-UpdateProjectRequest) | [UpdateProjectResponse](#demeter-ops-v1alpha-UpdateProjectResponse) |  |
 | DeleteProject | [DeleteProjectRequest](#demeter-ops-v1alpha-DeleteProjectRequest) | [DeleteProjectResponse](#demeter-ops-v1alpha-DeleteProjectResponse) |  |
 | CreateProjectSecret | [CreateProjectSecretRequest](#demeter-ops-v1alpha-CreateProjectSecretRequest) | [CreateProjectSecretResponse](#demeter-ops-v1alpha-CreateProjectSecretResponse) |  |
-| CreatePayment | [CreatePaymentRequest](#demeter-ops-v1alpha-CreatePaymentRequest) | [CreatePaymentResponse](#demeter-ops-v1alpha-CreatePaymentResponse) |  |
-| FetchPayment | [FetchPaymentRequest](#demeter-ops-v1alpha-FetchPaymentRequest) | [FetchPaymentResponse](#demeter-ops-v1alpha-FetchPaymentResponse) |  |
+| CreateProjectPayment | [CreateProjectPaymentRequest](#demeter-ops-v1alpha-CreateProjectPaymentRequest) | [CreateProjectPaymentResponse](#demeter-ops-v1alpha-CreateProjectPaymentResponse) |  |
+| FetchProjectPayment | [FetchProjectPaymentRequest](#demeter-ops-v1alpha-FetchProjectPaymentRequest) | [FetchProjectPaymentResponse](#demeter-ops-v1alpha-FetchProjectPaymentResponse) |  |
+| CreateProjectInvite | [CreateProjectInviteRequest](#demeter-ops-v1alpha-CreateProjectInviteRequest) | [CreateProjectInviteResponse](#demeter-ops-v1alpha-CreateProjectInviteResponse) |  |
+| FetchProjectUsers | [FetchProjectUsersRequest](#demeter-ops-v1alpha-FetchProjectUsersRequest) | [FetchProjectUsersResponse](#demeter-ops-v1alpha-FetchProjectUsersResponse) |  |
 
  
 
