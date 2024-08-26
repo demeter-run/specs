@@ -173,7 +173,11 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| records | [ProjectPayment](#demeter-ops-v1alpha-ProjectPayment) | repeated |  |
+| id | [string](#string) |  |  |
+| project_id | [string](#string) |  |  |
+| provider | [string](#string) |  |  |
+| provider_id | [string](#string) |  |  |
+| subscription_id | [string](#string) | optional |  |
 
 
 

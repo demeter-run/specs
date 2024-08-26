@@ -74,7 +74,11 @@ message CreateProjectPaymentRequest {
   optional string subscription_id = 4;
 }
 message CreateProjectPaymentResponse {
-  repeated ProjectPayment records = 1;
+  string id = 1;
+  string project_id = 2;
+  string provider = 3;
+  string provider_id = 4;
+  optional string subscription_id = 5;
 }
 message FetchProjectPaymentRequest {
   string project_id = 1;
