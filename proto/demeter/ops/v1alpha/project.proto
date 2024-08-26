@@ -2,6 +2,14 @@ syntax = "proto3";
 
 package demeter.ops.v1alpha;
 
+message Project {
+  string id = 1;
+  string name = 2; 
+  string namespace = 3; 
+  string status = 4; 
+  string created_at = 5; 
+  string updated_at = 6; 
+}
 message CreateProjectRequest {
   string name = 1; 
 }
@@ -10,7 +18,31 @@ message CreateProjectResponse {
   string name = 2; 
   string namespace = 3; 
 }
+message UpdateProjectRequest {
+  string id = 1;
+  string name = 2; 
+}
+message UpdateProjectResponse {
+  Project updated = 1;
+}
+message FetchProjectsRequest {
+  optional uint32 page = 1;
+  optional uint32 page_size = 2;
+}
+message FetchProjectsResponse {
+  repeated Project records = 2;
+}
+message DeleteProjectRequest {
+  string id = 1; 
+}
+message DeleteProjectResponse {}
 
+message ProjectSecret {
+  string id = 1;
+  string project_id = 2;
+  string name = 3; 
+  string created_at = 4; 
+}
 message CreateProjectSecretRequest {
   string name = 1; 
   string project_id = 2;
@@ -20,41 +52,76 @@ message CreateProjectSecretResponse {
   string name = 2; 
   string key = 3;
 }
-
-message UpdateProjectRequest {
-  string id = 1;
-  string name = 2; 
+message FetchProjectSecretsRequest {
+  string project_id = 1;
 }
-message UpdateProjectResponse {
-  Project updated = 1;
+message FetchProjectSecretsResponse {
+  repeated ProjectSecret records = 2;
 }
 
-message Project {
+message ProjectPayment {
   string id = 1;
-  string name = 2; 
-  string namespace = 3; 
-  string status = 4; 
+  string project_id = 2;
+  string provider = 3;
+  string provider_id = 4;
+  optional string subscription_id = 5;
+  string created_at = 6; 
+}
+message CreateProjectPaymentRequest {
+  string project_id = 1;
+  string provider = 2;
+  string provider_id = 3;
+  optional string subscription_id = 4;
+}
+message CreateProjectPaymentResponse {
+  string id = 1;
+  string project_id = 2;
+  string provider = 3;
+  string provider_id = 4;
+  optional string subscription_id = 5;
+}
+message FetchProjectPaymentRequest {
+  string project_id = 1;
+}
+message FetchProjectPaymentResponse {
+  repeated ProjectPayment records = 1;
+}
+
+message ProjectUser {
+  string id = 1;
+  string project_id = 2; 
+  string user_id = 3; 
+  string role = 4; 
   string created_at = 5; 
   string updated_at = 6; 
 }
-message FetchProjectsRequest {
-  optional uint32 page = 1;
-  optional uint32 page_size = 2;
+message CreateProjectInviteRequest {
+  string project_id = 1;
+  string email = 2;
 }
-message FetchProjectsResponse {
-  repeated Project records = 2;
+message CreateProjectInviteResponse {}
+message FetchProjectUsersRequest {
+  string project_id = 1;
+  optional uint32 page = 2;
+  optional uint32 page_size = 3;
 }
-
-message DeleteProjectRequest {
-  string id = 1; 
+message FetchProjectUsersResponse {
+  repeated ProjectUser records = 1;
 }
-message DeleteProjectResponse {}
 
 service ProjectService {
   rpc FetchProjects(FetchProjectsRequest) returns (FetchProjectsResponse);
   rpc CreateProject(CreateProjectRequest) returns (CreateProjectResponse);
   rpc UpdateProject(UpdateProjectRequest) returns (UpdateProjectResponse);
   rpc DeleteProject(DeleteProjectRequest) returns (DeleteProjectResponse);
+
+  rpc FetchProjectSecrets(FetchProjectSecretsRequest) returns (FetchProjectSecretsResponse);
   rpc CreateProjectSecret(CreateProjectSecretRequest) returns (CreateProjectSecretResponse);
+
+  rpc FetchProjectPayment(FetchProjectPaymentRequest) returns (FetchProjectPaymentResponse);
+  rpc CreateProjectPayment(CreateProjectPaymentRequest) returns (CreateProjectPaymentResponse);
+
+  rpc FetchProjectUsers(FetchProjectUsersRequest) returns (FetchProjectUsersResponse);
+  rpc CreateProjectInvite(CreateProjectInviteRequest) returns (CreateProjectInviteResponse);
 }
 
