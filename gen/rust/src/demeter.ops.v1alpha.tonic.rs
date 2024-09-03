@@ -606,11 +606,11 @@ pub mod project_service_client {
             self.inner.unary(req, path, codec).await
         }
         ///
-        pub async fn create_project_invite(
+        pub async fn create_project_user_invite(
             &mut self,
-            request: impl tonic::IntoRequest<super::CreateProjectInviteRequest>,
+            request: impl tonic::IntoRequest<super::CreateProjectUserInviteRequest>,
         ) -> std::result::Result<
-            tonic::Response<super::CreateProjectInviteResponse>,
+            tonic::Response<super::CreateProjectUserInviteResponse>,
             tonic::Status,
         > {
             self.inner
@@ -624,14 +624,45 @@ pub mod project_service_client {
                 })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/demeter.ops.v1alpha.ProjectService/CreateProjectInvite",
+                "/demeter.ops.v1alpha.ProjectService/CreateProjectUserInvite",
             );
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(
                     GrpcMethod::new(
                         "demeter.ops.v1alpha.ProjectService",
-                        "CreateProjectInvite",
+                        "CreateProjectUserInvite",
+                    ),
+                );
+            self.inner.unary(req, path, codec).await
+        }
+        ///
+        pub async fn accept_project_user_invite(
+            &mut self,
+            request: impl tonic::IntoRequest<super::AcceptProjectUserInviteRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::AcceptProjectUserInviteResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/demeter.ops.v1alpha.ProjectService/AcceptProjectUserInvite",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new(
+                        "demeter.ops.v1alpha.ProjectService",
+                        "AcceptProjectUserInvite",
                     ),
                 );
             self.inner.unary(req, path, codec).await
@@ -702,11 +733,19 @@ pub mod project_service_server {
             tonic::Status,
         >;
         ///
-        async fn create_project_invite(
+        async fn create_project_user_invite(
             &self,
-            request: tonic::Request<super::CreateProjectInviteRequest>,
+            request: tonic::Request<super::CreateProjectUserInviteRequest>,
         ) -> std::result::Result<
-            tonic::Response<super::CreateProjectInviteResponse>,
+            tonic::Response<super::CreateProjectUserInviteResponse>,
+            tonic::Status,
+        >;
+        ///
+        async fn accept_project_user_invite(
+            &self,
+            request: tonic::Request<super::AcceptProjectUserInviteRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::AcceptProjectUserInviteResponse>,
             tonic::Status,
         >;
     }
@@ -1121,25 +1160,27 @@ pub mod project_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/demeter.ops.v1alpha.ProjectService/CreateProjectInvite" => {
+                "/demeter.ops.v1alpha.ProjectService/CreateProjectUserInvite" => {
                     #[allow(non_camel_case_types)]
-                    struct CreateProjectInviteSvc<T: ProjectService>(pub Arc<T>);
+                    struct CreateProjectUserInviteSvc<T: ProjectService>(pub Arc<T>);
                     impl<
                         T: ProjectService,
-                    > tonic::server::UnaryService<super::CreateProjectInviteRequest>
-                    for CreateProjectInviteSvc<T> {
-                        type Response = super::CreateProjectInviteResponse;
+                    > tonic::server::UnaryService<super::CreateProjectUserInviteRequest>
+                    for CreateProjectUserInviteSvc<T> {
+                        type Response = super::CreateProjectUserInviteResponse;
                         type Future = BoxFuture<
                             tonic::Response<Self::Response>,
                             tonic::Status,
                         >;
                         fn call(
                             &mut self,
-                            request: tonic::Request<super::CreateProjectInviteRequest>,
+                            request: tonic::Request<
+                                super::CreateProjectUserInviteRequest,
+                            >,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as ProjectService>::create_project_invite(
+                                <T as ProjectService>::create_project_user_invite(
                                         &inner,
                                         request,
                                     )
@@ -1155,7 +1196,59 @@ pub mod project_service_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let inner = inner.0;
-                        let method = CreateProjectInviteSvc(inner);
+                        let method = CreateProjectUserInviteSvc(inner);
+                        let codec = tonic::codec::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/demeter.ops.v1alpha.ProjectService/AcceptProjectUserInvite" => {
+                    #[allow(non_camel_case_types)]
+                    struct AcceptProjectUserInviteSvc<T: ProjectService>(pub Arc<T>);
+                    impl<
+                        T: ProjectService,
+                    > tonic::server::UnaryService<super::AcceptProjectUserInviteRequest>
+                    for AcceptProjectUserInviteSvc<T> {
+                        type Response = super::AcceptProjectUserInviteResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<
+                                super::AcceptProjectUserInviteRequest,
+                            >,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as ProjectService>::accept_project_user_invite(
+                                        &inner,
+                                        request,
+                                    )
+                                    .await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let inner = inner.0;
+                        let method = AcceptProjectUserInviteSvc(inner);
                         let codec = tonic::codec::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(

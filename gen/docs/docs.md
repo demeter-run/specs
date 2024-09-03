@@ -10,12 +10,14 @@
     - [MetadataService](#demeter-ops-v1alpha-MetadataService)
   
 - [proto/demeter/ops/v1alpha/project.proto](#proto_demeter_ops_v1alpha_project-proto)
-    - [CreateProjectInviteRequest](#demeter-ops-v1alpha-CreateProjectInviteRequest)
-    - [CreateProjectInviteResponse](#demeter-ops-v1alpha-CreateProjectInviteResponse)
+    - [AcceptProjectUserInviteRequest](#demeter-ops-v1alpha-AcceptProjectUserInviteRequest)
+    - [AcceptProjectUserInviteResponse](#demeter-ops-v1alpha-AcceptProjectUserInviteResponse)
     - [CreateProjectRequest](#demeter-ops-v1alpha-CreateProjectRequest)
     - [CreateProjectResponse](#demeter-ops-v1alpha-CreateProjectResponse)
     - [CreateProjectSecretRequest](#demeter-ops-v1alpha-CreateProjectSecretRequest)
     - [CreateProjectSecretResponse](#demeter-ops-v1alpha-CreateProjectSecretResponse)
+    - [CreateProjectUserInviteRequest](#demeter-ops-v1alpha-CreateProjectUserInviteRequest)
+    - [CreateProjectUserInviteResponse](#demeter-ops-v1alpha-CreateProjectUserInviteResponse)
     - [DeleteProjectRequest](#demeter-ops-v1alpha-DeleteProjectRequest)
     - [DeleteProjectResponse](#demeter-ops-v1alpha-DeleteProjectResponse)
     - [FetchProjectSecretsRequest](#demeter-ops-v1alpha-FetchProjectSecretsRequest)
@@ -116,25 +118,24 @@
 
 
 
-<a name="demeter-ops-v1alpha-CreateProjectInviteRequest"></a>
+<a name="demeter-ops-v1alpha-AcceptProjectUserInviteRequest"></a>
 
-### CreateProjectInviteRequest
+### AcceptProjectUserInviteRequest
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| project_id | [string](#string) |  |  |
-| email | [string](#string) |  |  |
+| code | [string](#string) |  |  |
 
 
 
 
 
 
-<a name="demeter-ops-v1alpha-CreateProjectInviteResponse"></a>
+<a name="demeter-ops-v1alpha-AcceptProjectUserInviteResponse"></a>
 
-### CreateProjectInviteResponse
+### AcceptProjectUserInviteResponse
 
 
 
@@ -201,6 +202,33 @@
 | id | [string](#string) |  |  |
 | name | [string](#string) |  |  |
 | key | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-CreateProjectUserInviteRequest"></a>
+
+### CreateProjectUserInviteRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| project_id | [string](#string) |  |  |
+| email | [string](#string) |  |  |
+| role | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-CreateProjectUserInviteResponse"></a>
+
+### CreateProjectUserInviteResponse
+
 
 
 
@@ -437,7 +465,8 @@
 | FetchProjectSecrets | [FetchProjectSecretsRequest](#demeter-ops-v1alpha-FetchProjectSecretsRequest) | [FetchProjectSecretsResponse](#demeter-ops-v1alpha-FetchProjectSecretsResponse) |  |
 | CreateProjectSecret | [CreateProjectSecretRequest](#demeter-ops-v1alpha-CreateProjectSecretRequest) | [CreateProjectSecretResponse](#demeter-ops-v1alpha-CreateProjectSecretResponse) |  |
 | FetchProjectUsers | [FetchProjectUsersRequest](#demeter-ops-v1alpha-FetchProjectUsersRequest) | [FetchProjectUsersResponse](#demeter-ops-v1alpha-FetchProjectUsersResponse) |  |
-| CreateProjectInvite | [CreateProjectInviteRequest](#demeter-ops-v1alpha-CreateProjectInviteRequest) | [CreateProjectInviteResponse](#demeter-ops-v1alpha-CreateProjectInviteResponse) |  |
+| CreateProjectUserInvite | [CreateProjectUserInviteRequest](#demeter-ops-v1alpha-CreateProjectUserInviteRequest) | [CreateProjectUserInviteResponse](#demeter-ops-v1alpha-CreateProjectUserInviteResponse) |  |
+| AcceptProjectUserInvite | [AcceptProjectUserInviteRequest](#demeter-ops-v1alpha-AcceptProjectUserInviteRequest) | [AcceptProjectUserInviteResponse](#demeter-ops-v1alpha-AcceptProjectUserInviteResponse) |  |
 
  
 

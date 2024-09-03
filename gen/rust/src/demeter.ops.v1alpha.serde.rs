@@ -1,5 +1,5 @@
 // @generated
-impl serde::Serialize for CreateProjectInviteRequest {
+impl serde::Serialize for AcceptProjectUserInviteRequest {
     #[allow(deprecated)]
     fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
     where
@@ -7,38 +7,29 @@ impl serde::Serialize for CreateProjectInviteRequest {
     {
         use serde::ser::SerializeStruct;
         let mut len = 0;
-        if !self.project_id.is_empty() {
+        if !self.code.is_empty() {
             len += 1;
         }
-        if !self.email.is_empty() {
-            len += 1;
-        }
-        let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.CreateProjectInviteRequest", len)?;
-        if !self.project_id.is_empty() {
-            struct_ser.serialize_field("projectId", &self.project_id)?;
-        }
-        if !self.email.is_empty() {
-            struct_ser.serialize_field("email", &self.email)?;
+        let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.AcceptProjectUserInviteRequest", len)?;
+        if !self.code.is_empty() {
+            struct_ser.serialize_field("code", &self.code)?;
         }
         struct_ser.end()
     }
 }
-impl<'de> serde::Deserialize<'de> for CreateProjectInviteRequest {
+impl<'de> serde::Deserialize<'de> for AcceptProjectUserInviteRequest {
     #[allow(deprecated)]
     fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
     where
         D: serde::Deserializer<'de>,
     {
         const FIELDS: &[&str] = &[
-            "project_id",
-            "projectId",
-            "email",
+            "code",
         ];
 
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
-            ProjectId,
-            Email,
+            Code,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
             fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
@@ -60,8 +51,7 @@ impl<'de> serde::Deserialize<'de> for CreateProjectInviteRequest {
                         E: serde::de::Error,
                     {
                         match value {
-                            "projectId" | "project_id" => Ok(GeneratedField::ProjectId),
-                            "email" => Ok(GeneratedField::Email),
+                            "code" => Ok(GeneratedField::Code),
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
                         }
                     }
@@ -71,44 +61,36 @@ impl<'de> serde::Deserialize<'de> for CreateProjectInviteRequest {
         }
         struct GeneratedVisitor;
         impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
-            type Value = CreateProjectInviteRequest;
+            type Value = AcceptProjectUserInviteRequest;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct demeter.ops.v1alpha.CreateProjectInviteRequest")
+                formatter.write_str("struct demeter.ops.v1alpha.AcceptProjectUserInviteRequest")
             }
 
-            fn visit_map<V>(self, mut map_: V) -> std::result::Result<CreateProjectInviteRequest, V::Error>
+            fn visit_map<V>(self, mut map_: V) -> std::result::Result<AcceptProjectUserInviteRequest, V::Error>
                 where
                     V: serde::de::MapAccess<'de>,
             {
-                let mut project_id__ = None;
-                let mut email__ = None;
+                let mut code__ = None;
                 while let Some(k) = map_.next_key()? {
                     match k {
-                        GeneratedField::ProjectId => {
-                            if project_id__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("projectId"));
+                        GeneratedField::Code => {
+                            if code__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("code"));
                             }
-                            project_id__ = Some(map_.next_value()?);
-                        }
-                        GeneratedField::Email => {
-                            if email__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("email"));
-                            }
-                            email__ = Some(map_.next_value()?);
+                            code__ = Some(map_.next_value()?);
                         }
                     }
                 }
-                Ok(CreateProjectInviteRequest {
-                    project_id: project_id__.unwrap_or_default(),
-                    email: email__.unwrap_or_default(),
+                Ok(AcceptProjectUserInviteRequest {
+                    code: code__.unwrap_or_default(),
                 })
             }
         }
-        deserializer.deserialize_struct("demeter.ops.v1alpha.CreateProjectInviteRequest", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("demeter.ops.v1alpha.AcceptProjectUserInviteRequest", FIELDS, GeneratedVisitor)
     }
 }
-impl serde::Serialize for CreateProjectInviteResponse {
+impl serde::Serialize for AcceptProjectUserInviteResponse {
     #[allow(deprecated)]
     fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
     where
@@ -116,11 +98,11 @@ impl serde::Serialize for CreateProjectInviteResponse {
     {
         use serde::ser::SerializeStruct;
         let len = 0;
-        let struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.CreateProjectInviteResponse", len)?;
+        let struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.AcceptProjectUserInviteResponse", len)?;
         struct_ser.end()
     }
 }
-impl<'de> serde::Deserialize<'de> for CreateProjectInviteResponse {
+impl<'de> serde::Deserialize<'de> for AcceptProjectUserInviteResponse {
     #[allow(deprecated)]
     fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
     where
@@ -159,24 +141,24 @@ impl<'de> serde::Deserialize<'de> for CreateProjectInviteResponse {
         }
         struct GeneratedVisitor;
         impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
-            type Value = CreateProjectInviteResponse;
+            type Value = AcceptProjectUserInviteResponse;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct demeter.ops.v1alpha.CreateProjectInviteResponse")
+                formatter.write_str("struct demeter.ops.v1alpha.AcceptProjectUserInviteResponse")
             }
 
-            fn visit_map<V>(self, mut map_: V) -> std::result::Result<CreateProjectInviteResponse, V::Error>
+            fn visit_map<V>(self, mut map_: V) -> std::result::Result<AcceptProjectUserInviteResponse, V::Error>
                 where
                     V: serde::de::MapAccess<'de>,
             {
                 while map_.next_key::<GeneratedField>()?.is_some() {
                     let _ = map_.next_value::<serde::de::IgnoredAny>()?;
                 }
-                Ok(CreateProjectInviteResponse {
+                Ok(AcceptProjectUserInviteResponse {
                 })
             }
         }
-        deserializer.deserialize_struct("demeter.ops.v1alpha.CreateProjectInviteResponse", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("demeter.ops.v1alpha.AcceptProjectUserInviteResponse", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for CreateProjectRequest {
@@ -627,6 +609,203 @@ impl<'de> serde::Deserialize<'de> for CreateProjectSecretResponse {
             }
         }
         deserializer.deserialize_struct("demeter.ops.v1alpha.CreateProjectSecretResponse", FIELDS, GeneratedVisitor)
+    }
+}
+impl serde::Serialize for CreateProjectUserInviteRequest {
+    #[allow(deprecated)]
+    fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        use serde::ser::SerializeStruct;
+        let mut len = 0;
+        if !self.project_id.is_empty() {
+            len += 1;
+        }
+        if !self.email.is_empty() {
+            len += 1;
+        }
+        if !self.role.is_empty() {
+            len += 1;
+        }
+        let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.CreateProjectUserInviteRequest", len)?;
+        if !self.project_id.is_empty() {
+            struct_ser.serialize_field("projectId", &self.project_id)?;
+        }
+        if !self.email.is_empty() {
+            struct_ser.serialize_field("email", &self.email)?;
+        }
+        if !self.role.is_empty() {
+            struct_ser.serialize_field("role", &self.role)?;
+        }
+        struct_ser.end()
+    }
+}
+impl<'de> serde::Deserialize<'de> for CreateProjectUserInviteRequest {
+    #[allow(deprecated)]
+    fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        const FIELDS: &[&str] = &[
+            "project_id",
+            "projectId",
+            "email",
+            "role",
+        ];
+
+        #[allow(clippy::enum_variant_names)]
+        enum GeneratedField {
+            ProjectId,
+            Email,
+            Role,
+        }
+        impl<'de> serde::Deserialize<'de> for GeneratedField {
+            fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
+            where
+                D: serde::Deserializer<'de>,
+            {
+                struct GeneratedVisitor;
+
+                impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+                    type Value = GeneratedField;
+
+                    fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        write!(formatter, "expected one of: {:?}", &FIELDS)
+                    }
+
+                    #[allow(unused_variables)]
+                    fn visit_str<E>(self, value: &str) -> std::result::Result<GeneratedField, E>
+                    where
+                        E: serde::de::Error,
+                    {
+                        match value {
+                            "projectId" | "project_id" => Ok(GeneratedField::ProjectId),
+                            "email" => Ok(GeneratedField::Email),
+                            "role" => Ok(GeneratedField::Role),
+                            _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
+                        }
+                    }
+                }
+                deserializer.deserialize_identifier(GeneratedVisitor)
+            }
+        }
+        struct GeneratedVisitor;
+        impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+            type Value = CreateProjectUserInviteRequest;
+
+            fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                formatter.write_str("struct demeter.ops.v1alpha.CreateProjectUserInviteRequest")
+            }
+
+            fn visit_map<V>(self, mut map_: V) -> std::result::Result<CreateProjectUserInviteRequest, V::Error>
+                where
+                    V: serde::de::MapAccess<'de>,
+            {
+                let mut project_id__ = None;
+                let mut email__ = None;
+                let mut role__ = None;
+                while let Some(k) = map_.next_key()? {
+                    match k {
+                        GeneratedField::ProjectId => {
+                            if project_id__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("projectId"));
+                            }
+                            project_id__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::Email => {
+                            if email__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("email"));
+                            }
+                            email__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::Role => {
+                            if role__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("role"));
+                            }
+                            role__ = Some(map_.next_value()?);
+                        }
+                    }
+                }
+                Ok(CreateProjectUserInviteRequest {
+                    project_id: project_id__.unwrap_or_default(),
+                    email: email__.unwrap_or_default(),
+                    role: role__.unwrap_or_default(),
+                })
+            }
+        }
+        deserializer.deserialize_struct("demeter.ops.v1alpha.CreateProjectUserInviteRequest", FIELDS, GeneratedVisitor)
+    }
+}
+impl serde::Serialize for CreateProjectUserInviteResponse {
+    #[allow(deprecated)]
+    fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        use serde::ser::SerializeStruct;
+        let len = 0;
+        let struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.CreateProjectUserInviteResponse", len)?;
+        struct_ser.end()
+    }
+}
+impl<'de> serde::Deserialize<'de> for CreateProjectUserInviteResponse {
+    #[allow(deprecated)]
+    fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        const FIELDS: &[&str] = &[
+        ];
+
+        #[allow(clippy::enum_variant_names)]
+        enum GeneratedField {
+        }
+        impl<'de> serde::Deserialize<'de> for GeneratedField {
+            fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
+            where
+                D: serde::Deserializer<'de>,
+            {
+                struct GeneratedVisitor;
+
+                impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+                    type Value = GeneratedField;
+
+                    fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        write!(formatter, "expected one of: {:?}", &FIELDS)
+                    }
+
+                    #[allow(unused_variables)]
+                    fn visit_str<E>(self, value: &str) -> std::result::Result<GeneratedField, E>
+                    where
+                        E: serde::de::Error,
+                    {
+                            Err(serde::de::Error::unknown_field(value, FIELDS))
+                    }
+                }
+                deserializer.deserialize_identifier(GeneratedVisitor)
+            }
+        }
+        struct GeneratedVisitor;
+        impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+            type Value = CreateProjectUserInviteResponse;
+
+            fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                formatter.write_str("struct demeter.ops.v1alpha.CreateProjectUserInviteResponse")
+            }
+
+            fn visit_map<V>(self, mut map_: V) -> std::result::Result<CreateProjectUserInviteResponse, V::Error>
+                where
+                    V: serde::de::MapAccess<'de>,
+            {
+                while map_.next_key::<GeneratedField>()?.is_some() {
+                    let _ = map_.next_value::<serde::de::IgnoredAny>()?;
+                }
+                Ok(CreateProjectUserInviteResponse {
+                })
+            }
+        }
+        deserializer.deserialize_struct("demeter.ops.v1alpha.CreateProjectUserInviteResponse", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for CreateResourceRequest {

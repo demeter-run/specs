@@ -78,11 +78,12 @@ message ProjectUser {
   string updated_at = 6; 
 }
 
-message CreateProjectInviteRequest {
+message CreateProjectUserInviteRequest {
   string project_id = 1;
   string email = 2;
+  string role = 3;
 }
-message CreateProjectInviteResponse {}
+message CreateProjectUserInviteResponse {}
 
 message FetchProjectUsersRequest {
   string project_id = 1;
@@ -92,6 +93,11 @@ message FetchProjectUsersRequest {
 message FetchProjectUsersResponse {
   repeated ProjectUser records = 1;
 }
+
+message AcceptProjectUserInviteRequest {
+  string code = 1;
+}
+message AcceptProjectUserInviteResponse {}
 
 service ProjectService {
   rpc FetchProjects(FetchProjectsRequest) returns (FetchProjectsResponse);
@@ -103,6 +109,7 @@ service ProjectService {
   rpc CreateProjectSecret(CreateProjectSecretRequest) returns (CreateProjectSecretResponse);
 
   rpc FetchProjectUsers(FetchProjectUsersRequest) returns (FetchProjectUsersResponse);
-  rpc CreateProjectInvite(CreateProjectInviteRequest) returns (CreateProjectInviteResponse);
+  rpc CreateProjectUserInvite(CreateProjectUserInviteRequest) returns (CreateProjectUserInviteResponse);
+  rpc AcceptProjectUserInvite(AcceptProjectUserInviteRequest) returns (AcceptProjectUserInviteResponse);
 }
 
