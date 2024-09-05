@@ -22,6 +22,8 @@
     - [DeleteProjectResponse](#demeter-ops-v1alpha-DeleteProjectResponse)
     - [FetchProjectSecretsRequest](#demeter-ops-v1alpha-FetchProjectSecretsRequest)
     - [FetchProjectSecretsResponse](#demeter-ops-v1alpha-FetchProjectSecretsResponse)
+    - [FetchProjectUserInvitesRequest](#demeter-ops-v1alpha-FetchProjectUserInvitesRequest)
+    - [FetchProjectUserInvitesResponse](#demeter-ops-v1alpha-FetchProjectUserInvitesResponse)
     - [FetchProjectUsersRequest](#demeter-ops-v1alpha-FetchProjectUsersRequest)
     - [FetchProjectUsersResponse](#demeter-ops-v1alpha-FetchProjectUsersResponse)
     - [FetchProjectsRequest](#demeter-ops-v1alpha-FetchProjectsRequest)
@@ -29,6 +31,7 @@
     - [Project](#demeter-ops-v1alpha-Project)
     - [ProjectSecret](#demeter-ops-v1alpha-ProjectSecret)
     - [ProjectUser](#demeter-ops-v1alpha-ProjectUser)
+    - [ProjectUserInvite](#demeter-ops-v1alpha-ProjectUserInvite)
     - [UpdateProjectRequest](#demeter-ops-v1alpha-UpdateProjectRequest)
     - [UpdateProjectResponse](#demeter-ops-v1alpha-UpdateProjectResponse)
   
@@ -290,6 +293,38 @@
 
 
 
+<a name="demeter-ops-v1alpha-FetchProjectUserInvitesRequest"></a>
+
+### FetchProjectUserInvitesRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| project_id | [string](#string) |  |  |
+| page | [uint32](#uint32) | optional |  |
+| page_size | [uint32](#uint32) | optional |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-FetchProjectUserInvitesResponse"></a>
+
+### FetchProjectUserInvitesResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| records | [ProjectUserInvite](#demeter-ops-v1alpha-ProjectUserInvite) | repeated |  |
+
+
+
+
+
+
 <a name="demeter-ops-v1alpha-FetchProjectUsersRequest"></a>
 
 ### FetchProjectUsersRequest
@@ -414,6 +449,28 @@
 
 
 
+<a name="demeter-ops-v1alpha-ProjectUserInvite"></a>
+
+### ProjectUserInvite
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| project_id | [string](#string) |  |  |
+| email | [string](#string) |  |  |
+| role | [string](#string) |  |  |
+| status | [string](#string) |  |  |
+| expires_in | [string](#string) |  |  |
+| created_at | [string](#string) |  |  |
+| updated_at | [string](#string) |  |  |
+
+
+
+
+
+
 <a name="demeter-ops-v1alpha-UpdateProjectRequest"></a>
 
 ### UpdateProjectRequest
@@ -465,6 +522,7 @@
 | FetchProjectSecrets | [FetchProjectSecretsRequest](#demeter-ops-v1alpha-FetchProjectSecretsRequest) | [FetchProjectSecretsResponse](#demeter-ops-v1alpha-FetchProjectSecretsResponse) |  |
 | CreateProjectSecret | [CreateProjectSecretRequest](#demeter-ops-v1alpha-CreateProjectSecretRequest) | [CreateProjectSecretResponse](#demeter-ops-v1alpha-CreateProjectSecretResponse) |  |
 | FetchProjectUsers | [FetchProjectUsersRequest](#demeter-ops-v1alpha-FetchProjectUsersRequest) | [FetchProjectUsersResponse](#demeter-ops-v1alpha-FetchProjectUsersResponse) |  |
+| FetchProjectUserInvites | [FetchProjectUserInvitesRequest](#demeter-ops-v1alpha-FetchProjectUserInvitesRequest) | [FetchProjectUserInvitesResponse](#demeter-ops-v1alpha-FetchProjectUserInvitesResponse) |  |
 | CreateProjectUserInvite | [CreateProjectUserInviteRequest](#demeter-ops-v1alpha-CreateProjectUserInviteRequest) | [CreateProjectUserInviteResponse](#demeter-ops-v1alpha-CreateProjectUserInviteResponse) |  |
 | AcceptProjectUserInvite | [AcceptProjectUserInviteRequest](#demeter-ops-v1alpha-AcceptProjectUserInviteRequest) | [AcceptProjectUserInviteResponse](#demeter-ops-v1alpha-AcceptProjectUserInviteResponse) |  |
 

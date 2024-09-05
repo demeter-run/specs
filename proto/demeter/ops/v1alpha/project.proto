@@ -78,13 +78,6 @@ message ProjectUser {
   string updated_at = 6; 
 }
 
-message CreateProjectUserInviteRequest {
-  string project_id = 1;
-  string email = 2;
-  string role = 3;
-}
-message CreateProjectUserInviteResponse {}
-
 message FetchProjectUsersRequest {
   string project_id = 1;
   optional uint32 page = 2;
@@ -93,6 +86,33 @@ message FetchProjectUsersRequest {
 message FetchProjectUsersResponse {
   repeated ProjectUser records = 1;
 }
+
+message ProjectUserInvite {
+  string id = 1;
+  string project_id = 2; 
+  string email = 3; 
+  string role = 4; 
+  string status = 5; 
+  string expires_in = 6; 
+  string created_at = 7; 
+  string updated_at = 8; 
+}
+
+message FetchProjectUserInvitesRequest {
+  string project_id = 1;
+  optional uint32 page = 2;
+  optional uint32 page_size = 3;
+}
+message FetchProjectUserInvitesResponse {
+  repeated ProjectUserInvite records = 1;
+}
+
+message CreateProjectUserInviteRequest {
+  string project_id = 1;
+  string email = 2;
+  string role = 3;
+}
+message CreateProjectUserInviteResponse {}
 
 message AcceptProjectUserInviteRequest {
   string code = 1;
@@ -109,6 +129,8 @@ service ProjectService {
   rpc CreateProjectSecret(CreateProjectSecretRequest) returns (CreateProjectSecretResponse);
 
   rpc FetchProjectUsers(FetchProjectUsersRequest) returns (FetchProjectUsersResponse);
+
+  rpc FetchProjectUserInvites(FetchProjectUserInvitesRequest) returns (FetchProjectUserInvitesResponse);
   rpc CreateProjectUserInvite(CreateProjectUserInviteRequest) returns (CreateProjectUserInviteResponse);
   rpc AcceptProjectUserInvite(AcceptProjectUserInviteRequest) returns (AcceptProjectUserInviteResponse);
 }
