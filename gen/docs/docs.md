@@ -437,12 +437,10 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
 | project_id | [string](#string) |  |  |
 | user_id | [string](#string) |  |  |
 | role | [string](#string) |  |  |
 | created_at | [string](#string) |  |  |
-| updated_at | [string](#string) |  |  |
 
 
 

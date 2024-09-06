@@ -70,12 +70,10 @@ message FetchProjectSecretsResponse {
 }
 
 message ProjectUser {
-  string id = 1;
   string project_id = 2; 
   string user_id = 3; 
   string role = 4; 
   string created_at = 5; 
-  string updated_at = 6; 
 }
 
 message FetchProjectUsersRequest {
