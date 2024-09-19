@@ -20,6 +20,8 @@
     - [CreateProjectUserInviteResponse](#demeter-ops-v1alpha-CreateProjectUserInviteResponse)
     - [DeleteProjectRequest](#demeter-ops-v1alpha-DeleteProjectRequest)
     - [DeleteProjectResponse](#demeter-ops-v1alpha-DeleteProjectResponse)
+    - [DeleteProjectUserRequest](#demeter-ops-v1alpha-DeleteProjectUserRequest)
+    - [DeleteProjectUserResponse](#demeter-ops-v1alpha-DeleteProjectUserResponse)
     - [FetchProjectSecretsRequest](#demeter-ops-v1alpha-FetchProjectSecretsRequest)
     - [FetchProjectSecretsResponse](#demeter-ops-v1alpha-FetchProjectSecretsResponse)
     - [FetchProjectUserInvitesRequest](#demeter-ops-v1alpha-FetchProjectUserInvitesRequest)
@@ -256,6 +258,32 @@
 <a name="demeter-ops-v1alpha-DeleteProjectResponse"></a>
 
 ### DeleteProjectResponse
+
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-DeleteProjectUserRequest"></a>
+
+### DeleteProjectUserRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| project_id | [string](#string) |  |  |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-DeleteProjectUserResponse"></a>
+
+### DeleteProjectUserResponse
 
 
 
@@ -520,6 +548,7 @@
 | FetchProjectSecrets | [FetchProjectSecretsRequest](#demeter-ops-v1alpha-FetchProjectSecretsRequest) | [FetchProjectSecretsResponse](#demeter-ops-v1alpha-FetchProjectSecretsResponse) |  |
 | CreateProjectSecret | [CreateProjectSecretRequest](#demeter-ops-v1alpha-CreateProjectSecretRequest) | [CreateProjectSecretResponse](#demeter-ops-v1alpha-CreateProjectSecretResponse) |  |
 | FetchProjectUsers | [FetchProjectUsersRequest](#demeter-ops-v1alpha-FetchProjectUsersRequest) | [FetchProjectUsersResponse](#demeter-ops-v1alpha-FetchProjectUsersResponse) |  |
+| DeleteProjectUser | [DeleteProjectUserRequest](#demeter-ops-v1alpha-DeleteProjectUserRequest) | [DeleteProjectUserResponse](#demeter-ops-v1alpha-DeleteProjectUserResponse) |  |
 | FetchProjectUserInvites | [FetchProjectUserInvitesRequest](#demeter-ops-v1alpha-FetchProjectUserInvitesRequest) | [FetchProjectUserInvitesResponse](#demeter-ops-v1alpha-FetchProjectUserInvitesResponse) |  |
 | CreateProjectUserInvite | [CreateProjectUserInviteRequest](#demeter-ops-v1alpha-CreateProjectUserInviteRequest) | [CreateProjectUserInviteResponse](#demeter-ops-v1alpha-CreateProjectUserInviteResponse) |  |
 | AcceptProjectUserInvite | [AcceptProjectUserInviteRequest](#demeter-ops-v1alpha-AcceptProjectUserInviteRequest) | [AcceptProjectUserInviteResponse](#demeter-ops-v1alpha-AcceptProjectUserInviteResponse) |  |

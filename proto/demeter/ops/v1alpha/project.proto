@@ -70,10 +70,10 @@ message FetchProjectSecretsResponse {
 }
 
 message ProjectUser {
-  string project_id = 2; 
-  string user_id = 3; 
-  string role = 4; 
-  string created_at = 5; 
+  string project_id = 1; 
+  string user_id = 2; 
+  string role = 3; 
+  string created_at = 4; 
 }
 
 message FetchProjectUsersRequest {
@@ -84,6 +84,12 @@ message FetchProjectUsersRequest {
 message FetchProjectUsersResponse {
   repeated ProjectUser records = 1;
 }
+
+message DeleteProjectUserRequest {
+  string project_id = 1; 
+  string id = 2; 
+}
+message DeleteProjectUserResponse {}
 
 message ProjectUserInvite {
   string id = 1;
@@ -127,6 +133,7 @@ service ProjectService {
   rpc CreateProjectSecret(CreateProjectSecretRequest) returns (CreateProjectSecretResponse);
 
   rpc FetchProjectUsers(FetchProjectUsersRequest) returns (FetchProjectUsersResponse);
+  rpc DeleteProjectUser(DeleteProjectUserRequest) returns (DeleteProjectUserResponse);
 
   rpc FetchProjectUserInvites(FetchProjectUserInvitesRequest) returns (FetchProjectUserInvitesResponse);
   rpc CreateProjectUserInvite(CreateProjectUserInviteRequest) returns (CreateProjectUserInviteResponse);
