@@ -123,6 +123,11 @@ message AcceptProjectUserInviteRequest {
 }
 message AcceptProjectUserInviteResponse {}
 
+message ResendProjectUserInviteRequest {
+  string id = 1;
+}
+message ResendProjectUserInviteResponse {}
+
 service ProjectService {
   rpc FetchProjects(FetchProjectsRequest) returns (FetchProjectsResponse);
   rpc CreateProject(CreateProjectRequest) returns (CreateProjectResponse);
@@ -138,5 +143,6 @@ service ProjectService {
   rpc FetchProjectUserInvites(FetchProjectUserInvitesRequest) returns (FetchProjectUserInvitesResponse);
   rpc CreateProjectUserInvite(CreateProjectUserInviteRequest) returns (CreateProjectUserInviteResponse);
   rpc AcceptProjectUserInvite(AcceptProjectUserInviteRequest) returns (AcceptProjectUserInviteResponse);
+  rpc ResendProjectUserInvite(ResendProjectUserInviteRequest) returns (ResendProjectUserInviteResponse);
 }
 

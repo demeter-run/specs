@@ -34,6 +34,8 @@
     - [ProjectSecret](#demeter-ops-v1alpha-ProjectSecret)
     - [ProjectUser](#demeter-ops-v1alpha-ProjectUser)
     - [ProjectUserInvite](#demeter-ops-v1alpha-ProjectUserInvite)
+    - [ResendProjectUserInviteRequest](#demeter-ops-v1alpha-ResendProjectUserInviteRequest)
+    - [ResendProjectUserInviteResponse](#demeter-ops-v1alpha-ResendProjectUserInviteResponse)
     - [UpdateProjectRequest](#demeter-ops-v1alpha-UpdateProjectRequest)
     - [UpdateProjectResponse](#demeter-ops-v1alpha-UpdateProjectResponse)
   
@@ -497,6 +499,31 @@
 
 
 
+<a name="demeter-ops-v1alpha-ResendProjectUserInviteRequest"></a>
+
+### ResendProjectUserInviteRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-ResendProjectUserInviteResponse"></a>
+
+### ResendProjectUserInviteResponse
+
+
+
+
+
+
+
 <a name="demeter-ops-v1alpha-UpdateProjectRequest"></a>
 
 ### UpdateProjectRequest
@@ -552,6 +579,7 @@
 | FetchProjectUserInvites | [FetchProjectUserInvitesRequest](#demeter-ops-v1alpha-FetchProjectUserInvitesRequest) | [FetchProjectUserInvitesResponse](#demeter-ops-v1alpha-FetchProjectUserInvitesResponse) |  |
 | CreateProjectUserInvite | [CreateProjectUserInviteRequest](#demeter-ops-v1alpha-CreateProjectUserInviteRequest) | [CreateProjectUserInviteResponse](#demeter-ops-v1alpha-CreateProjectUserInviteResponse) |  |
 | AcceptProjectUserInvite | [AcceptProjectUserInviteRequest](#demeter-ops-v1alpha-AcceptProjectUserInviteRequest) | [AcceptProjectUserInviteResponse](#demeter-ops-v1alpha-AcceptProjectUserInviteResponse) |  |
+| ResendProjectUserInvite | [ResendProjectUserInviteRequest](#demeter-ops-v1alpha-ResendProjectUserInviteRequest) | [ResendProjectUserInviteResponse](#demeter-ops-v1alpha-ResendProjectUserInviteResponse) |  |
 
  
 
