@@ -24,9 +24,10 @@ message Resource {
   string id = 1;
   string kind = 2; 
   string spec = 3; 
-  string status = 4; 
-  string created_at = 5; 
-  string updated_at = 6; 
+  optional string annotations = 4; 
+  string status = 5; 
+  string created_at = 6; 
+  string updated_at = 7; 
 }
 
 message FetchResourcesRequest {
@@ -39,16 +40,14 @@ message FetchResourcesResponse {
 }
 
 message FetchResourcesByIdRequest {
-  string project_id = 1;
-  string resource_id = 2;
+  string id = 1;
 }
 message FetchResourcesByIdResponse {
   repeated Resource records = 1;
 }
 
 message DeleteResourceRequest {
-  string project_id = 1; 
-  string resource_id = 2; 
+  string id = 1; 
 }
 message DeleteResourceResponse {}
 

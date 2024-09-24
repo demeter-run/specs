@@ -633,8 +633,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| project_id | [string](#string) |  |  |
-| resource_id | [string](#string) |  |  |
+| id | [string](#string) |  |  |
 
 
 
@@ -659,8 +658,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| project_id | [string](#string) |  |  |
-| resource_id | [string](#string) |  |  |
+| id | [string](#string) |  |  |
 
 
 
@@ -725,6 +723,7 @@
 | id | [string](#string) |  |  |
 | kind | [string](#string) |  |  |
 | spec | [string](#string) |  |  |
+| annotations | [string](#string) | optional |  |
 | status | [string](#string) |  |  |
 | created_at | [string](#string) |  |  |
 | updated_at | [string](#string) |  |  |

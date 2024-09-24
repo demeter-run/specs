@@ -1392,18 +1392,12 @@ impl serde::Serialize for DeleteResourceRequest {
     {
         use serde::ser::SerializeStruct;
         let mut len = 0;
-        if !self.project_id.is_empty() {
-            len += 1;
-        }
-        if !self.resource_id.is_empty() {
+        if !self.id.is_empty() {
             len += 1;
         }
         let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.DeleteResourceRequest", len)?;
-        if !self.project_id.is_empty() {
-            struct_ser.serialize_field("projectId", &self.project_id)?;
-        }
-        if !self.resource_id.is_empty() {
-            struct_ser.serialize_field("resourceId", &self.resource_id)?;
+        if !self.id.is_empty() {
+            struct_ser.serialize_field("id", &self.id)?;
         }
         struct_ser.end()
     }
@@ -1415,16 +1409,12 @@ impl<'de> serde::Deserialize<'de> for DeleteResourceRequest {
         D: serde::Deserializer<'de>,
     {
         const FIELDS: &[&str] = &[
-            "project_id",
-            "projectId",
-            "resource_id",
-            "resourceId",
+            "id",
         ];
 
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
-            ProjectId,
-            ResourceId,
+            Id,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
             fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
@@ -1446,8 +1436,7 @@ impl<'de> serde::Deserialize<'de> for DeleteResourceRequest {
                         E: serde::de::Error,
                     {
                         match value {
-                            "projectId" | "project_id" => Ok(GeneratedField::ProjectId),
-                            "resourceId" | "resource_id" => Ok(GeneratedField::ResourceId),
+                            "id" => Ok(GeneratedField::Id),
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
                         }
                     }
@@ -1467,27 +1456,19 @@ impl<'de> serde::Deserialize<'de> for DeleteResourceRequest {
                 where
                     V: serde::de::MapAccess<'de>,
             {
-                let mut project_id__ = None;
-                let mut resource_id__ = None;
+                let mut id__ = None;
                 while let Some(k) = map_.next_key()? {
                     match k {
-                        GeneratedField::ProjectId => {
-                            if project_id__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("projectId"));
+                        GeneratedField::Id => {
+                            if id__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("id"));
                             }
-                            project_id__ = Some(map_.next_value()?);
-                        }
-                        GeneratedField::ResourceId => {
-                            if resource_id__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("resourceId"));
-                            }
-                            resource_id__ = Some(map_.next_value()?);
+                            id__ = Some(map_.next_value()?);
                         }
                     }
                 }
                 Ok(DeleteResourceRequest {
-                    project_id: project_id__.unwrap_or_default(),
-                    resource_id: resource_id__.unwrap_or_default(),
+                    id: id__.unwrap_or_default(),
                 })
             }
         }
@@ -2566,18 +2547,12 @@ impl serde::Serialize for FetchResourcesByIdRequest {
     {
         use serde::ser::SerializeStruct;
         let mut len = 0;
-        if !self.project_id.is_empty() {
-            len += 1;
-        }
-        if !self.resource_id.is_empty() {
+        if !self.id.is_empty() {
             len += 1;
         }
         let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.FetchResourcesByIdRequest", len)?;
-        if !self.project_id.is_empty() {
-            struct_ser.serialize_field("projectId", &self.project_id)?;
-        }
-        if !self.resource_id.is_empty() {
-            struct_ser.serialize_field("resourceId", &self.resource_id)?;
+        if !self.id.is_empty() {
+            struct_ser.serialize_field("id", &self.id)?;
         }
         struct_ser.end()
     }
@@ -2589,16 +2564,12 @@ impl<'de> serde::Deserialize<'de> for FetchResourcesByIdRequest {
         D: serde::Deserializer<'de>,
     {
         const FIELDS: &[&str] = &[
-            "project_id",
-            "projectId",
-            "resource_id",
-            "resourceId",
+            "id",
         ];
 
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
-            ProjectId,
-            ResourceId,
+            Id,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
             fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
@@ -2620,8 +2591,7 @@ impl<'de> serde::Deserialize<'de> for FetchResourcesByIdRequest {
                         E: serde::de::Error,
                     {
                         match value {
-                            "projectId" | "project_id" => Ok(GeneratedField::ProjectId),
-                            "resourceId" | "resource_id" => Ok(GeneratedField::ResourceId),
+                            "id" => Ok(GeneratedField::Id),
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
                         }
                     }
@@ -2641,27 +2611,19 @@ impl<'de> serde::Deserialize<'de> for FetchResourcesByIdRequest {
                 where
                     V: serde::de::MapAccess<'de>,
             {
-                let mut project_id__ = None;
-                let mut resource_id__ = None;
+                let mut id__ = None;
                 while let Some(k) = map_.next_key()? {
                     match k {
-                        GeneratedField::ProjectId => {
-                            if project_id__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("projectId"));
+                        GeneratedField::Id => {
+                            if id__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("id"));
                             }
-                            project_id__ = Some(map_.next_value()?);
-                        }
-                        GeneratedField::ResourceId => {
-                            if resource_id__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("resourceId"));
-                            }
-                            resource_id__ = Some(map_.next_value()?);
+                            id__ = Some(map_.next_value()?);
                         }
                     }
                 }
                 Ok(FetchResourcesByIdRequest {
-                    project_id: project_id__.unwrap_or_default(),
-                    resource_id: resource_id__.unwrap_or_default(),
+                    id: id__.unwrap_or_default(),
                 })
             }
         }
@@ -4117,6 +4079,9 @@ impl serde::Serialize for Resource {
         if !self.spec.is_empty() {
             len += 1;
         }
+        if self.annotations.is_some() {
+            len += 1;
+        }
         if !self.status.is_empty() {
             len += 1;
         }
@@ -4135,6 +4100,9 @@ impl serde::Serialize for Resource {
         }
         if !self.spec.is_empty() {
             struct_ser.serialize_field("spec", &self.spec)?;
+        }
+        if let Some(v) = self.annotations.as_ref() {
+            struct_ser.serialize_field("annotations", v)?;
         }
         if !self.status.is_empty() {
             struct_ser.serialize_field("status", &self.status)?;
@@ -4158,6 +4126,7 @@ impl<'de> serde::Deserialize<'de> for Resource {
             "id",
             "kind",
             "spec",
+            "annotations",
             "status",
             "created_at",
             "createdAt",
@@ -4170,6 +4139,7 @@ impl<'de> serde::Deserialize<'de> for Resource {
             Id,
             Kind,
             Spec,
+            Annotations,
             Status,
             CreatedAt,
             UpdatedAt,
@@ -4197,6 +4167,7 @@ impl<'de> serde::Deserialize<'de> for Resource {
                             "id" => Ok(GeneratedField::Id),
                             "kind" => Ok(GeneratedField::Kind),
                             "spec" => Ok(GeneratedField::Spec),
+                            "annotations" => Ok(GeneratedField::Annotations),
                             "status" => Ok(GeneratedField::Status),
                             "createdAt" | "created_at" => Ok(GeneratedField::CreatedAt),
                             "updatedAt" | "updated_at" => Ok(GeneratedField::UpdatedAt),
@@ -4222,6 +4193,7 @@ impl<'de> serde::Deserialize<'de> for Resource {
                 let mut id__ = None;
                 let mut kind__ = None;
                 let mut spec__ = None;
+                let mut annotations__ = None;
                 let mut status__ = None;
                 let mut created_at__ = None;
                 let mut updated_at__ = None;
@@ -4244,6 +4216,12 @@ impl<'de> serde::Deserialize<'de> for Resource {
                                 return Err(serde::de::Error::duplicate_field("spec"));
                             }
                             spec__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::Annotations => {
+                            if annotations__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("annotations"));
+                            }
+                            annotations__ = map_.next_value()?;
                         }
                         GeneratedField::Status => {
                             if status__.is_some() {
@@ -4269,6 +4247,7 @@ impl<'de> serde::Deserialize<'de> for Resource {
                     id: id__.unwrap_or_default(),
                     kind: kind__.unwrap_or_default(),
                     spec: spec__.unwrap_or_default(),
+                    annotations: annotations__,
                     status: status__.unwrap_or_default(),
                     created_at: created_at__.unwrap_or_default(),
                     updated_at: updated_at__.unwrap_or_default(),
