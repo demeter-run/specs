@@ -945,12 +945,18 @@ impl serde::Serialize for CreateResourceResponse {
         if !self.id.is_empty() {
             len += 1;
         }
+        if !self.name.is_empty() {
+            len += 1;
+        }
         if !self.kind.is_empty() {
             len += 1;
         }
         let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.CreateResourceResponse", len)?;
         if !self.id.is_empty() {
             struct_ser.serialize_field("id", &self.id)?;
+        }
+        if !self.name.is_empty() {
+            struct_ser.serialize_field("name", &self.name)?;
         }
         if !self.kind.is_empty() {
             struct_ser.serialize_field("kind", &self.kind)?;
@@ -966,12 +972,14 @@ impl<'de> serde::Deserialize<'de> for CreateResourceResponse {
     {
         const FIELDS: &[&str] = &[
             "id",
+            "name",
             "kind",
         ];
 
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
             Id,
+            Name,
             Kind,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
@@ -995,6 +1003,7 @@ impl<'de> serde::Deserialize<'de> for CreateResourceResponse {
                     {
                         match value {
                             "id" => Ok(GeneratedField::Id),
+                            "name" => Ok(GeneratedField::Name),
                             "kind" => Ok(GeneratedField::Kind),
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
                         }
@@ -1016,6 +1025,7 @@ impl<'de> serde::Deserialize<'de> for CreateResourceResponse {
                     V: serde::de::MapAccess<'de>,
             {
                 let mut id__ = None;
+                let mut name__ = None;
                 let mut kind__ = None;
                 while let Some(k) = map_.next_key()? {
                     match k {
@@ -1024,6 +1034,12 @@ impl<'de> serde::Deserialize<'de> for CreateResourceResponse {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             id__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::Name => {
+                            if name__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("name"));
+                            }
+                            name__ = Some(map_.next_value()?);
                         }
                         GeneratedField::Kind => {
                             if kind__.is_some() {
@@ -1035,6 +1051,7 @@ impl<'de> serde::Deserialize<'de> for CreateResourceResponse {
                 }
                 Ok(CreateResourceResponse {
                     id: id__.unwrap_or_default(),
+                    name: name__.unwrap_or_default(),
                     kind: kind__.unwrap_or_default(),
                 })
             }
@@ -4073,6 +4090,9 @@ impl serde::Serialize for Resource {
         if !self.id.is_empty() {
             len += 1;
         }
+        if !self.name.is_empty() {
+            len += 1;
+        }
         if !self.kind.is_empty() {
             len += 1;
         }
@@ -4094,6 +4114,9 @@ impl serde::Serialize for Resource {
         let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.Resource", len)?;
         if !self.id.is_empty() {
             struct_ser.serialize_field("id", &self.id)?;
+        }
+        if !self.name.is_empty() {
+            struct_ser.serialize_field("name", &self.name)?;
         }
         if !self.kind.is_empty() {
             struct_ser.serialize_field("kind", &self.kind)?;
@@ -4124,6 +4147,7 @@ impl<'de> serde::Deserialize<'de> for Resource {
     {
         const FIELDS: &[&str] = &[
             "id",
+            "name",
             "kind",
             "spec",
             "annotations",
@@ -4137,6 +4161,7 @@ impl<'de> serde::Deserialize<'de> for Resource {
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
             Id,
+            Name,
             Kind,
             Spec,
             Annotations,
@@ -4165,6 +4190,7 @@ impl<'de> serde::Deserialize<'de> for Resource {
                     {
                         match value {
                             "id" => Ok(GeneratedField::Id),
+                            "name" => Ok(GeneratedField::Name),
                             "kind" => Ok(GeneratedField::Kind),
                             "spec" => Ok(GeneratedField::Spec),
                             "annotations" => Ok(GeneratedField::Annotations),
@@ -4191,6 +4217,7 @@ impl<'de> serde::Deserialize<'de> for Resource {
                     V: serde::de::MapAccess<'de>,
             {
                 let mut id__ = None;
+                let mut name__ = None;
                 let mut kind__ = None;
                 let mut spec__ = None;
                 let mut annotations__ = None;
@@ -4204,6 +4231,12 @@ impl<'de> serde::Deserialize<'de> for Resource {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             id__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::Name => {
+                            if name__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("name"));
+                            }
+                            name__ = Some(map_.next_value()?);
                         }
                         GeneratedField::Kind => {
                             if kind__.is_some() {
@@ -4245,6 +4278,7 @@ impl<'de> serde::Deserialize<'de> for Resource {
                 }
                 Ok(Resource {
                     id: id__.unwrap_or_default(),
+                    name: name__.unwrap_or_default(),
                     kind: kind__.unwrap_or_default(),
                     spec: spec__.unwrap_or_default(),
                     annotations: annotations__,

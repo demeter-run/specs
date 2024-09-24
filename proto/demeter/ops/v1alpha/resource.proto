@@ -9,7 +9,8 @@ message CreateResourceRequest {
 }
 message CreateResourceResponse {
   string id = 1;
-  string kind = 2; 
+  string name = 2; 
+  string kind = 3; 
 }
 
 message UpdateResourceRequest {
@@ -22,12 +23,13 @@ message UpdateResourceResponse {
 
 message Resource {
   string id = 1;
-  string kind = 2; 
-  string spec = 3; 
-  optional string annotations = 4; 
-  string status = 5; 
-  string created_at = 6; 
-  string updated_at = 7; 
+  string name = 2; 
+  string kind = 3; 
+  string spec = 4; 
+  optional string annotations = 5; 
+  string status = 6; 
+  string created_at = 7; 
+  string updated_at = 8; 
 }
 
 message FetchResourcesRequest {

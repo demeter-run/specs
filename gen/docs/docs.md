@@ -618,6 +618,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
+| name | [string](#string) |  |  |
 | kind | [string](#string) |  |  |
 
 
@@ -721,6 +722,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
+| name | [string](#string) |  |  |
 | kind | [string](#string) |  |  |
 | spec | [string](#string) |  |  |
 | annotations | [string](#string) | optional |  |
