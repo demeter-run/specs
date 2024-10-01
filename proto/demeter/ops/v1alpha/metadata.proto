@@ -2,9 +2,14 @@ syntax = "proto3";
 
 package demeter.ops.v1alpha;
 
+message Metadata {
+  string options = 1;
+  string crd = 2; 
+}
+
 message FetchMetadataRequest {}
 message FetchMetadataResponse {
-  repeated string records = 1;
+  repeated Metadata records = 1;
 }
 
 service MetadataService {

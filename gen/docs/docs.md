@@ -6,6 +6,7 @@
 - [proto/demeter/ops/v1alpha/metadata.proto](#proto_demeter_ops_v1alpha_metadata-proto)
     - [FetchMetadataRequest](#demeter-ops-v1alpha-FetchMetadataRequest)
     - [FetchMetadataResponse](#demeter-ops-v1alpha-FetchMetadataResponse)
+    - [Metadata](#demeter-ops-v1alpha-Metadata)
   
     - [MetadataService](#demeter-ops-v1alpha-MetadataService)
   
@@ -94,7 +95,23 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| records | [string](#string) | repeated |  |
+| records | [Metadata](#demeter-ops-v1alpha-Metadata) | repeated |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-Metadata"></a>
+
+### Metadata
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| options | [string](#string) |  |  |
+| crd | [string](#string) |  |  |
 
 
 
