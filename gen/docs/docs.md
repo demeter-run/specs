@@ -25,6 +25,8 @@
     - [DeleteProjectSecretResponse](#demeter-ops-v1alpha-DeleteProjectSecretResponse)
     - [DeleteProjectUserRequest](#demeter-ops-v1alpha-DeleteProjectUserRequest)
     - [DeleteProjectUserResponse](#demeter-ops-v1alpha-DeleteProjectUserResponse)
+    - [FetchProjectByIdRequest](#demeter-ops-v1alpha-FetchProjectByIdRequest)
+    - [FetchProjectByIdResponse](#demeter-ops-v1alpha-FetchProjectByIdResponse)
     - [FetchProjectByNamespaceRequest](#demeter-ops-v1alpha-FetchProjectByNamespaceRequest)
     - [FetchProjectByNamespaceResponse](#demeter-ops-v1alpha-FetchProjectByNamespaceResponse)
     - [FetchProjectSecretsRequest](#demeter-ops-v1alpha-FetchProjectSecretsRequest)
@@ -339,6 +341,36 @@
 
 
 
+<a name="demeter-ops-v1alpha-FetchProjectByIdRequest"></a>
+
+### FetchProjectByIdRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-FetchProjectByIdResponse"></a>
+
+### FetchProjectByIdResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| records | [Project](#demeter-ops-v1alpha-Project) | repeated |  |
+
+
+
+
+
+
 <a name="demeter-ops-v1alpha-FetchProjectByNamespaceRequest"></a>
 
 ### FetchProjectByNamespaceRequest
@@ -645,6 +677,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | FetchProjects | [FetchProjectsRequest](#demeter-ops-v1alpha-FetchProjectsRequest) | [FetchProjectsResponse](#demeter-ops-v1alpha-FetchProjectsResponse) |  |
+| FetchProjectById | [FetchProjectByIdRequest](#demeter-ops-v1alpha-FetchProjectByIdRequest) | [FetchProjectByIdResponse](#demeter-ops-v1alpha-FetchProjectByIdResponse) |  |
 | FetchProjectByNamespace | [FetchProjectByNamespaceRequest](#demeter-ops-v1alpha-FetchProjectByNamespaceRequest) | [FetchProjectByNamespaceResponse](#demeter-ops-v1alpha-FetchProjectByNamespaceResponse) |  |
 | CreateProject | [CreateProjectRequest](#demeter-ops-v1alpha-CreateProjectRequest) | [CreateProjectResponse](#demeter-ops-v1alpha-CreateProjectResponse) |  |
 | UpdateProject | [UpdateProjectRequest](#demeter-ops-v1alpha-UpdateProjectRequest) | [UpdateProjectResponse](#demeter-ops-v1alpha-UpdateProjectResponse) |  |

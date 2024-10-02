@@ -39,6 +39,13 @@ message FetchProjectsResponse {
   repeated Project records = 2;
 }
 
+message FetchProjectByIdRequest {
+  string id = 1;
+}
+message FetchProjectByIdResponse {
+  repeated Project records = 1;
+}
+
 message FetchProjectByNamespaceRequest {
   string namespace = 1;
 }
@@ -142,6 +149,7 @@ message ResendProjectUserInviteResponse {}
 
 service ProjectService {
   rpc FetchProjects(FetchProjectsRequest) returns (FetchProjectsResponse);
+  rpc FetchProjectById(FetchProjectByIdRequest) returns (FetchProjectByIdResponse);
   rpc FetchProjectByNamespace(FetchProjectByNamespaceRequest) returns (FetchProjectByNamespaceResponse);
   rpc CreateProject(CreateProjectRequest) returns (CreateProjectResponse);
   rpc UpdateProject(UpdateProjectRequest) returns (UpdateProjectResponse);
