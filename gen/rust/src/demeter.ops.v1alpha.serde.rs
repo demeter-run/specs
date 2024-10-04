@@ -5344,6 +5344,9 @@ impl serde::Serialize for UsageReport {
         if self.units != 0 {
             len += 1;
         }
+        if self.cost != 0. {
+            len += 1;
+        }
         if !self.tier.is_empty() {
             len += 1;
         }
@@ -5363,6 +5366,9 @@ impl serde::Serialize for UsageReport {
         if self.units != 0 {
             #[allow(clippy::needless_borrow)]
             struct_ser.serialize_field("units", ToString::to_string(&self.units).as_str())?;
+        }
+        if self.cost != 0. {
+            struct_ser.serialize_field("cost", &self.cost)?;
         }
         if !self.tier.is_empty() {
             struct_ser.serialize_field("tier", &self.tier)?;
@@ -5387,6 +5393,7 @@ impl<'de> serde::Deserialize<'de> for UsageReport {
             "resource_spec",
             "resourceSpec",
             "units",
+            "cost",
             "tier",
             "period",
         ];
@@ -5397,6 +5404,7 @@ impl<'de> serde::Deserialize<'de> for UsageReport {
             ResourceKind,
             ResourceSpec,
             Units,
+            Cost,
             Tier,
             Period,
         }
@@ -5424,6 +5432,7 @@ impl<'de> serde::Deserialize<'de> for UsageReport {
                             "resourceKind" | "resource_kind" => Ok(GeneratedField::ResourceKind),
                             "resourceSpec" | "resource_spec" => Ok(GeneratedField::ResourceSpec),
                             "units" => Ok(GeneratedField::Units),
+                            "cost" => Ok(GeneratedField::Cost),
                             "tier" => Ok(GeneratedField::Tier),
                             "period" => Ok(GeneratedField::Period),
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
@@ -5449,6 +5458,7 @@ impl<'de> serde::Deserialize<'de> for UsageReport {
                 let mut resource_kind__ = None;
                 let mut resource_spec__ = None;
                 let mut units__ = None;
+                let mut cost__ = None;
                 let mut tier__ = None;
                 let mut period__ = None;
                 while let Some(k) = map_.next_key()? {
@@ -5479,6 +5489,14 @@ impl<'de> serde::Deserialize<'de> for UsageReport {
                                 Some(map_.next_value::<::pbjson::private::NumberDeserialize<_>>()?.0)
                             ;
                         }
+                        GeneratedField::Cost => {
+                            if cost__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("cost"));
+                            }
+                            cost__ = 
+                                Some(map_.next_value::<::pbjson::private::NumberDeserialize<_>>()?.0)
+                            ;
+                        }
                         GeneratedField::Tier => {
                             if tier__.is_some() {
                                 return Err(serde::de::Error::duplicate_field("tier"));
@@ -5498,6 +5516,7 @@ impl<'de> serde::Deserialize<'de> for UsageReport {
                     resource_kind: resource_kind__.unwrap_or_default(),
                     resource_spec: resource_spec__.unwrap_or_default(),
                     units: units__.unwrap_or_default(),
+                    cost: cost__.unwrap_or_default(),
                     tier: tier__.unwrap_or_default(),
                     period: period__.unwrap_or_default(),
                 })

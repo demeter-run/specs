@@ -6,9 +6,10 @@ message UsageReport {
   string resource_id = 1;
   string resource_kind = 2; 
   string resource_spec = 3; 
-  int64 units = 5; 
-  string tier = 4; 
-  string period = 6; 
+  int64 units = 4; 
+  float cost = 5; 
+  string tier = 6; 
+  string period = 7; 
 }
 
 message FetchUsageReportRequest {
