@@ -4206,6 +4206,12 @@ impl serde::Serialize for ProjectUser {
         if !self.user_id.is_empty() {
             len += 1;
         }
+        if !self.name.is_empty() {
+            len += 1;
+        }
+        if !self.email.is_empty() {
+            len += 1;
+        }
         if !self.role.is_empty() {
             len += 1;
         }
@@ -4218,6 +4224,12 @@ impl serde::Serialize for ProjectUser {
         }
         if !self.user_id.is_empty() {
             struct_ser.serialize_field("userId", &self.user_id)?;
+        }
+        if !self.name.is_empty() {
+            struct_ser.serialize_field("name", &self.name)?;
+        }
+        if !self.email.is_empty() {
+            struct_ser.serialize_field("email", &self.email)?;
         }
         if !self.role.is_empty() {
             struct_ser.serialize_field("role", &self.role)?;
@@ -4239,6 +4251,8 @@ impl<'de> serde::Deserialize<'de> for ProjectUser {
             "projectId",
             "user_id",
             "userId",
+            "name",
+            "email",
             "role",
             "created_at",
             "createdAt",
@@ -4248,6 +4262,8 @@ impl<'de> serde::Deserialize<'de> for ProjectUser {
         enum GeneratedField {
             ProjectId,
             UserId,
+            Name,
+            Email,
             Role,
             CreatedAt,
         }
@@ -4273,6 +4289,8 @@ impl<'de> serde::Deserialize<'de> for ProjectUser {
                         match value {
                             "projectId" | "project_id" => Ok(GeneratedField::ProjectId),
                             "userId" | "user_id" => Ok(GeneratedField::UserId),
+                            "name" => Ok(GeneratedField::Name),
+                            "email" => Ok(GeneratedField::Email),
                             "role" => Ok(GeneratedField::Role),
                             "createdAt" | "created_at" => Ok(GeneratedField::CreatedAt),
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
@@ -4296,6 +4314,8 @@ impl<'de> serde::Deserialize<'de> for ProjectUser {
             {
                 let mut project_id__ = None;
                 let mut user_id__ = None;
+                let mut name__ = None;
+                let mut email__ = None;
                 let mut role__ = None;
                 let mut created_at__ = None;
                 while let Some(k) = map_.next_key()? {
@@ -4311,6 +4331,18 @@ impl<'de> serde::Deserialize<'de> for ProjectUser {
                                 return Err(serde::de::Error::duplicate_field("userId"));
                             }
                             user_id__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::Name => {
+                            if name__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("name"));
+                            }
+                            name__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::Email => {
+                            if email__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("email"));
+                            }
+                            email__ = Some(map_.next_value()?);
                         }
                         GeneratedField::Role => {
                             if role__.is_some() {
@@ -4329,6 +4361,8 @@ impl<'de> serde::Deserialize<'de> for ProjectUser {
                 Ok(ProjectUser {
                     project_id: project_id__.unwrap_or_default(),
                     user_id: user_id__.unwrap_or_default(),
+                    name: name__.unwrap_or_default(),
+                    email: email__.unwrap_or_default(),
                     role: role__.unwrap_or_default(),
                     created_at: created_at__.unwrap_or_default(),
                 })

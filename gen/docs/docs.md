@@ -577,6 +577,8 @@
 | ----- | ---- | ----- | ----------- |
 | project_id | [string](#string) |  |  |
 | user_id | [string](#string) |  |  |
+| name | [string](#string) |  |  |
+| email | [string](#string) |  |  |
 | role | [string](#string) |  |  |
 | created_at | [string](#string) |  |  |
 
