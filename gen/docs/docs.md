@@ -23,6 +23,8 @@
     - [DeleteProjectResponse](#demeter-ops-v1alpha-DeleteProjectResponse)
     - [DeleteProjectSecretRequest](#demeter-ops-v1alpha-DeleteProjectSecretRequest)
     - [DeleteProjectSecretResponse](#demeter-ops-v1alpha-DeleteProjectSecretResponse)
+    - [DeleteProjectUserInviteRequest](#demeter-ops-v1alpha-DeleteProjectUserInviteRequest)
+    - [DeleteProjectUserInviteResponse](#demeter-ops-v1alpha-DeleteProjectUserInviteResponse)
     - [DeleteProjectUserRequest](#demeter-ops-v1alpha-DeleteProjectUserRequest)
     - [DeleteProjectUserResponse](#demeter-ops-v1alpha-DeleteProjectUserResponse)
     - [FetchProjectByIdRequest](#demeter-ops-v1alpha-FetchProjectByIdRequest)
@@ -308,6 +310,31 @@
 <a name="demeter-ops-v1alpha-DeleteProjectSecretResponse"></a>
 
 ### DeleteProjectSecretResponse
+
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-DeleteProjectUserInviteRequest"></a>
+
+### DeleteProjectUserInviteRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-DeleteProjectUserInviteResponse"></a>
+
+### DeleteProjectUserInviteResponse
 
 
 
@@ -693,6 +720,7 @@
 | CreateProjectUserInvite | [CreateProjectUserInviteRequest](#demeter-ops-v1alpha-CreateProjectUserInviteRequest) | [CreateProjectUserInviteResponse](#demeter-ops-v1alpha-CreateProjectUserInviteResponse) |  |
 | AcceptProjectUserInvite | [AcceptProjectUserInviteRequest](#demeter-ops-v1alpha-AcceptProjectUserInviteRequest) | [AcceptProjectUserInviteResponse](#demeter-ops-v1alpha-AcceptProjectUserInviteResponse) |  |
 | ResendProjectUserInvite | [ResendProjectUserInviteRequest](#demeter-ops-v1alpha-ResendProjectUserInviteRequest) | [ResendProjectUserInviteResponse](#demeter-ops-v1alpha-ResendProjectUserInviteResponse) |  |
+| DeleteProjectUserInvite | [DeleteProjectUserInviteRequest](#demeter-ops-v1alpha-DeleteProjectUserInviteRequest) | [DeleteProjectUserInviteResponse](#demeter-ops-v1alpha-DeleteProjectUserInviteResponse) |  |
 
  
 

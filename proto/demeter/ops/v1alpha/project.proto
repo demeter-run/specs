@@ -149,6 +149,11 @@ message ResendProjectUserInviteRequest {
 }
 message ResendProjectUserInviteResponse {}
 
+message DeleteProjectUserInviteRequest {
+  string id = 1; 
+}
+message DeleteProjectUserInviteResponse {}
+
 service ProjectService {
   rpc FetchProjects(FetchProjectsRequest) returns (FetchProjectsResponse);
   rpc FetchProjectById(FetchProjectByIdRequest) returns (FetchProjectByIdResponse);
@@ -168,5 +173,6 @@ service ProjectService {
   rpc CreateProjectUserInvite(CreateProjectUserInviteRequest) returns (CreateProjectUserInviteResponse);
   rpc AcceptProjectUserInvite(AcceptProjectUserInviteRequest) returns (AcceptProjectUserInviteResponse);
   rpc ResendProjectUserInvite(ResendProjectUserInviteRequest) returns (ResendProjectUserInviteResponse);
+  rpc DeleteProjectUserInvite(DeleteProjectUserInviteRequest) returns (DeleteProjectUserInviteResponse);
 }
 
