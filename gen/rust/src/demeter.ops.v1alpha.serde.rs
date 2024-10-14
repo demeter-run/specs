@@ -5531,6 +5531,9 @@ impl serde::Serialize for UsageReport {
         if !self.resource_id.is_empty() {
             len += 1;
         }
+        if !self.resource_name.is_empty() {
+            len += 1;
+        }
         if !self.resource_kind.is_empty() {
             len += 1;
         }
@@ -5552,6 +5555,9 @@ impl serde::Serialize for UsageReport {
         let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.UsageReport", len)?;
         if !self.resource_id.is_empty() {
             struct_ser.serialize_field("resourceId", &self.resource_id)?;
+        }
+        if !self.resource_name.is_empty() {
+            struct_ser.serialize_field("resourceName", &self.resource_name)?;
         }
         if !self.resource_kind.is_empty() {
             struct_ser.serialize_field("resourceKind", &self.resource_kind)?;
@@ -5584,6 +5590,8 @@ impl<'de> serde::Deserialize<'de> for UsageReport {
         const FIELDS: &[&str] = &[
             "resource_id",
             "resourceId",
+            "resource_name",
+            "resourceName",
             "resource_kind",
             "resourceKind",
             "resource_spec",
@@ -5597,6 +5605,7 @@ impl<'de> serde::Deserialize<'de> for UsageReport {
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
             ResourceId,
+            ResourceName,
             ResourceKind,
             ResourceSpec,
             Units,
@@ -5625,6 +5634,7 @@ impl<'de> serde::Deserialize<'de> for UsageReport {
                     {
                         match value {
                             "resourceId" | "resource_id" => Ok(GeneratedField::ResourceId),
+                            "resourceName" | "resource_name" => Ok(GeneratedField::ResourceName),
                             "resourceKind" | "resource_kind" => Ok(GeneratedField::ResourceKind),
                             "resourceSpec" | "resource_spec" => Ok(GeneratedField::ResourceSpec),
                             "units" => Ok(GeneratedField::Units),
@@ -5651,6 +5661,7 @@ impl<'de> serde::Deserialize<'de> for UsageReport {
                     V: serde::de::MapAccess<'de>,
             {
                 let mut resource_id__ = None;
+                let mut resource_name__ = None;
                 let mut resource_kind__ = None;
                 let mut resource_spec__ = None;
                 let mut units__ = None;
@@ -5664,6 +5675,12 @@ impl<'de> serde::Deserialize<'de> for UsageReport {
                                 return Err(serde::de::Error::duplicate_field("resourceId"));
                             }
                             resource_id__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::ResourceName => {
+                            if resource_name__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("resourceName"));
+                            }
+                            resource_name__ = Some(map_.next_value()?);
                         }
                         GeneratedField::ResourceKind => {
                             if resource_kind__.is_some() {
@@ -5709,6 +5726,7 @@ impl<'de> serde::Deserialize<'de> for UsageReport {
                 }
                 Ok(UsageReport {
                     resource_id: resource_id__.unwrap_or_default(),
+                    resource_name: resource_name__.unwrap_or_default(),
                     resource_kind: resource_kind__.unwrap_or_default(),
                     resource_spec: resource_spec__.unwrap_or_default(),
                     units: units__.unwrap_or_default(),

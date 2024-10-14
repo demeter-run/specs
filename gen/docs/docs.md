@@ -978,6 +978,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | resource_id | [string](#string) |  |  |
+| resource_name | [string](#string) |  |  |
 | resource_kind | [string](#string) |  |  |
 | resource_spec | [string](#string) |  |  |
 | units | [int64](#int64) |  |  |

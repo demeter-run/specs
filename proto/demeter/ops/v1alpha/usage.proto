@@ -4,12 +4,13 @@ package demeter.ops.v1alpha;
 
 message UsageReport {
   string resource_id = 1;
-  string resource_kind = 2; 
-  string resource_spec = 3; 
-  int64 units = 4; 
-  float cost = 5; 
-  string tier = 6; 
-  string period = 7; 
+  string resource_name = 2;
+  string resource_kind = 3; 
+  string resource_spec = 4; 
+  int64 units = 5; 
+  float cost = 6; 
+  string tier = 7; 
+  string period = 8; 
 }
 
 message FetchUsageReportRequest {
