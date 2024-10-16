@@ -982,9 +982,10 @@
 | resource_kind | [string](#string) |  |  |
 | resource_spec | [string](#string) |  |  |
 | units | [int64](#int64) |  |  |
-| cost | [float](#float) |  |  |
 | tier | [string](#string) |  |  |
 | period | [string](#string) |  |  |
+| units_cost | [double](#double) | optional |  |
+| minimum_cost | [double](#double) | optional |  |
 
 
 

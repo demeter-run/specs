@@ -5543,13 +5543,16 @@ impl serde::Serialize for UsageReport {
         if self.units != 0 {
             len += 1;
         }
-        if self.cost != 0. {
-            len += 1;
-        }
         if !self.tier.is_empty() {
             len += 1;
         }
         if !self.period.is_empty() {
+            len += 1;
+        }
+        if self.units_cost.is_some() {
+            len += 1;
+        }
+        if self.minimum_cost.is_some() {
             len += 1;
         }
         let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.UsageReport", len)?;
@@ -5569,14 +5572,17 @@ impl serde::Serialize for UsageReport {
             #[allow(clippy::needless_borrow)]
             struct_ser.serialize_field("units", ToString::to_string(&self.units).as_str())?;
         }
-        if self.cost != 0. {
-            struct_ser.serialize_field("cost", &self.cost)?;
-        }
         if !self.tier.is_empty() {
             struct_ser.serialize_field("tier", &self.tier)?;
         }
         if !self.period.is_empty() {
             struct_ser.serialize_field("period", &self.period)?;
+        }
+        if let Some(v) = self.units_cost.as_ref() {
+            struct_ser.serialize_field("unitsCost", v)?;
+        }
+        if let Some(v) = self.minimum_cost.as_ref() {
+            struct_ser.serialize_field("minimumCost", v)?;
         }
         struct_ser.end()
     }
@@ -5597,9 +5603,12 @@ impl<'de> serde::Deserialize<'de> for UsageReport {
             "resource_spec",
             "resourceSpec",
             "units",
-            "cost",
             "tier",
             "period",
+            "units_cost",
+            "unitsCost",
+            "minimum_cost",
+            "minimumCost",
         ];
 
         #[allow(clippy::enum_variant_names)]
@@ -5609,9 +5618,10 @@ impl<'de> serde::Deserialize<'de> for UsageReport {
             ResourceKind,
             ResourceSpec,
             Units,
-            Cost,
             Tier,
             Period,
+            UnitsCost,
+            MinimumCost,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
             fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
@@ -5638,9 +5648,10 @@ impl<'de> serde::Deserialize<'de> for UsageReport {
                             "resourceKind" | "resource_kind" => Ok(GeneratedField::ResourceKind),
                             "resourceSpec" | "resource_spec" => Ok(GeneratedField::ResourceSpec),
                             "units" => Ok(GeneratedField::Units),
-                            "cost" => Ok(GeneratedField::Cost),
                             "tier" => Ok(GeneratedField::Tier),
                             "period" => Ok(GeneratedField::Period),
+                            "unitsCost" | "units_cost" => Ok(GeneratedField::UnitsCost),
+                            "minimumCost" | "minimum_cost" => Ok(GeneratedField::MinimumCost),
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
                         }
                     }
@@ -5665,9 +5676,10 @@ impl<'de> serde::Deserialize<'de> for UsageReport {
                 let mut resource_kind__ = None;
                 let mut resource_spec__ = None;
                 let mut units__ = None;
-                let mut cost__ = None;
                 let mut tier__ = None;
                 let mut period__ = None;
+                let mut units_cost__ = None;
+                let mut minimum_cost__ = None;
                 while let Some(k) = map_.next_key()? {
                     match k {
                         GeneratedField::ResourceId => {
@@ -5702,14 +5714,6 @@ impl<'de> serde::Deserialize<'de> for UsageReport {
                                 Some(map_.next_value::<::pbjson::private::NumberDeserialize<_>>()?.0)
                             ;
                         }
-                        GeneratedField::Cost => {
-                            if cost__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("cost"));
-                            }
-                            cost__ = 
-                                Some(map_.next_value::<::pbjson::private::NumberDeserialize<_>>()?.0)
-                            ;
-                        }
                         GeneratedField::Tier => {
                             if tier__.is_some() {
                                 return Err(serde::de::Error::duplicate_field("tier"));
@@ -5722,6 +5726,22 @@ impl<'de> serde::Deserialize<'de> for UsageReport {
                             }
                             period__ = Some(map_.next_value()?);
                         }
+                        GeneratedField::UnitsCost => {
+                            if units_cost__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("unitsCost"));
+                            }
+                            units_cost__ = 
+                                map_.next_value::<::std::option::Option<::pbjson::private::NumberDeserialize<_>>>()?.map(|x| x.0)
+                            ;
+                        }
+                        GeneratedField::MinimumCost => {
+                            if minimum_cost__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("minimumCost"));
+                            }
+                            minimum_cost__ = 
+                                map_.next_value::<::std::option::Option<::pbjson::private::NumberDeserialize<_>>>()?.map(|x| x.0)
+                            ;
+                        }
                     }
                 }
                 Ok(UsageReport {
@@ -5730,9 +5750,10 @@ impl<'de> serde::Deserialize<'de> for UsageReport {
                     resource_kind: resource_kind__.unwrap_or_default(),
                     resource_spec: resource_spec__.unwrap_or_default(),
                     units: units__.unwrap_or_default(),
-                    cost: cost__.unwrap_or_default(),
                     tier: tier__.unwrap_or_default(),
                     period: period__.unwrap_or_default(),
+                    units_cost: units_cost__,
+                    minimum_cost: minimum_cost__,
                 })
             }
         }

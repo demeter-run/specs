@@ -8,9 +8,10 @@ message UsageReport {
   string resource_kind = 3; 
   string resource_spec = 4; 
   int64 units = 5; 
-  float cost = 6; 
   string tier = 7; 
   string period = 8; 
+  optional double units_cost = 9; 
+  optional double minimum_cost = 10; 
 }
 
 message FetchUsageReportRequest {
