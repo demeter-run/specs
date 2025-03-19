@@ -866,6 +866,7 @@
 | project_id | [string](#string) |  |  |
 | page | [uint32](#uint32) | optional |  |
 | page_size | [uint32](#uint32) | optional |  |
+| category | [string](#string) | optional |  |
 
 
 

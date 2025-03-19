@@ -36,6 +36,7 @@ message FetchResourcesRequest {
   string project_id = 1;
   optional uint32 page = 2;
   optional uint32 page_size = 3;
+  optional string category = 4;
 }
 message FetchResourcesResponse {
   repeated Resource records = 1;
