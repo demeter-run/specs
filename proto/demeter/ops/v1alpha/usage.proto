@@ -13,17 +13,27 @@ message UsageReport {
   optional double units_cost = 9; 
   optional double minimum_cost = 10; 
 }
-
 message FetchUsageReportRequest {
   string project_id = 1;
   optional uint32 page = 2;
   optional uint32 page_size = 3;
+  optional string cluster_id = 4;
 }
 message FetchUsageReportResponse {
   repeated UsageReport records = 1;
 }
 
+message FetchUsageClusterRequest {
+  string project_id = 1;
+  optional uint32 page = 2;
+  optional uint32 page_size = 3;
+}
+message FetchUsageClusterResponse {
+  repeated string clusters = 1;
+}
+
 service UsageService {
   rpc FetchUsageReport(FetchUsageReportRequest) returns (FetchUsageReportResponse);
+  rpc FetchUsageCluster(FetchUsageClusterRequest) returns (FetchUsageClusterResponse);
 }
 

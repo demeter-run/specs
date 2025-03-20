@@ -68,6 +68,8 @@
     - [ResourceService](#demeter-ops-v1alpha-ResourceService)
   
 - [proto/demeter/ops/v1alpha/usage.proto](#proto_demeter_ops_v1alpha_usage-proto)
+    - [FetchUsageClusterRequest](#demeter-ops-v1alpha-FetchUsageClusterRequest)
+    - [FetchUsageClusterResponse](#demeter-ops-v1alpha-FetchUsageClusterResponse)
     - [FetchUsageReportRequest](#demeter-ops-v1alpha-FetchUsageReportRequest)
     - [FetchUsageReportResponse](#demeter-ops-v1alpha-FetchUsageReportResponse)
     - [UsageReport](#demeter-ops-v1alpha-UsageReport)
@@ -971,6 +973,38 @@
 
 
 
+<a name="demeter-ops-v1alpha-FetchUsageClusterRequest"></a>
+
+### FetchUsageClusterRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| project_id | [string](#string) |  |  |
+| page | [uint32](#uint32) | optional |  |
+| page_size | [uint32](#uint32) | optional |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-FetchUsageClusterResponse"></a>
+
+### FetchUsageClusterResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| clusters | [string](#string) | repeated |  |
+
+
+
+
+
+
 <a name="demeter-ops-v1alpha-FetchUsageReportRequest"></a>
 
 ### FetchUsageReportRequest
@@ -982,6 +1016,7 @@
 | project_id | [string](#string) |  |  |
 | page | [uint32](#uint32) | optional |  |
 | page_size | [uint32](#uint32) | optional |  |
+| cluster_id | [string](#string) | optional |  |
 
 
 
@@ -1040,6 +1075,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | FetchUsageReport | [FetchUsageReportRequest](#demeter-ops-v1alpha-FetchUsageReportRequest) | [FetchUsageReportResponse](#demeter-ops-v1alpha-FetchUsageReportResponse) |  |
+| FetchUsageCluster | [FetchUsageClusterRequest](#demeter-ops-v1alpha-FetchUsageClusterRequest) | [FetchUsageClusterResponse](#demeter-ops-v1alpha-FetchUsageClusterResponse) |  |
 
  
 
