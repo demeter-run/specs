@@ -76,6 +76,13 @@
   
     - [UsageService](#demeter-ops-v1alpha-UsageService)
   
+- [proto/demeter/ops/v1alpha/worker.proto](#proto_demeter_ops_v1alpha_worker-proto)
+    - [FetchKeyValueRequest](#demeter-ops-v1alpha-FetchKeyValueRequest)
+    - [FetchKeyValueResponse](#demeter-ops-v1alpha-FetchKeyValueResponse)
+    - [KeyValue](#demeter-ops-v1alpha-KeyValue)
+  
+    - [StorageService](#demeter-ops-v1alpha-StorageService)
+  
 - [Scalar Value Types](#scalar-value-types)
 
 
@@ -1076,6 +1083,82 @@
 | ----------- | ------------ | ------------- | ------------|
 | FetchUsageReport | [FetchUsageReportRequest](#demeter-ops-v1alpha-FetchUsageReportRequest) | [FetchUsageReportResponse](#demeter-ops-v1alpha-FetchUsageReportResponse) |  |
 | FetchUsageCluster | [FetchUsageClusterRequest](#demeter-ops-v1alpha-FetchUsageClusterRequest) | [FetchUsageClusterResponse](#demeter-ops-v1alpha-FetchUsageClusterResponse) |  |
+
+ 
+
+
+
+<a name="proto_demeter_ops_v1alpha_worker-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## proto/demeter/ops/v1alpha/worker.proto
+
+
+
+<a name="demeter-ops-v1alpha-FetchKeyValueRequest"></a>
+
+### FetchKeyValueRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| worker_id | [string](#string) |  |  |
+| page | [uint32](#uint32) | optional |  |
+| page_size | [uint32](#uint32) | optional |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-FetchKeyValueResponse"></a>
+
+### FetchKeyValueResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| records | [KeyValue](#demeter-ops-v1alpha-KeyValue) | repeated |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-KeyValue"></a>
+
+### KeyValue
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| key | [string](#string) |  |  |
+| value | [bytes](#bytes) |  |  |
+| type | [string](#string) |  |  |
+| secure | [bool](#bool) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="demeter-ops-v1alpha-StorageService"></a>
+
+### StorageService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| FetchKeyValue | [FetchKeyValueRequest](#demeter-ops-v1alpha-FetchKeyValueRequest) | [FetchKeyValueResponse](#demeter-ops-v1alpha-FetchKeyValueResponse) |  |
 
  
 

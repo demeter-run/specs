@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package demeter.ops.v1alpha;
+
+message KeyValue {
+  string key = 1;
+  bytes value = 2;
+  string type = 3; 
+  bool secure = 4; 
+}
+
+message FetchKeyValueRequest {
+  string worker_id = 1;
+  optional uint32 page = 2;
+  optional uint32 page_size = 3;
+}
+message FetchKeyValueResponse {
+  repeated KeyValue records = 1;
+}
+
+service StorageService {
+  rpc FetchKeyValue(FetchKeyValueRequest) returns (FetchKeyValueResponse);
+}
+
