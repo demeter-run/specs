@@ -1201,6 +1201,11 @@
 
 
 
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| updated | [KeyValue](#demeter-ops-v1alpha-KeyValue) |  |  |
+
+
 
 
 

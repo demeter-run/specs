@@ -26,7 +26,9 @@ message UpdateKeyValueRequest {
   string type = 4; 
   bool secure = 5; 
 }
-message UpdateKeyValueResponse { }
+message UpdateKeyValueResponse { 
+  KeyValue updated = 1; 
+}
 
 message DeleteKeyValueRequest {
   string worker_id = 1;
