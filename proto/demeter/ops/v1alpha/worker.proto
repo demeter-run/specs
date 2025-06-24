@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package demeter.ops.v1alpha;
+
+message KeyValue {
+  string key = 1;
+  bytes value = 2;
+  string type = 3; 
+  bool secure = 4; 
+}
+
+message FetchKeyValueRequest {
+  string worker_id = 1;
+  optional string key = 2;
+  optional uint32 page = 3;
+  optional uint32 page_size = 4;
+}
+message FetchKeyValueResponse {
+  repeated KeyValue records = 1;
+}
+
+message UpdateKeyValueRequest {
+  string worker_id = 1;
+  string key = 2;
+  bytes value = 3;
+  string type = 4; 
+  bool secure = 5; 
+}
+message UpdateKeyValueResponse { 
+  KeyValue updated = 1; 
+}
+
+message DeleteKeyValueRequest {
+  string worker_id = 1;
+  string key = 2;
+}
+message DeleteKeyValueResponse {}
+
+service KeyValueService {
+  rpc FetchKeyValue(FetchKeyValueRequest) returns (FetchKeyValueResponse);
+  rpc UpdateKeyValue(UpdateKeyValueRequest) returns (UpdateKeyValueResponse);
+  rpc DeleteKeyValue(DeleteKeyValueRequest) returns (DeleteKeyValueResponse);
+}
+
