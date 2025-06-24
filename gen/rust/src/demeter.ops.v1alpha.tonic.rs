@@ -3059,16 +3059,16 @@ pub mod usage_service_server {
     }
 }
 /// Generated client implementations.
-pub mod storage_service_client {
+pub mod key_value_service_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
     use tonic::codegen::*;
     use tonic::codegen::http::Uri;
     ///
     #[derive(Debug, Clone)]
-    pub struct StorageServiceClient<T> {
+    pub struct KeyValueServiceClient<T> {
         inner: tonic::client::Grpc<T>,
     }
-    impl StorageServiceClient<tonic::transport::Channel> {
+    impl KeyValueServiceClient<tonic::transport::Channel> {
         /// Attempt to create a new client by connecting to a given endpoint.
         pub async fn connect<D>(dst: D) -> Result<Self, tonic::transport::Error>
         where
@@ -3079,7 +3079,7 @@ pub mod storage_service_client {
             Ok(Self::new(conn))
         }
     }
-    impl<T> StorageServiceClient<T>
+    impl<T> KeyValueServiceClient<T>
     where
         T: tonic::client::GrpcService<tonic::body::BoxBody>,
         T::Error: Into<StdError>,
@@ -3097,7 +3097,7 @@ pub mod storage_service_client {
         pub fn with_interceptor<F>(
             inner: T,
             interceptor: F,
-        ) -> StorageServiceClient<InterceptedService<T, F>>
+        ) -> KeyValueServiceClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
@@ -3111,7 +3111,7 @@ pub mod storage_service_client {
                 http::Request<tonic::body::BoxBody>,
             >>::Error: Into<StdError> + Send + Sync,
         {
-            StorageServiceClient::new(InterceptedService::new(inner, interceptor))
+            KeyValueServiceClient::new(InterceptedService::new(inner, interceptor))
         }
         /// Compress requests with the given encoding.
         ///
@@ -3163,14 +3163,76 @@ pub mod storage_service_client {
                 })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/demeter.ops.v1alpha.StorageService/FetchKeyValue",
+                "/demeter.ops.v1alpha.KeyValueService/FetchKeyValue",
             );
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(
                     GrpcMethod::new(
-                        "demeter.ops.v1alpha.StorageService",
+                        "demeter.ops.v1alpha.KeyValueService",
                         "FetchKeyValue",
+                    ),
+                );
+            self.inner.unary(req, path, codec).await
+        }
+        ///
+        pub async fn update_key_value(
+            &mut self,
+            request: impl tonic::IntoRequest<super::UpdateKeyValueRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::UpdateKeyValueResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/demeter.ops.v1alpha.KeyValueService/UpdateKeyValue",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new(
+                        "demeter.ops.v1alpha.KeyValueService",
+                        "UpdateKeyValue",
+                    ),
+                );
+            self.inner.unary(req, path, codec).await
+        }
+        ///
+        pub async fn delete_key_value(
+            &mut self,
+            request: impl tonic::IntoRequest<super::DeleteKeyValueRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::DeleteKeyValueResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/demeter.ops.v1alpha.KeyValueService/DeleteKeyValue",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new(
+                        "demeter.ops.v1alpha.KeyValueService",
+                        "DeleteKeyValue",
                     ),
                 );
             self.inner.unary(req, path, codec).await
@@ -3178,12 +3240,12 @@ pub mod storage_service_client {
     }
 }
 /// Generated server implementations.
-pub mod storage_service_server {
+pub mod key_value_service_server {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
     use tonic::codegen::*;
-    /// Generated trait containing gRPC methods that should be implemented for use with StorageServiceServer.
+    /// Generated trait containing gRPC methods that should be implemented for use with KeyValueServiceServer.
     #[async_trait]
-    pub trait StorageService: Send + Sync + 'static {
+    pub trait KeyValueService: Send + Sync + 'static {
         ///
         async fn fetch_key_value(
             &self,
@@ -3192,10 +3254,26 @@ pub mod storage_service_server {
             tonic::Response<super::FetchKeyValueResponse>,
             tonic::Status,
         >;
+        ///
+        async fn update_key_value(
+            &self,
+            request: tonic::Request<super::UpdateKeyValueRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::UpdateKeyValueResponse>,
+            tonic::Status,
+        >;
+        ///
+        async fn delete_key_value(
+            &self,
+            request: tonic::Request<super::DeleteKeyValueRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::DeleteKeyValueResponse>,
+            tonic::Status,
+        >;
     }
     ///
     #[derive(Debug)]
-    pub struct StorageServiceServer<T: StorageService> {
+    pub struct KeyValueServiceServer<T: KeyValueService> {
         inner: _Inner<T>,
         accept_compression_encodings: EnabledCompressionEncodings,
         send_compression_encodings: EnabledCompressionEncodings,
@@ -3203,7 +3281,7 @@ pub mod storage_service_server {
         max_encoding_message_size: Option<usize>,
     }
     struct _Inner<T>(Arc<T>);
-    impl<T: StorageService> StorageServiceServer<T> {
+    impl<T: KeyValueService> KeyValueServiceServer<T> {
         pub fn new(inner: T) -> Self {
             Self::from_arc(Arc::new(inner))
         }
@@ -3255,9 +3333,9 @@ pub mod storage_service_server {
             self
         }
     }
-    impl<T, B> tonic::codegen::Service<http::Request<B>> for StorageServiceServer<T>
+    impl<T, B> tonic::codegen::Service<http::Request<B>> for KeyValueServiceServer<T>
     where
-        T: StorageService,
+        T: KeyValueService,
         B: Body + Send + 'static,
         B::Error: Into<StdError> + Send + 'static,
     {
@@ -3273,11 +3351,11 @@ pub mod storage_service_server {
         fn call(&mut self, req: http::Request<B>) -> Self::Future {
             let inner = self.inner.clone();
             match req.uri().path() {
-                "/demeter.ops.v1alpha.StorageService/FetchKeyValue" => {
+                "/demeter.ops.v1alpha.KeyValueService/FetchKeyValue" => {
                     #[allow(non_camel_case_types)]
-                    struct FetchKeyValueSvc<T: StorageService>(pub Arc<T>);
+                    struct FetchKeyValueSvc<T: KeyValueService>(pub Arc<T>);
                     impl<
-                        T: StorageService,
+                        T: KeyValueService,
                     > tonic::server::UnaryService<super::FetchKeyValueRequest>
                     for FetchKeyValueSvc<T> {
                         type Response = super::FetchKeyValueResponse;
@@ -3291,7 +3369,7 @@ pub mod storage_service_server {
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as StorageService>::fetch_key_value(&inner, request)
+                                <T as KeyValueService>::fetch_key_value(&inner, request)
                                     .await
                             };
                             Box::pin(fut)
@@ -3305,6 +3383,100 @@ pub mod storage_service_server {
                     let fut = async move {
                         let inner = inner.0;
                         let method = FetchKeyValueSvc(inner);
+                        let codec = tonic::codec::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/demeter.ops.v1alpha.KeyValueService/UpdateKeyValue" => {
+                    #[allow(non_camel_case_types)]
+                    struct UpdateKeyValueSvc<T: KeyValueService>(pub Arc<T>);
+                    impl<
+                        T: KeyValueService,
+                    > tonic::server::UnaryService<super::UpdateKeyValueRequest>
+                    for UpdateKeyValueSvc<T> {
+                        type Response = super::UpdateKeyValueResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::UpdateKeyValueRequest>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as KeyValueService>::update_key_value(&inner, request)
+                                    .await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let inner = inner.0;
+                        let method = UpdateKeyValueSvc(inner);
+                        let codec = tonic::codec::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/demeter.ops.v1alpha.KeyValueService/DeleteKeyValue" => {
+                    #[allow(non_camel_case_types)]
+                    struct DeleteKeyValueSvc<T: KeyValueService>(pub Arc<T>);
+                    impl<
+                        T: KeyValueService,
+                    > tonic::server::UnaryService<super::DeleteKeyValueRequest>
+                    for DeleteKeyValueSvc<T> {
+                        type Response = super::DeleteKeyValueResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::DeleteKeyValueRequest>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as KeyValueService>::delete_key_value(&inner, request)
+                                    .await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let inner = inner.0;
+                        let method = DeleteKeyValueSvc(inner);
                         let codec = tonic::codec::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
@@ -3335,7 +3507,7 @@ pub mod storage_service_server {
             }
         }
     }
-    impl<T: StorageService> Clone for StorageServiceServer<T> {
+    impl<T: KeyValueService> Clone for KeyValueServiceServer<T> {
         fn clone(&self) -> Self {
             let inner = self.inner.clone();
             Self {
@@ -3347,7 +3519,7 @@ pub mod storage_service_server {
             }
         }
     }
-    impl<T: StorageService> Clone for _Inner<T> {
+    impl<T: KeyValueService> Clone for _Inner<T> {
         fn clone(&self) -> Self {
             Self(Arc::clone(&self.0))
         }
@@ -3357,7 +3529,7 @@ pub mod storage_service_server {
             write!(f, "{:?}", self.0)
         }
     }
-    impl<T: StorageService> tonic::server::NamedService for StorageServiceServer<T> {
-        const NAME: &'static str = "demeter.ops.v1alpha.StorageService";
+    impl<T: KeyValueService> tonic::server::NamedService for KeyValueServiceServer<T> {
+        const NAME: &'static str = "demeter.ops.v1alpha.KeyValueService";
     }
 }

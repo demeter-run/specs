@@ -77,11 +77,15 @@
     - [UsageService](#demeter-ops-v1alpha-UsageService)
   
 - [proto/demeter/ops/v1alpha/worker.proto](#proto_demeter_ops_v1alpha_worker-proto)
+    - [DeleteKeyValueRequest](#demeter-ops-v1alpha-DeleteKeyValueRequest)
+    - [DeleteKeyValueResponse](#demeter-ops-v1alpha-DeleteKeyValueResponse)
     - [FetchKeyValueRequest](#demeter-ops-v1alpha-FetchKeyValueRequest)
     - [FetchKeyValueResponse](#demeter-ops-v1alpha-FetchKeyValueResponse)
     - [KeyValue](#demeter-ops-v1alpha-KeyValue)
+    - [UpdateKeyValueRequest](#demeter-ops-v1alpha-UpdateKeyValueRequest)
+    - [UpdateKeyValueResponse](#demeter-ops-v1alpha-UpdateKeyValueResponse)
   
-    - [StorageService](#demeter-ops-v1alpha-StorageService)
+    - [KeyValueService](#demeter-ops-v1alpha-KeyValueService)
   
 - [Scalar Value Types](#scalar-value-types)
 
@@ -1095,6 +1099,32 @@
 
 
 
+<a name="demeter-ops-v1alpha-DeleteKeyValueRequest"></a>
+
+### DeleteKeyValueRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| worker_id | [string](#string) |  |  |
+| key | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-DeleteKeyValueResponse"></a>
+
+### DeleteKeyValueResponse
+
+
+
+
+
+
+
 <a name="demeter-ops-v1alpha-FetchKeyValueRequest"></a>
 
 ### FetchKeyValueRequest
@@ -1104,6 +1134,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | worker_id | [string](#string) |  |  |
+| key | [string](#string) | optional |  |
 | page | [uint32](#uint32) | optional |  |
 | page_size | [uint32](#uint32) | optional |  |
 
@@ -1144,21 +1175,52 @@
 
 
 
- 
+
+<a name="demeter-ops-v1alpha-UpdateKeyValueRequest"></a>
+
+### UpdateKeyValueRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| worker_id | [string](#string) |  |  |
+| key | [string](#string) |  |  |
+| value | [bytes](#bytes) |  |  |
+| type | [string](#string) |  |  |
+| secure | [bool](#bool) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-UpdateKeyValueResponse"></a>
+
+### UpdateKeyValueResponse
+
+
+
+
+
 
  
 
  
 
+ 
 
-<a name="demeter-ops-v1alpha-StorageService"></a>
 
-### StorageService
+<a name="demeter-ops-v1alpha-KeyValueService"></a>
+
+### KeyValueService
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | FetchKeyValue | [FetchKeyValueRequest](#demeter-ops-v1alpha-FetchKeyValueRequest) | [FetchKeyValueResponse](#demeter-ops-v1alpha-FetchKeyValueResponse) |  |
+| UpdateKeyValue | [UpdateKeyValueRequest](#demeter-ops-v1alpha-UpdateKeyValueRequest) | [UpdateKeyValueResponse](#demeter-ops-v1alpha-UpdateKeyValueResponse) |  |
+| DeleteKeyValue | [DeleteKeyValueRequest](#demeter-ops-v1alpha-DeleteKeyValueRequest) | [DeleteKeyValueResponse](#demeter-ops-v1alpha-DeleteKeyValueResponse) |  |
 
  
 
