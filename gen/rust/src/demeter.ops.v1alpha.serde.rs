@@ -4755,6 +4755,7 @@ impl serde::Serialize for KeyValue {
         }
         if !self.value.is_empty() {
             #[allow(clippy::needless_borrow)]
+            #[allow(clippy::needless_borrows_for_generic_args)]
             struct_ser.serialize_field("value", pbjson::private::base64::encode(&self.value).as_str())?;
         }
         if !self.r#type.is_empty() {
@@ -6157,6 +6158,7 @@ impl serde::Serialize for UpdateKeyValueRequest {
         }
         if !self.value.is_empty() {
             #[allow(clippy::needless_borrow)]
+            #[allow(clippy::needless_borrows_for_generic_args)]
             struct_ser.serialize_field("value", pbjson::private::base64::encode(&self.value).as_str())?;
         }
         if !self.r#type.is_empty() {
@@ -6828,6 +6830,7 @@ impl serde::Serialize for UsageReport {
         }
         if self.units != 0 {
             #[allow(clippy::needless_borrow)]
+            #[allow(clippy::needless_borrows_for_generic_args)]
             struct_ser.serialize_field("units", ToString::to_string(&self.units).as_str())?;
         }
         if !self.tier.is_empty() {
