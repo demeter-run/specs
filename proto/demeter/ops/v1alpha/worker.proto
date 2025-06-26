@@ -39,3 +39,30 @@ service KeyValueService {
   rpc DeleteKeyValue(DeleteKeyValueRequest) returns (DeleteKeyValueResponse);
 }
 
+message Log {
+  uint32 timestamp = 2;
+  string level = 4;
+  string message = 5;
+  string context = 6;
+}
+
+enum Direction {
+  Prev = 0;
+  Next = 1;
+}
+
+message FetchLogsRequest {
+  string worker_id = 1;
+  uint32 cursor = 2;
+  optional Direction direction = 3;
+  optional uint32 limit = 4;
+}
+
+message FetchLogsResponse {
+  repeated Log records = 2;
+}
+
+service LogsService {
+  rpc FetchWindow(FetchLogsRequest) returns (FetchLogsResponse);
+}
+
