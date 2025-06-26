@@ -5,8 +5,6 @@ package demeter.ops.v1alpha;
 message KeyValue {
   string key = 1;
   bytes value = 2;
-  string type = 3; 
-  bool secure = 4; 
 }
 
 message FetchKeyValueRequest {
@@ -23,8 +21,6 @@ message UpdateKeyValueRequest {
   string worker_id = 1;
   string key = 2;
   bytes value = 3;
-  string type = 4; 
-  bool secure = 5; 
 }
 message UpdateKeyValueResponse { 
   KeyValue updated = 1; 

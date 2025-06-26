@@ -1168,8 +1168,6 @@
 | ----- | ---- | ----- | ----------- |
 | key | [string](#string) |  |  |
 | value | [bytes](#bytes) |  |  |
-| type | [string](#string) |  |  |
-| secure | [bool](#bool) |  |  |
 
 
 
@@ -1187,8 +1185,6 @@
 | worker_id | [string](#string) |  |  |
 | key | [string](#string) |  |  |
 | value | [bytes](#bytes) |  |  |
-| type | [string](#string) |  |  |
-| secure | [bool](#bool) |  |  |
 
 
 

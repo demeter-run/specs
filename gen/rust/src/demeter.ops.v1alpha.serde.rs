@@ -4743,12 +4743,6 @@ impl serde::Serialize for KeyValue {
         if !self.value.is_empty() {
             len += 1;
         }
-        if !self.r#type.is_empty() {
-            len += 1;
-        }
-        if self.secure {
-            len += 1;
-        }
         let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.KeyValue", len)?;
         if !self.key.is_empty() {
             struct_ser.serialize_field("key", &self.key)?;
@@ -4757,12 +4751,6 @@ impl serde::Serialize for KeyValue {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
             struct_ser.serialize_field("value", pbjson::private::base64::encode(&self.value).as_str())?;
-        }
-        if !self.r#type.is_empty() {
-            struct_ser.serialize_field("type", &self.r#type)?;
-        }
-        if self.secure {
-            struct_ser.serialize_field("secure", &self.secure)?;
         }
         struct_ser.end()
     }
@@ -4776,16 +4764,12 @@ impl<'de> serde::Deserialize<'de> for KeyValue {
         const FIELDS: &[&str] = &[
             "key",
             "value",
-            "type",
-            "secure",
         ];
 
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
             Key,
             Value,
-            Type,
-            Secure,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
             fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
@@ -4809,8 +4793,6 @@ impl<'de> serde::Deserialize<'de> for KeyValue {
                         match value {
                             "key" => Ok(GeneratedField::Key),
                             "value" => Ok(GeneratedField::Value),
-                            "type" => Ok(GeneratedField::Type),
-                            "secure" => Ok(GeneratedField::Secure),
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
                         }
                     }
@@ -4832,8 +4814,6 @@ impl<'de> serde::Deserialize<'de> for KeyValue {
             {
                 let mut key__ = None;
                 let mut value__ = None;
-                let mut r#type__ = None;
-                let mut secure__ = None;
                 while let Some(k) = map_.next_key()? {
                     match k {
                         GeneratedField::Key => {
@@ -4850,25 +4830,11 @@ impl<'de> serde::Deserialize<'de> for KeyValue {
                                 Some(map_.next_value::<::pbjson::private::BytesDeserialize<_>>()?.0)
                             ;
                         }
-                        GeneratedField::Type => {
-                            if r#type__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("type"));
-                            }
-                            r#type__ = Some(map_.next_value()?);
-                        }
-                        GeneratedField::Secure => {
-                            if secure__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("secure"));
-                            }
-                            secure__ = Some(map_.next_value()?);
-                        }
                     }
                 }
                 Ok(KeyValue {
                     key: key__.unwrap_or_default(),
                     value: value__.unwrap_or_default(),
-                    r#type: r#type__.unwrap_or_default(),
-                    secure: secure__.unwrap_or_default(),
                 })
             }
         }
@@ -6143,12 +6109,6 @@ impl serde::Serialize for UpdateKeyValueRequest {
         if !self.value.is_empty() {
             len += 1;
         }
-        if !self.r#type.is_empty() {
-            len += 1;
-        }
-        if self.secure {
-            len += 1;
-        }
         let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.UpdateKeyValueRequest", len)?;
         if !self.worker_id.is_empty() {
             struct_ser.serialize_field("workerId", &self.worker_id)?;
@@ -6160,12 +6120,6 @@ impl serde::Serialize for UpdateKeyValueRequest {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
             struct_ser.serialize_field("value", pbjson::private::base64::encode(&self.value).as_str())?;
-        }
-        if !self.r#type.is_empty() {
-            struct_ser.serialize_field("type", &self.r#type)?;
-        }
-        if self.secure {
-            struct_ser.serialize_field("secure", &self.secure)?;
         }
         struct_ser.end()
     }
@@ -6181,8 +6135,6 @@ impl<'de> serde::Deserialize<'de> for UpdateKeyValueRequest {
             "workerId",
             "key",
             "value",
-            "type",
-            "secure",
         ];
 
         #[allow(clippy::enum_variant_names)]
@@ -6190,8 +6142,6 @@ impl<'de> serde::Deserialize<'de> for UpdateKeyValueRequest {
             WorkerId,
             Key,
             Value,
-            Type,
-            Secure,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
             fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
@@ -6216,8 +6166,6 @@ impl<'de> serde::Deserialize<'de> for UpdateKeyValueRequest {
                             "workerId" | "worker_id" => Ok(GeneratedField::WorkerId),
                             "key" => Ok(GeneratedField::Key),
                             "value" => Ok(GeneratedField::Value),
-                            "type" => Ok(GeneratedField::Type),
-                            "secure" => Ok(GeneratedField::Secure),
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
                         }
                     }
@@ -6240,8 +6188,6 @@ impl<'de> serde::Deserialize<'de> for UpdateKeyValueRequest {
                 let mut worker_id__ = None;
                 let mut key__ = None;
                 let mut value__ = None;
-                let mut r#type__ = None;
-                let mut secure__ = None;
                 while let Some(k) = map_.next_key()? {
                     match k {
                         GeneratedField::WorkerId => {
@@ -6264,26 +6210,12 @@ impl<'de> serde::Deserialize<'de> for UpdateKeyValueRequest {
                                 Some(map_.next_value::<::pbjson::private::BytesDeserialize<_>>()?.0)
                             ;
                         }
-                        GeneratedField::Type => {
-                            if r#type__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("type"));
-                            }
-                            r#type__ = Some(map_.next_value()?);
-                        }
-                        GeneratedField::Secure => {
-                            if secure__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("secure"));
-                            }
-                            secure__ = Some(map_.next_value()?);
-                        }
                     }
                 }
                 Ok(UpdateKeyValueRequest {
                     worker_id: worker_id__.unwrap_or_default(),
                     key: key__.unwrap_or_default(),
                     value: value__.unwrap_or_default(),
-                    r#type: r#type__.unwrap_or_default(),
-                    secure: secure__.unwrap_or_default(),
                 })
             }
         }
