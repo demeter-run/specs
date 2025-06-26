@@ -2223,10 +2223,16 @@ impl serde::Serialize for FetchKeyValueResponse {
     {
         use serde::ser::SerializeStruct;
         let mut len = 0;
+        if self.total_records != 0 {
+            len += 1;
+        }
         if !self.records.is_empty() {
             len += 1;
         }
         let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.FetchKeyValueResponse", len)?;
+        if self.total_records != 0 {
+            struct_ser.serialize_field("totalRecords", &self.total_records)?;
+        }
         if !self.records.is_empty() {
             struct_ser.serialize_field("records", &self.records)?;
         }
@@ -2240,11 +2246,14 @@ impl<'de> serde::Deserialize<'de> for FetchKeyValueResponse {
         D: serde::Deserializer<'de>,
     {
         const FIELDS: &[&str] = &[
+            "total_records",
+            "totalRecords",
             "records",
         ];
 
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
+            TotalRecords,
             Records,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
@@ -2267,6 +2276,7 @@ impl<'de> serde::Deserialize<'de> for FetchKeyValueResponse {
                         E: serde::de::Error,
                     {
                         match value {
+                            "totalRecords" | "total_records" => Ok(GeneratedField::TotalRecords),
                             "records" => Ok(GeneratedField::Records),
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
                         }
@@ -2287,9 +2297,18 @@ impl<'de> serde::Deserialize<'de> for FetchKeyValueResponse {
                 where
                     V: serde::de::MapAccess<'de>,
             {
+                let mut total_records__ = None;
                 let mut records__ = None;
                 while let Some(k) = map_.next_key()? {
                     match k {
+                        GeneratedField::TotalRecords => {
+                            if total_records__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("totalRecords"));
+                            }
+                            total_records__ = 
+                                Some(map_.next_value::<::pbjson::private::NumberDeserialize<_>>()?.0)
+                            ;
+                        }
                         GeneratedField::Records => {
                             if records__.is_some() {
                                 return Err(serde::de::Error::duplicate_field("records"));
@@ -2299,6 +2318,7 @@ impl<'de> serde::Deserialize<'de> for FetchKeyValueResponse {
                     }
                 }
                 Ok(FetchKeyValueResponse {
+                    total_records: total_records__.unwrap_or_default(),
                     records: records__.unwrap_or_default(),
                 })
             }

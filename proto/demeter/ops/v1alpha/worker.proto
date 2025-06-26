@@ -14,7 +14,8 @@ message FetchKeyValueRequest {
   optional uint32 page_size = 4;
 }
 message FetchKeyValueResponse {
-  repeated KeyValue records = 1;
+  uint32 total_records = 1;
+  repeated KeyValue records = 2;
 }
 
 message UpdateKeyValueRequest {

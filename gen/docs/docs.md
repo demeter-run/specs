@@ -1151,6 +1151,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+| total_records | [uint32](#uint32) |  |  |
 | records | [KeyValue](#demeter-ops-v1alpha-KeyValue) | repeated |  |
 
 
