@@ -81,11 +81,17 @@
     - [DeleteKeyValueResponse](#demeter-ops-v1alpha-DeleteKeyValueResponse)
     - [FetchKeyValueRequest](#demeter-ops-v1alpha-FetchKeyValueRequest)
     - [FetchKeyValueResponse](#demeter-ops-v1alpha-FetchKeyValueResponse)
+    - [FetchLogsRequest](#demeter-ops-v1alpha-FetchLogsRequest)
+    - [FetchLogsResponse](#demeter-ops-v1alpha-FetchLogsResponse)
     - [KeyValue](#demeter-ops-v1alpha-KeyValue)
+    - [Log](#demeter-ops-v1alpha-Log)
     - [UpdateKeyValueRequest](#demeter-ops-v1alpha-UpdateKeyValueRequest)
     - [UpdateKeyValueResponse](#demeter-ops-v1alpha-UpdateKeyValueResponse)
   
+    - [Direction](#demeter-ops-v1alpha-Direction)
+  
     - [KeyValueService](#demeter-ops-v1alpha-KeyValueService)
+    - [LogsService](#demeter-ops-v1alpha-LogsService)
   
 - [Scalar Value Types](#scalar-value-types)
 
@@ -1159,6 +1165,39 @@
 
 
 
+<a name="demeter-ops-v1alpha-FetchLogsRequest"></a>
+
+### FetchLogsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| worker_id | [string](#string) |  |  |
+| cursor | [uint32](#uint32) |  |  |
+| direction | [Direction](#demeter-ops-v1alpha-Direction) | optional |  |
+| limit | [uint32](#uint32) | optional |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-FetchLogsResponse"></a>
+
+### FetchLogsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| records | [Log](#demeter-ops-v1alpha-Log) | repeated |  |
+
+
+
+
+
+
 <a name="demeter-ops-v1alpha-KeyValue"></a>
 
 ### KeyValue
@@ -1169,6 +1208,24 @@
 | ----- | ---- | ----- | ----------- |
 | key | [string](#string) |  |  |
 | value | [bytes](#bytes) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-Log"></a>
+
+### Log
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| timestamp | [uint32](#uint32) |  |  |
+| level | [string](#string) |  |  |
+| message | [string](#string) |  |  |
+| context | [string](#string) |  |  |
 
 
 
@@ -1208,6 +1265,18 @@
 
  
 
+
+<a name="demeter-ops-v1alpha-Direction"></a>
+
+### Direction
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| Prev | 0 |  |
+| Next | 1 |  |
+
+
  
 
  
@@ -1223,6 +1292,16 @@
 | FetchKeyValue | [FetchKeyValueRequest](#demeter-ops-v1alpha-FetchKeyValueRequest) | [FetchKeyValueResponse](#demeter-ops-v1alpha-FetchKeyValueResponse) |  |
 | UpdateKeyValue | [UpdateKeyValueRequest](#demeter-ops-v1alpha-UpdateKeyValueRequest) | [UpdateKeyValueResponse](#demeter-ops-v1alpha-UpdateKeyValueResponse) |  |
 | DeleteKeyValue | [DeleteKeyValueRequest](#demeter-ops-v1alpha-DeleteKeyValueRequest) | [DeleteKeyValueResponse](#demeter-ops-v1alpha-DeleteKeyValueResponse) |  |
+
+
+<a name="demeter-ops-v1alpha-LogsService"></a>
+
+### LogsService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| FetchWindow | [FetchLogsRequest](#demeter-ops-v1alpha-FetchLogsRequest) | [FetchLogsResponse](#demeter-ops-v1alpha-FetchLogsResponse) |  |
 
  
 
