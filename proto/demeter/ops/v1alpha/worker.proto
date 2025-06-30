@@ -66,3 +66,36 @@ service LogsService {
   rpc FetchWindow(FetchLogsRequest) returns (FetchLogsResponse);
 }
 
+message Signer {
+  string key_name = 1;
+}
+
+message ListSignerRequest {
+  string worker_id = 1;
+}
+message ListSignerResponse {
+  repeated Signer keys = 1;
+}
+
+message GetPublicKeySignerRequest {
+  string worker_id = 1;
+  string key_name = 2;
+}
+message GetPublicKeySignerResponse { 
+  optional bytes public_key = 1; 
+}
+
+message SignPayloadSignerRequest {
+  string worker_id = 1;
+  string key_name = 2;
+  bytes payload = 3;
+}
+message SignPayloadSignerResponse {
+  bytes signed_payload = 1;
+}
+
+service SignerService {
+  rpc List(ListSignerRequest) returns (ListSignerResponse);
+  rpc GetPublicKey(GetPublicKeySignerRequest) returns (GetPublicKeySignerResponse);
+  rpc SignPayload(SignPayloadSignerRequest) returns (SignPayloadSignerResponse);
+}
