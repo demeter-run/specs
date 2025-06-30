@@ -74,7 +74,7 @@ message ListSignerRequest {
   string worker_id = 1;
 }
 message ListSignerResponse {
-  repeated KeyValue keys = 1;
+  repeated Signer keys = 1;
 }
 
 message GetPublicKeySignerRequest {

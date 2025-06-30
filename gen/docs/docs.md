@@ -1276,7 +1276,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| keys | [KeyValue](#demeter-ops-v1alpha-KeyValue) | repeated |  |
+| keys | [Signer](#demeter-ops-v1alpha-Signer) | repeated |  |
 
 
 
