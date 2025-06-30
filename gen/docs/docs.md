@@ -83,8 +83,15 @@
     - [FetchKeyValueResponse](#demeter-ops-v1alpha-FetchKeyValueResponse)
     - [FetchLogsRequest](#demeter-ops-v1alpha-FetchLogsRequest)
     - [FetchLogsResponse](#demeter-ops-v1alpha-FetchLogsResponse)
+    - [GetPublicKeySignerRequest](#demeter-ops-v1alpha-GetPublicKeySignerRequest)
+    - [GetPublicKeySignerResponse](#demeter-ops-v1alpha-GetPublicKeySignerResponse)
     - [KeyValue](#demeter-ops-v1alpha-KeyValue)
+    - [ListSignerRequest](#demeter-ops-v1alpha-ListSignerRequest)
+    - [ListSignerResponse](#demeter-ops-v1alpha-ListSignerResponse)
     - [Log](#demeter-ops-v1alpha-Log)
+    - [SignPayloadSignerRequest](#demeter-ops-v1alpha-SignPayloadSignerRequest)
+    - [SignPayloadSignerResponse](#demeter-ops-v1alpha-SignPayloadSignerResponse)
+    - [Signer](#demeter-ops-v1alpha-Signer)
     - [UpdateKeyValueRequest](#demeter-ops-v1alpha-UpdateKeyValueRequest)
     - [UpdateKeyValueResponse](#demeter-ops-v1alpha-UpdateKeyValueResponse)
   
@@ -92,6 +99,7 @@
   
     - [KeyValueService](#demeter-ops-v1alpha-KeyValueService)
     - [LogsService](#demeter-ops-v1alpha-LogsService)
+    - [SignerService](#demeter-ops-v1alpha-SignerService)
   
 - [Scalar Value Types](#scalar-value-types)
 
@@ -1198,6 +1206,37 @@
 
 
 
+<a name="demeter-ops-v1alpha-GetPublicKeySignerRequest"></a>
+
+### GetPublicKeySignerRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| worker_id | [string](#string) |  |  |
+| key_name | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-GetPublicKeySignerResponse"></a>
+
+### GetPublicKeySignerResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| public_key | [bytes](#bytes) | optional |  |
+
+
+
+
+
+
 <a name="demeter-ops-v1alpha-KeyValue"></a>
 
 ### KeyValue
@@ -1208,6 +1247,36 @@
 | ----- | ---- | ----- | ----------- |
 | key | [string](#string) |  |  |
 | value | [bytes](#bytes) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-ListSignerRequest"></a>
+
+### ListSignerRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| worker_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-ListSignerResponse"></a>
+
+### ListSignerResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| keys | [KeyValue](#demeter-ops-v1alpha-KeyValue) | repeated |  |
 
 
 
@@ -1226,6 +1295,53 @@
 | level | [string](#string) |  |  |
 | message | [string](#string) |  |  |
 | context | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-SignPayloadSignerRequest"></a>
+
+### SignPayloadSignerRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| worker_id | [string](#string) |  |  |
+| key_name | [string](#string) |  |  |
+| payload | [bytes](#bytes) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-SignPayloadSignerResponse"></a>
+
+### SignPayloadSignerResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| signed_payload | [bytes](#bytes) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-Signer"></a>
+
+### Signer
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| key_name | [string](#string) |  |  |
 
 
 
@@ -1302,6 +1418,18 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | FetchWindow | [FetchLogsRequest](#demeter-ops-v1alpha-FetchLogsRequest) | [FetchLogsResponse](#demeter-ops-v1alpha-FetchLogsResponse) |  |
+
+
+<a name="demeter-ops-v1alpha-SignerService"></a>
+
+### SignerService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| List | [ListSignerRequest](#demeter-ops-v1alpha-ListSignerRequest) | [ListSignerResponse](#demeter-ops-v1alpha-ListSignerResponse) |  |
+| GetPublicKey | [GetPublicKeySignerRequest](#demeter-ops-v1alpha-GetPublicKeySignerRequest) | [GetPublicKeySignerResponse](#demeter-ops-v1alpha-GetPublicKeySignerResponse) |  |
+| SignPayload | [SignPayloadSignerRequest](#demeter-ops-v1alpha-SignPayloadSignerRequest) | [SignPayloadSignerResponse](#demeter-ops-v1alpha-SignPayloadSignerResponse) |  |
 
  
 

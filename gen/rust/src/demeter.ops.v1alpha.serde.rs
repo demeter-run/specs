@@ -5060,6 +5060,211 @@ impl<'de> serde::Deserialize<'de> for FetchUsageReportResponse {
         deserializer.deserialize_struct("demeter.ops.v1alpha.FetchUsageReportResponse", FIELDS, GeneratedVisitor)
     }
 }
+impl serde::Serialize for GetPublicKeySignerRequest {
+    #[allow(deprecated)]
+    fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        use serde::ser::SerializeStruct;
+        let mut len = 0;
+        if !self.worker_id.is_empty() {
+            len += 1;
+        }
+        if !self.key_name.is_empty() {
+            len += 1;
+        }
+        let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.GetPublicKeySignerRequest", len)?;
+        if !self.worker_id.is_empty() {
+            struct_ser.serialize_field("workerId", &self.worker_id)?;
+        }
+        if !self.key_name.is_empty() {
+            struct_ser.serialize_field("keyName", &self.key_name)?;
+        }
+        struct_ser.end()
+    }
+}
+impl<'de> serde::Deserialize<'de> for GetPublicKeySignerRequest {
+    #[allow(deprecated)]
+    fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        const FIELDS: &[&str] = &[
+            "worker_id",
+            "workerId",
+            "key_name",
+            "keyName",
+        ];
+
+        #[allow(clippy::enum_variant_names)]
+        enum GeneratedField {
+            WorkerId,
+            KeyName,
+        }
+        impl<'de> serde::Deserialize<'de> for GeneratedField {
+            fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
+            where
+                D: serde::Deserializer<'de>,
+            {
+                struct GeneratedVisitor;
+
+                impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+                    type Value = GeneratedField;
+
+                    fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        write!(formatter, "expected one of: {:?}", &FIELDS)
+                    }
+
+                    #[allow(unused_variables)]
+                    fn visit_str<E>(self, value: &str) -> std::result::Result<GeneratedField, E>
+                    where
+                        E: serde::de::Error,
+                    {
+                        match value {
+                            "workerId" | "worker_id" => Ok(GeneratedField::WorkerId),
+                            "keyName" | "key_name" => Ok(GeneratedField::KeyName),
+                            _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
+                        }
+                    }
+                }
+                deserializer.deserialize_identifier(GeneratedVisitor)
+            }
+        }
+        struct GeneratedVisitor;
+        impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+            type Value = GetPublicKeySignerRequest;
+
+            fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                formatter.write_str("struct demeter.ops.v1alpha.GetPublicKeySignerRequest")
+            }
+
+            fn visit_map<V>(self, mut map_: V) -> std::result::Result<GetPublicKeySignerRequest, V::Error>
+                where
+                    V: serde::de::MapAccess<'de>,
+            {
+                let mut worker_id__ = None;
+                let mut key_name__ = None;
+                while let Some(k) = map_.next_key()? {
+                    match k {
+                        GeneratedField::WorkerId => {
+                            if worker_id__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("workerId"));
+                            }
+                            worker_id__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::KeyName => {
+                            if key_name__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("keyName"));
+                            }
+                            key_name__ = Some(map_.next_value()?);
+                        }
+                    }
+                }
+                Ok(GetPublicKeySignerRequest {
+                    worker_id: worker_id__.unwrap_or_default(),
+                    key_name: key_name__.unwrap_or_default(),
+                })
+            }
+        }
+        deserializer.deserialize_struct("demeter.ops.v1alpha.GetPublicKeySignerRequest", FIELDS, GeneratedVisitor)
+    }
+}
+impl serde::Serialize for GetPublicKeySignerResponse {
+    #[allow(deprecated)]
+    fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        use serde::ser::SerializeStruct;
+        let mut len = 0;
+        if self.public_key.is_some() {
+            len += 1;
+        }
+        let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.GetPublicKeySignerResponse", len)?;
+        if let Some(v) = self.public_key.as_ref() {
+            #[allow(clippy::needless_borrow)]
+            struct_ser.serialize_field("publicKey", pbjson::private::base64::encode(&v).as_str())?;
+        }
+        struct_ser.end()
+    }
+}
+impl<'de> serde::Deserialize<'de> for GetPublicKeySignerResponse {
+    #[allow(deprecated)]
+    fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        const FIELDS: &[&str] = &[
+            "public_key",
+            "publicKey",
+        ];
+
+        #[allow(clippy::enum_variant_names)]
+        enum GeneratedField {
+            PublicKey,
+        }
+        impl<'de> serde::Deserialize<'de> for GeneratedField {
+            fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
+            where
+                D: serde::Deserializer<'de>,
+            {
+                struct GeneratedVisitor;
+
+                impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+                    type Value = GeneratedField;
+
+                    fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        write!(formatter, "expected one of: {:?}", &FIELDS)
+                    }
+
+                    #[allow(unused_variables)]
+                    fn visit_str<E>(self, value: &str) -> std::result::Result<GeneratedField, E>
+                    where
+                        E: serde::de::Error,
+                    {
+                        match value {
+                            "publicKey" | "public_key" => Ok(GeneratedField::PublicKey),
+                            _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
+                        }
+                    }
+                }
+                deserializer.deserialize_identifier(GeneratedVisitor)
+            }
+        }
+        struct GeneratedVisitor;
+        impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+            type Value = GetPublicKeySignerResponse;
+
+            fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                formatter.write_str("struct demeter.ops.v1alpha.GetPublicKeySignerResponse")
+            }
+
+            fn visit_map<V>(self, mut map_: V) -> std::result::Result<GetPublicKeySignerResponse, V::Error>
+                where
+                    V: serde::de::MapAccess<'de>,
+            {
+                let mut public_key__ = None;
+                while let Some(k) = map_.next_key()? {
+                    match k {
+                        GeneratedField::PublicKey => {
+                            if public_key__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("publicKey"));
+                            }
+                            public_key__ = 
+                                map_.next_value::<::std::option::Option<::pbjson::private::BytesDeserialize<_>>>()?.map(|x| x.0)
+                            ;
+                        }
+                    }
+                }
+                Ok(GetPublicKeySignerResponse {
+                    public_key: public_key__,
+                })
+            }
+        }
+        deserializer.deserialize_struct("demeter.ops.v1alpha.GetPublicKeySignerResponse", FIELDS, GeneratedVisitor)
+    }
+}
 impl serde::Serialize for KeyValue {
     #[allow(deprecated)]
     fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
@@ -5080,7 +5285,6 @@ impl serde::Serialize for KeyValue {
         }
         if !self.value.is_empty() {
             #[allow(clippy::needless_borrow)]
-            #[allow(clippy::needless_borrows_for_generic_args)]
             struct_ser.serialize_field("value", pbjson::private::base64::encode(&self.value).as_str())?;
         }
         struct_ser.end()
@@ -5170,6 +5374,189 @@ impl<'de> serde::Deserialize<'de> for KeyValue {
             }
         }
         deserializer.deserialize_struct("demeter.ops.v1alpha.KeyValue", FIELDS, GeneratedVisitor)
+    }
+}
+impl serde::Serialize for ListSignerRequest {
+    #[allow(deprecated)]
+    fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        use serde::ser::SerializeStruct;
+        let mut len = 0;
+        if !self.worker_id.is_empty() {
+            len += 1;
+        }
+        let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.ListSignerRequest", len)?;
+        if !self.worker_id.is_empty() {
+            struct_ser.serialize_field("workerId", &self.worker_id)?;
+        }
+        struct_ser.end()
+    }
+}
+impl<'de> serde::Deserialize<'de> for ListSignerRequest {
+    #[allow(deprecated)]
+    fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        const FIELDS: &[&str] = &[
+            "worker_id",
+            "workerId",
+        ];
+
+        #[allow(clippy::enum_variant_names)]
+        enum GeneratedField {
+            WorkerId,
+        }
+        impl<'de> serde::Deserialize<'de> for GeneratedField {
+            fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
+            where
+                D: serde::Deserializer<'de>,
+            {
+                struct GeneratedVisitor;
+
+                impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+                    type Value = GeneratedField;
+
+                    fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        write!(formatter, "expected one of: {:?}", &FIELDS)
+                    }
+
+                    #[allow(unused_variables)]
+                    fn visit_str<E>(self, value: &str) -> std::result::Result<GeneratedField, E>
+                    where
+                        E: serde::de::Error,
+                    {
+                        match value {
+                            "workerId" | "worker_id" => Ok(GeneratedField::WorkerId),
+                            _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
+                        }
+                    }
+                }
+                deserializer.deserialize_identifier(GeneratedVisitor)
+            }
+        }
+        struct GeneratedVisitor;
+        impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+            type Value = ListSignerRequest;
+
+            fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                formatter.write_str("struct demeter.ops.v1alpha.ListSignerRequest")
+            }
+
+            fn visit_map<V>(self, mut map_: V) -> std::result::Result<ListSignerRequest, V::Error>
+                where
+                    V: serde::de::MapAccess<'de>,
+            {
+                let mut worker_id__ = None;
+                while let Some(k) = map_.next_key()? {
+                    match k {
+                        GeneratedField::WorkerId => {
+                            if worker_id__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("workerId"));
+                            }
+                            worker_id__ = Some(map_.next_value()?);
+                        }
+                    }
+                }
+                Ok(ListSignerRequest {
+                    worker_id: worker_id__.unwrap_or_default(),
+                })
+            }
+        }
+        deserializer.deserialize_struct("demeter.ops.v1alpha.ListSignerRequest", FIELDS, GeneratedVisitor)
+    }
+}
+impl serde::Serialize for ListSignerResponse {
+    #[allow(deprecated)]
+    fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        use serde::ser::SerializeStruct;
+        let mut len = 0;
+        if !self.keys.is_empty() {
+            len += 1;
+        }
+        let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.ListSignerResponse", len)?;
+        if !self.keys.is_empty() {
+            struct_ser.serialize_field("keys", &self.keys)?;
+        }
+        struct_ser.end()
+    }
+}
+impl<'de> serde::Deserialize<'de> for ListSignerResponse {
+    #[allow(deprecated)]
+    fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        const FIELDS: &[&str] = &[
+            "keys",
+        ];
+
+        #[allow(clippy::enum_variant_names)]
+        enum GeneratedField {
+            Keys,
+        }
+        impl<'de> serde::Deserialize<'de> for GeneratedField {
+            fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
+            where
+                D: serde::Deserializer<'de>,
+            {
+                struct GeneratedVisitor;
+
+                impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+                    type Value = GeneratedField;
+
+                    fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        write!(formatter, "expected one of: {:?}", &FIELDS)
+                    }
+
+                    #[allow(unused_variables)]
+                    fn visit_str<E>(self, value: &str) -> std::result::Result<GeneratedField, E>
+                    where
+                        E: serde::de::Error,
+                    {
+                        match value {
+                            "keys" => Ok(GeneratedField::Keys),
+                            _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
+                        }
+                    }
+                }
+                deserializer.deserialize_identifier(GeneratedVisitor)
+            }
+        }
+        struct GeneratedVisitor;
+        impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+            type Value = ListSignerResponse;
+
+            fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                formatter.write_str("struct demeter.ops.v1alpha.ListSignerResponse")
+            }
+
+            fn visit_map<V>(self, mut map_: V) -> std::result::Result<ListSignerResponse, V::Error>
+                where
+                    V: serde::de::MapAccess<'de>,
+            {
+                let mut keys__ = None;
+                while let Some(k) = map_.next_key()? {
+                    match k {
+                        GeneratedField::Keys => {
+                            if keys__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("keys"));
+                            }
+                            keys__ = Some(map_.next_value()?);
+                        }
+                    }
+                }
+                Ok(ListSignerResponse {
+                    keys: keys__.unwrap_or_default(),
+                })
+            }
+        }
+        deserializer.deserialize_struct("demeter.ops.v1alpha.ListSignerResponse", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for Log {
@@ -6567,6 +6954,323 @@ impl<'de> serde::Deserialize<'de> for Resource {
         deserializer.deserialize_struct("demeter.ops.v1alpha.Resource", FIELDS, GeneratedVisitor)
     }
 }
+impl serde::Serialize for SignPayloadSignerRequest {
+    #[allow(deprecated)]
+    fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        use serde::ser::SerializeStruct;
+        let mut len = 0;
+        if !self.worker_id.is_empty() {
+            len += 1;
+        }
+        if !self.key_name.is_empty() {
+            len += 1;
+        }
+        if !self.payload.is_empty() {
+            len += 1;
+        }
+        let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.SignPayloadSignerRequest", len)?;
+        if !self.worker_id.is_empty() {
+            struct_ser.serialize_field("workerId", &self.worker_id)?;
+        }
+        if !self.key_name.is_empty() {
+            struct_ser.serialize_field("keyName", &self.key_name)?;
+        }
+        if !self.payload.is_empty() {
+            #[allow(clippy::needless_borrow)]
+            struct_ser.serialize_field("payload", pbjson::private::base64::encode(&self.payload).as_str())?;
+        }
+        struct_ser.end()
+    }
+}
+impl<'de> serde::Deserialize<'de> for SignPayloadSignerRequest {
+    #[allow(deprecated)]
+    fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        const FIELDS: &[&str] = &[
+            "worker_id",
+            "workerId",
+            "key_name",
+            "keyName",
+            "payload",
+        ];
+
+        #[allow(clippy::enum_variant_names)]
+        enum GeneratedField {
+            WorkerId,
+            KeyName,
+            Payload,
+        }
+        impl<'de> serde::Deserialize<'de> for GeneratedField {
+            fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
+            where
+                D: serde::Deserializer<'de>,
+            {
+                struct GeneratedVisitor;
+
+                impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+                    type Value = GeneratedField;
+
+                    fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        write!(formatter, "expected one of: {:?}", &FIELDS)
+                    }
+
+                    #[allow(unused_variables)]
+                    fn visit_str<E>(self, value: &str) -> std::result::Result<GeneratedField, E>
+                    where
+                        E: serde::de::Error,
+                    {
+                        match value {
+                            "workerId" | "worker_id" => Ok(GeneratedField::WorkerId),
+                            "keyName" | "key_name" => Ok(GeneratedField::KeyName),
+                            "payload" => Ok(GeneratedField::Payload),
+                            _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
+                        }
+                    }
+                }
+                deserializer.deserialize_identifier(GeneratedVisitor)
+            }
+        }
+        struct GeneratedVisitor;
+        impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+            type Value = SignPayloadSignerRequest;
+
+            fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                formatter.write_str("struct demeter.ops.v1alpha.SignPayloadSignerRequest")
+            }
+
+            fn visit_map<V>(self, mut map_: V) -> std::result::Result<SignPayloadSignerRequest, V::Error>
+                where
+                    V: serde::de::MapAccess<'de>,
+            {
+                let mut worker_id__ = None;
+                let mut key_name__ = None;
+                let mut payload__ = None;
+                while let Some(k) = map_.next_key()? {
+                    match k {
+                        GeneratedField::WorkerId => {
+                            if worker_id__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("workerId"));
+                            }
+                            worker_id__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::KeyName => {
+                            if key_name__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("keyName"));
+                            }
+                            key_name__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::Payload => {
+                            if payload__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("payload"));
+                            }
+                            payload__ = 
+                                Some(map_.next_value::<::pbjson::private::BytesDeserialize<_>>()?.0)
+                            ;
+                        }
+                    }
+                }
+                Ok(SignPayloadSignerRequest {
+                    worker_id: worker_id__.unwrap_or_default(),
+                    key_name: key_name__.unwrap_or_default(),
+                    payload: payload__.unwrap_or_default(),
+                })
+            }
+        }
+        deserializer.deserialize_struct("demeter.ops.v1alpha.SignPayloadSignerRequest", FIELDS, GeneratedVisitor)
+    }
+}
+impl serde::Serialize for SignPayloadSignerResponse {
+    #[allow(deprecated)]
+    fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        use serde::ser::SerializeStruct;
+        let mut len = 0;
+        if !self.signed_payload.is_empty() {
+            len += 1;
+        }
+        let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.SignPayloadSignerResponse", len)?;
+        if !self.signed_payload.is_empty() {
+            #[allow(clippy::needless_borrow)]
+            struct_ser.serialize_field("signedPayload", pbjson::private::base64::encode(&self.signed_payload).as_str())?;
+        }
+        struct_ser.end()
+    }
+}
+impl<'de> serde::Deserialize<'de> for SignPayloadSignerResponse {
+    #[allow(deprecated)]
+    fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        const FIELDS: &[&str] = &[
+            "signed_payload",
+            "signedPayload",
+        ];
+
+        #[allow(clippy::enum_variant_names)]
+        enum GeneratedField {
+            SignedPayload,
+        }
+        impl<'de> serde::Deserialize<'de> for GeneratedField {
+            fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
+            where
+                D: serde::Deserializer<'de>,
+            {
+                struct GeneratedVisitor;
+
+                impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+                    type Value = GeneratedField;
+
+                    fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        write!(formatter, "expected one of: {:?}", &FIELDS)
+                    }
+
+                    #[allow(unused_variables)]
+                    fn visit_str<E>(self, value: &str) -> std::result::Result<GeneratedField, E>
+                    where
+                        E: serde::de::Error,
+                    {
+                        match value {
+                            "signedPayload" | "signed_payload" => Ok(GeneratedField::SignedPayload),
+                            _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
+                        }
+                    }
+                }
+                deserializer.deserialize_identifier(GeneratedVisitor)
+            }
+        }
+        struct GeneratedVisitor;
+        impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+            type Value = SignPayloadSignerResponse;
+
+            fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                formatter.write_str("struct demeter.ops.v1alpha.SignPayloadSignerResponse")
+            }
+
+            fn visit_map<V>(self, mut map_: V) -> std::result::Result<SignPayloadSignerResponse, V::Error>
+                where
+                    V: serde::de::MapAccess<'de>,
+            {
+                let mut signed_payload__ = None;
+                while let Some(k) = map_.next_key()? {
+                    match k {
+                        GeneratedField::SignedPayload => {
+                            if signed_payload__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("signedPayload"));
+                            }
+                            signed_payload__ = 
+                                Some(map_.next_value::<::pbjson::private::BytesDeserialize<_>>()?.0)
+                            ;
+                        }
+                    }
+                }
+                Ok(SignPayloadSignerResponse {
+                    signed_payload: signed_payload__.unwrap_or_default(),
+                })
+            }
+        }
+        deserializer.deserialize_struct("demeter.ops.v1alpha.SignPayloadSignerResponse", FIELDS, GeneratedVisitor)
+    }
+}
+impl serde::Serialize for Signer {
+    #[allow(deprecated)]
+    fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        use serde::ser::SerializeStruct;
+        let mut len = 0;
+        if !self.key_name.is_empty() {
+            len += 1;
+        }
+        let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.Signer", len)?;
+        if !self.key_name.is_empty() {
+            struct_ser.serialize_field("keyName", &self.key_name)?;
+        }
+        struct_ser.end()
+    }
+}
+impl<'de> serde::Deserialize<'de> for Signer {
+    #[allow(deprecated)]
+    fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        const FIELDS: &[&str] = &[
+            "key_name",
+            "keyName",
+        ];
+
+        #[allow(clippy::enum_variant_names)]
+        enum GeneratedField {
+            KeyName,
+        }
+        impl<'de> serde::Deserialize<'de> for GeneratedField {
+            fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
+            where
+                D: serde::Deserializer<'de>,
+            {
+                struct GeneratedVisitor;
+
+                impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+                    type Value = GeneratedField;
+
+                    fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        write!(formatter, "expected one of: {:?}", &FIELDS)
+                    }
+
+                    #[allow(unused_variables)]
+                    fn visit_str<E>(self, value: &str) -> std::result::Result<GeneratedField, E>
+                    where
+                        E: serde::de::Error,
+                    {
+                        match value {
+                            "keyName" | "key_name" => Ok(GeneratedField::KeyName),
+                            _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
+                        }
+                    }
+                }
+                deserializer.deserialize_identifier(GeneratedVisitor)
+            }
+        }
+        struct GeneratedVisitor;
+        impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+            type Value = Signer;
+
+            fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                formatter.write_str("struct demeter.ops.v1alpha.Signer")
+            }
+
+            fn visit_map<V>(self, mut map_: V) -> std::result::Result<Signer, V::Error>
+                where
+                    V: serde::de::MapAccess<'de>,
+            {
+                let mut key_name__ = None;
+                while let Some(k) = map_.next_key()? {
+                    match k {
+                        GeneratedField::KeyName => {
+                            if key_name__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("keyName"));
+                            }
+                            key_name__ = Some(map_.next_value()?);
+                        }
+                    }
+                }
+                Ok(Signer {
+                    key_name: key_name__.unwrap_or_default(),
+                })
+            }
+        }
+        deserializer.deserialize_struct("demeter.ops.v1alpha.Signer", FIELDS, GeneratedVisitor)
+    }
+}
 impl serde::Serialize for UpdateKeyValueRequest {
     #[allow(deprecated)]
     fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
@@ -6593,7 +7297,6 @@ impl serde::Serialize for UpdateKeyValueRequest {
         }
         if !self.value.is_empty() {
             #[allow(clippy::needless_borrow)]
-            #[allow(clippy::needless_borrows_for_generic_args)]
             struct_ser.serialize_field("value", pbjson::private::base64::encode(&self.value).as_str())?;
         }
         struct_ser.end()
@@ -7237,7 +7940,6 @@ impl serde::Serialize for UsageReport {
         }
         if self.units != 0 {
             #[allow(clippy::needless_borrow)]
-            #[allow(clippy::needless_borrows_for_generic_args)]
             struct_ser.serialize_field("units", ToString::to_string(&self.units).as_str())?;
         }
         if !self.tier.is_empty() {
