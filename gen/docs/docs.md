@@ -13,6 +13,9 @@
 - [proto/demeter/ops/v1alpha/project.proto](#proto_demeter_ops_v1alpha_project-proto)
     - [AcceptProjectUserInviteRequest](#demeter-ops-v1alpha-AcceptProjectUserInviteRequest)
     - [AcceptProjectUserInviteResponse](#demeter-ops-v1alpha-AcceptProjectUserInviteResponse)
+    - [ClaimPort](#demeter-ops-v1alpha-ClaimPort)
+    - [ClaimProjectRequest](#demeter-ops-v1alpha-ClaimProjectRequest)
+    - [ClaimProjectResponse](#demeter-ops-v1alpha-ClaimProjectResponse)
     - [CreateProjectRequest](#demeter-ops-v1alpha-CreateProjectRequest)
     - [CreateProjectResponse](#demeter-ops-v1alpha-CreateProjectResponse)
     - [CreateProjectSecretRequest](#demeter-ops-v1alpha-CreateProjectSecretRequest)
@@ -27,6 +30,8 @@
     - [DeleteProjectUserInviteResponse](#demeter-ops-v1alpha-DeleteProjectUserInviteResponse)
     - [DeleteProjectUserRequest](#demeter-ops-v1alpha-DeleteProjectUserRequest)
     - [DeleteProjectUserResponse](#demeter-ops-v1alpha-DeleteProjectUserResponse)
+    - [FetchClaimRequest](#demeter-ops-v1alpha-FetchClaimRequest)
+    - [FetchClaimResponse](#demeter-ops-v1alpha-FetchClaimResponse)
     - [FetchMeProjectUserRequest](#demeter-ops-v1alpha-FetchMeProjectUserRequest)
     - [FetchMeProjectUserResponse](#demeter-ops-v1alpha-FetchMeProjectUserResponse)
     - [FetchProjectByIdRequest](#demeter-ops-v1alpha-FetchProjectByIdRequest)
@@ -51,6 +56,12 @@
     - [UpdateProjectResponse](#demeter-ops-v1alpha-UpdateProjectResponse)
   
     - [ProjectService](#demeter-ops-v1alpha-ProjectService)
+  
+- [proto/demeter/ops/v1alpha/provisional.proto](#proto_demeter_ops_v1alpha_provisional-proto)
+    - [RegisterRequest](#demeter-ops-v1alpha-RegisterRequest)
+    - [RegisterResponse](#demeter-ops-v1alpha-RegisterResponse)
+  
+    - [ProvisionalService](#demeter-ops-v1alpha-ProvisionalService)
   
 - [proto/demeter/ops/v1alpha/resource.proto](#proto_demeter_ops_v1alpha_resource-proto)
     - [CreateResourceRequest](#demeter-ops-v1alpha-CreateResourceRequest)
@@ -198,6 +209,55 @@
 
 ### AcceptProjectUserInviteResponse
 
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-ClaimPort"></a>
+
+### ClaimPort
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| kind | [string](#string) |  |  |
+| network | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-ClaimProjectRequest"></a>
+
+### ClaimProjectRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| claim_token | [string](#string) |  |  |
+| user_code | [string](#string) |  |  |
+| name | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-ClaimProjectResponse"></a>
+
+### ClaimProjectResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| project | [Project](#demeter-ops-v1alpha-Project) |  |  |
 
 
 
@@ -391,6 +451,42 @@
 
 ### DeleteProjectUserResponse
 
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-FetchClaimRequest"></a>
+
+### FetchClaimRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| claim_token | [string](#string) |  |  |
+| user_code | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-FetchClaimResponse"></a>
+
+### FetchClaimResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| project_id | [string](#string) |  |  |
+| project_namespace | [string](#string) |  |  |
+| agent_name | [string](#string) |  |  |
+| agent_version | [string](#string) | optional |  |
+| expires_at | [string](#string) |  |  |
+| ports | [ClaimPort](#demeter-ops-v1alpha-ClaimPort) | repeated |  |
 
 
 
@@ -781,6 +877,72 @@
 | AcceptProjectUserInvite | [AcceptProjectUserInviteRequest](#demeter-ops-v1alpha-AcceptProjectUserInviteRequest) | [AcceptProjectUserInviteResponse](#demeter-ops-v1alpha-AcceptProjectUserInviteResponse) |  |
 | ResendProjectUserInvite | [ResendProjectUserInviteRequest](#demeter-ops-v1alpha-ResendProjectUserInviteRequest) | [ResendProjectUserInviteResponse](#demeter-ops-v1alpha-ResendProjectUserInviteResponse) |  |
 | DeleteProjectUserInvite | [DeleteProjectUserInviteRequest](#demeter-ops-v1alpha-DeleteProjectUserInviteRequest) | [DeleteProjectUserInviteResponse](#demeter-ops-v1alpha-DeleteProjectUserInviteResponse) |  |
+| FetchClaim | [FetchClaimRequest](#demeter-ops-v1alpha-FetchClaimRequest) | [FetchClaimResponse](#demeter-ops-v1alpha-FetchClaimResponse) |  |
+| ClaimProject | [ClaimProjectRequest](#demeter-ops-v1alpha-ClaimProjectRequest) | [ClaimProjectResponse](#demeter-ops-v1alpha-ClaimProjectResponse) |  |
+
+ 
+
+
+
+<a name="proto_demeter_ops_v1alpha_provisional-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## proto/demeter/ops/v1alpha/provisional.proto
+
+
+
+<a name="demeter-ops-v1alpha-RegisterRequest"></a>
+
+### RegisterRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| agent_name | [string](#string) |  |  |
+| agent_version | [string](#string) | optional |  |
+| agent_url | [string](#string) | optional |  |
+| client_ip | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-RegisterResponse"></a>
+
+### RegisterResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| project_id | [string](#string) |  |  |
+| project_namespace | [string](#string) |  |  |
+| api_key | [string](#string) |  |  |
+| claim_token | [string](#string) |  |  |
+| user_code | [string](#string) |  |  |
+| expires_at | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="demeter-ops-v1alpha-ProvisionalService"></a>
+
+### ProvisionalService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| Register | [RegisterRequest](#demeter-ops-v1alpha-RegisterRequest) | [RegisterResponse](#demeter-ops-v1alpha-RegisterResponse) |  |
 
  
 
@@ -821,6 +983,8 @@
 | id | [string](#string) |  |  |
 | name | [string](#string) |  |  |
 | kind | [string](#string) |  |  |
+| annotations | [string](#string) |  |  |
+| spec | [string](#string) |  |  |
 
 
 
