@@ -11,6 +11,8 @@ message CreateResourceResponse {
   string id = 1;
   string name = 2; 
   string kind = 3; 
+  string annotations = 4;
+  string spec = 5;
 }
 
 message UpdateResourceRequest {

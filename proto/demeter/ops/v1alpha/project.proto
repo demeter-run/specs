@@ -161,6 +161,37 @@ message DeleteProjectUserInviteRequest {
 }
 message DeleteProjectUserInviteResponse {}
 
+message FetchClaimRequest {
+  oneof key {
+    string claim_token = 1;
+    string user_code = 2;
+  }
+}
+message ClaimPort {
+  string id = 1;
+  string kind = 2;
+  string network = 3;
+}
+message FetchClaimResponse {
+  string project_id = 1;
+  string project_namespace = 2;
+  string agent_name = 3;
+  optional string agent_version = 4;
+  string expires_at = 5;
+  repeated ClaimPort ports = 6;
+}
+
+message ClaimProjectRequest {
+  oneof key {
+    string claim_token = 1;
+    string user_code = 2;
+  }
+  string name = 3;
+}
+message ClaimProjectResponse {
+  Project project = 1;
+}
+
 service ProjectService {
   rpc FetchProjects(FetchProjectsRequest) returns (FetchProjectsResponse);
   rpc FetchProjectById(FetchProjectByIdRequest) returns (FetchProjectByIdResponse);
@@ -182,5 +213,8 @@ service ProjectService {
   rpc AcceptProjectUserInvite(AcceptProjectUserInviteRequest) returns (AcceptProjectUserInviteResponse);
   rpc ResendProjectUserInvite(ResendProjectUserInviteRequest) returns (ResendProjectUserInviteResponse);
   rpc DeleteProjectUserInvite(DeleteProjectUserInviteRequest) returns (DeleteProjectUserInviteResponse);
+
+  rpc FetchClaim(FetchClaimRequest) returns (FetchClaimResponse);
+  rpc ClaimProject(ClaimProjectRequest) returns (ClaimProjectResponse);
 }
 
