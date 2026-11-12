@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package demeter.ops.v1alpha;
+
+// The caller is the user of the request's token; there is no user field.
+message ResendVerificationEmailRequest {}
+message ResendVerificationEmailResponse {
+  // True when the caller's email is already verified; no email is sent.
+  bool already_verified = 1;
+}
+
+service AccountService {
+  // Asks for a new verification email for the signed-in user.
+  // Refusals (the status message is the bare code):
+  // PERMISSION_DENIED `user_blocked` when the user is blocked;
+  // RESOURCE_EXHAUSTED `verification_email_rate` within the resend cooldown,
+  // with `retry-after-seconds` status metadata.
+  rpc ResendVerificationEmail(ResendVerificationEmailRequest) returns (ResendVerificationEmailResponse);
+}
