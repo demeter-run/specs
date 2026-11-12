@@ -3,6 +3,12 @@
 
 ## Table of Contents
 
+- [proto/demeter/ops/v1alpha/account.proto](#proto_demeter_ops_v1alpha_account-proto)
+    - [ResendVerificationEmailRequest](#demeter-ops-v1alpha-ResendVerificationEmailRequest)
+    - [ResendVerificationEmailResponse](#demeter-ops-v1alpha-ResendVerificationEmailResponse)
+  
+    - [AccountService](#demeter-ops-v1alpha-AccountService)
+  
 - [proto/demeter/ops/v1alpha/metadata.proto](#proto_demeter_ops_v1alpha_metadata-proto)
     - [FetchMetadataRequest](#demeter-ops-v1alpha-FetchMetadataRequest)
     - [FetchMetadataResponse](#demeter-ops-v1alpha-FetchMetadataResponse)
@@ -113,6 +119,57 @@
     - [SignerService](#demeter-ops-v1alpha-SignerService)
   
 - [Scalar Value Types](#scalar-value-types)
+
+
+
+<a name="proto_demeter_ops_v1alpha_account-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## proto/demeter/ops/v1alpha/account.proto
+
+
+
+<a name="demeter-ops-v1alpha-ResendVerificationEmailRequest"></a>
+
+### ResendVerificationEmailRequest
+The caller is the user of the request&#39;s token; there is no user field.
+
+
+
+
+
+
+<a name="demeter-ops-v1alpha-ResendVerificationEmailResponse"></a>
+
+### ResendVerificationEmailResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| already_verified | [bool](#bool) |  | True when the caller&#39;s email is already verified; no email is sent. |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="demeter-ops-v1alpha-AccountService"></a>
+
+### AccountService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| ResendVerificationEmail | [ResendVerificationEmailRequest](#demeter-ops-v1alpha-ResendVerificationEmailRequest) | [ResendVerificationEmailResponse](#demeter-ops-v1alpha-ResendVerificationEmailResponse) | Asks for a new verification email for the signed-in user. Refusals (the status message is the bare code): PERMISSION_DENIED `user_blocked` when the user is blocked; RESOURCE_EXHAUSTED `verification_email_rate` within the resend cooldown, with `retry-after-seconds` status metadata. |
+
+ 
 
 
 
