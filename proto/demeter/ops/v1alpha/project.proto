@@ -12,10 +12,16 @@ message Project {
   optional string billing_subscription_id = 7;
   string created_at = 8; 
   string updated_at = 9; 
+  // Where the project came from (for example `blockfrost`); unset when unknown.
+  optional string referral = 10;
 }
 
 message CreateProjectRequest {
   string name = 1; 
+  // Where the project came from, for example `blockfrost`.
+  optional string referral = 2;
+  // The Terms of Service version the user accepted when creating the project.
+  optional string terms_version = 3;
 }
 message CreateProjectResponse {
   string id = 1;

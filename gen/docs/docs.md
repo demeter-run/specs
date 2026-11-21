@@ -330,6 +330,8 @@ The caller is the user of the request&#39;s token; there is no user field.
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | name | [string](#string) |  |  |
+| referral | [string](#string) | optional | Where the project came from, for example `blockfrost`. |
+| terms_version | [string](#string) | optional | The Terms of Service version the user accepted when creating the project. |
 
 
 
@@ -782,6 +784,7 @@ The caller is the user of the request&#39;s token; there is no user field.
 | billing_subscription_id | [string](#string) | optional |  |
 | created_at | [string](#string) |  |  |
 | updated_at | [string](#string) |  |  |
+| referral | [string](#string) | optional | Where the project came from (for example `blockfrost`); unset when unknown. |
 
 
 

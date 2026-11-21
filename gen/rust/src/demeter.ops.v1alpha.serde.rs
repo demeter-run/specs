@@ -514,9 +514,21 @@ impl serde::Serialize for CreateProjectRequest {
         if !self.name.is_empty() {
             len += 1;
         }
+        if self.referral.is_some() {
+            len += 1;
+        }
+        if self.terms_version.is_some() {
+            len += 1;
+        }
         let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.CreateProjectRequest", len)?;
         if !self.name.is_empty() {
             struct_ser.serialize_field("name", &self.name)?;
+        }
+        if let Some(v) = self.referral.as_ref() {
+            struct_ser.serialize_field("referral", v)?;
+        }
+        if let Some(v) = self.terms_version.as_ref() {
+            struct_ser.serialize_field("termsVersion", v)?;
         }
         struct_ser.end()
     }
@@ -529,11 +541,16 @@ impl<'de> serde::Deserialize<'de> for CreateProjectRequest {
     {
         const FIELDS: &[&str] = &[
             "name",
+            "referral",
+            "terms_version",
+            "termsVersion",
         ];
 
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
             Name,
+            Referral,
+            TermsVersion,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
             fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
@@ -556,6 +573,8 @@ impl<'de> serde::Deserialize<'de> for CreateProjectRequest {
                     {
                         match value {
                             "name" => Ok(GeneratedField::Name),
+                            "referral" => Ok(GeneratedField::Referral),
+                            "termsVersion" | "terms_version" => Ok(GeneratedField::TermsVersion),
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
                         }
                     }
@@ -576,6 +595,8 @@ impl<'de> serde::Deserialize<'de> for CreateProjectRequest {
                     V: serde::de::MapAccess<'de>,
             {
                 let mut name__ = None;
+                let mut referral__ = None;
+                let mut terms_version__ = None;
                 while let Some(k) = map_.next_key()? {
                     match k {
                         GeneratedField::Name => {
@@ -584,10 +605,24 @@ impl<'de> serde::Deserialize<'de> for CreateProjectRequest {
                             }
                             name__ = Some(map_.next_value()?);
                         }
+                        GeneratedField::Referral => {
+                            if referral__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("referral"));
+                            }
+                            referral__ = map_.next_value()?;
+                        }
+                        GeneratedField::TermsVersion => {
+                            if terms_version__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("termsVersion"));
+                            }
+                            terms_version__ = map_.next_value()?;
+                        }
                     }
                 }
                 Ok(CreateProjectRequest {
                     name: name__.unwrap_or_default(),
+                    referral: referral__,
+                    terms_version: terms_version__,
                 })
             }
         }
@@ -6512,6 +6547,9 @@ impl serde::Serialize for Project {
         if !self.updated_at.is_empty() {
             len += 1;
         }
+        if self.referral.is_some() {
+            len += 1;
+        }
         let mut struct_ser = serializer.serialize_struct("demeter.ops.v1alpha.Project", len)?;
         if !self.id.is_empty() {
             struct_ser.serialize_field("id", &self.id)?;
@@ -6540,6 +6578,9 @@ impl serde::Serialize for Project {
         if !self.updated_at.is_empty() {
             struct_ser.serialize_field("updatedAt", &self.updated_at)?;
         }
+        if let Some(v) = self.referral.as_ref() {
+            struct_ser.serialize_field("referral", v)?;
+        }
         struct_ser.end()
     }
 }
@@ -6564,6 +6605,7 @@ impl<'de> serde::Deserialize<'de> for Project {
             "createdAt",
             "updated_at",
             "updatedAt",
+            "referral",
         ];
 
         #[allow(clippy::enum_variant_names)]
@@ -6577,6 +6619,7 @@ impl<'de> serde::Deserialize<'de> for Project {
             BillingSubscriptionId,
             CreatedAt,
             UpdatedAt,
+            Referral,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
             fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
@@ -6607,6 +6650,7 @@ impl<'de> serde::Deserialize<'de> for Project {
                             "billingSubscriptionId" | "billing_subscription_id" => Ok(GeneratedField::BillingSubscriptionId),
                             "createdAt" | "created_at" => Ok(GeneratedField::CreatedAt),
                             "updatedAt" | "updated_at" => Ok(GeneratedField::UpdatedAt),
+                            "referral" => Ok(GeneratedField::Referral),
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
                         }
                     }
@@ -6635,6 +6679,7 @@ impl<'de> serde::Deserialize<'de> for Project {
                 let mut billing_subscription_id__ = None;
                 let mut created_at__ = None;
                 let mut updated_at__ = None;
+                let mut referral__ = None;
                 while let Some(k) = map_.next_key()? {
                     match k {
                         GeneratedField::Id => {
@@ -6691,6 +6736,12 @@ impl<'de> serde::Deserialize<'de> for Project {
                             }
                             updated_at__ = Some(map_.next_value()?);
                         }
+                        GeneratedField::Referral => {
+                            if referral__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("referral"));
+                            }
+                            referral__ = map_.next_value()?;
+                        }
                     }
                 }
                 Ok(Project {
@@ -6703,6 +6754,7 @@ impl<'de> serde::Deserialize<'de> for Project {
                     billing_subscription_id: billing_subscription_id__,
                     created_at: created_at__.unwrap_or_default(),
                     updated_at: updated_at__.unwrap_or_default(),
+                    referral: referral__,
                 })
             }
         }
